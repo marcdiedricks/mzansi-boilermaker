@@ -13,7 +13,7 @@
 }
 html { font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text); }
 body { margin: 0; min-height: 100vh; background: var(--bg); }
-button, input { font: inherit; }
+button, input, select { font: inherit; }
 button { min-height: 48px; }
 .app-header {
   position: sticky;
@@ -44,7 +44,7 @@ button { min-height: 48px; }
 .hero-card h2, .view > h2 { margin-top: 6px; }
 .panel h2, .panel h3, .lesson-card h3 { margin-top: 0; }
 label { display: block; margin-bottom: 8px; font-weight: 700; }
-input[type="text"] {
+input[type="text"], select {
   width: 100%;
   min-height: 48px;
   padding: 12px 14px;
@@ -52,6 +52,7 @@ input[type="text"] {
   border-radius: 12px;
   margin-bottom: 12px;
   background: white;
+  color: var(--text);
 }
 .primary-btn, .back-btn, .safety-btn {
   border: 0;
@@ -73,6 +74,7 @@ input[type="text"] {
   padding: 16px;
   cursor: pointer;
 }
+.safety-card { border-left: 5px solid #a15c00; }
 .menu-title { display: block; font-weight: 800; margin-bottom: 6px; }
 .menu-copy { display: block; color: var(--muted); font-size: .92rem; line-height: 1.4; }
 .disabled-card { opacity: .6; cursor: not-allowed; }
@@ -101,6 +103,22 @@ input[type="text"] {
 .option-row input { margin-top: 3px; }
 .result-box { display: none; margin-top: 16px; }
 .result-box.show { display: block; }
+.safety-decision {
+  display: none;
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 10px;
+}
+.safety-decision.show { display: block; }
+.safety-decision.allow { border-color: #237a4b; background: #eef9f2; }
+.safety-decision.controlled { border-color: #a15c00; background: #fff8e6; }
+.safety-decision.human-required { border-color: #b54708; background: #fff3e8; }
+.safety-decision.deny { border-color: var(--safety); background: var(--safety-bg); }
+.safety-decision h3 { margin: 6px 0 8px; }
+.decision-label { margin: 0; font-weight: 800; font-size: .8rem; letter-spacing: .06em; }
+.decision-meta, .policy-version { color: var(--muted); font-size: .82rem; }
 .app-footer {
   width: min(760px, 100%);
   margin: 0 auto;
