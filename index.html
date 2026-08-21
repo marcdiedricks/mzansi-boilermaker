@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1f2937">
+  <meta name="description" content="Offline-first South African Boilermaker learning companion.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Mzansi Boilermaker</title>
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">MZANSI BOILERMAKER</p>
+      <h1>Artisan Learning Companion</h1>
+    </div>
+    <span id="networkStatus" class="status-pill">Checking…</span>
+  </header>
+
+  <main class="app-main">
+    <section id="homeView" class="view active" aria-labelledby="homeTitle">
+      <div class="hero-card">
+        <p class="eyebrow">BUILD 0.1A-01</p>
+        <h2 id="homeTitle">Learn. Practise safely. Keep your progress.</h2>
+        <p>This pilot starts with basic Boilermaker drawing interpretation and works offline after the first load.</p>
+      </div>
+
+      <section class="panel" aria-labelledby="learnerHeading">
+        <h2 id="learnerHeading">Learner profile</h2>
+        <label for="learnerName">Your name</label>
+        <input id="learnerName" type="text" autocomplete="name" placeholder="Enter learner name">
+        <button id="saveLearnerBtn" class="primary-btn" type="button">Save learner</button>
+        <p id="learnerSaved" class="helper" aria-live="polite"></p>
+      </section>
+
+      <section class="menu-grid" aria-label="Main menu">
+        <button class="menu-card" data-open="pathView" type="button">
+          <span class="menu-title">My Boilermaker Path</span>
+          <span class="menu-copy">Start with KM-07: Boilermaker's Drawings</span>
+        </button>
+        <button class="menu-card" data-open="lessonView" type="button">
+          <span class="menu-title">Continue Learning</span>
+          <span class="menu-copy">Reading the Drawing Before You Make the Job</span>
+        </button>
+        <button class="menu-card disabled-card" type="button" disabled>
+          <span class="menu-title">My Evidence</span>
+          <span class="menu-copy">Coming in a later build</span>
+        </button>
+        <button class="menu-card disabled-card" type="button" disabled>
+          <span class="menu-title">Ask My Companion</span>
+          <span class="menu-copy">Cloud AI comes later</span>
+        </button>
+      </section>
+
+      <button id="safetyBtn" class="safety-btn" type="button">Safety</button>
+    </section>
+
+    <section id="pathView" class="view" aria-labelledby="pathTitle">
+      <button class="back-btn" data-open="homeView" type="button">← Home</button>
+      <p class="eyebrow">MY BOILERMAKER PATH</p>
+      <h2 id="pathTitle">READ IT & PLAN IT</h2>
+      <div class="panel">
+        <p class="module-code">KM-07</p>
+        <h3>Boilermaker's Drawings</h3>
+        <p>Learn how technical drawings communicate shape, size, views, dimensions, symbols and abbreviations.</p>
+        <div class="progress-wrap" aria-label="Lesson progress">
+          <div class="progress-track"><div id="pathProgress" class="progress-fill"></div></div>
+          <span id="pathProgressText">0% complete</span>
+        </div>
+        <button class="primary-btn" data-open="lessonView" type="button">Open first lesson</button>
+      </div>
+    </section>
+
+    <section id="lessonView" class="view" aria-labelledby="lessonTitle">
+      <button class="back-btn" data-open="homeView" type="button">← Home</button>
+      <p class="eyebrow">KM-07 • TIER 1 LEARNING</p>
+      <h2 id="lessonTitle">Reading the Drawing Before You Make the Job</h2>
+
+      <div class="safety-note">
+        This lesson is for drawing interpretation only. If the request changes to real fabrication or hazardous practical work, the safety context must be checked again.
+      </div>
+
+      <article class="lesson-stack">
+        <section class="lesson-card">
+          <h3>1. What is a technical drawing?</h3>
+          <p>A technical drawing is a controlled way of communicating information about an object, component or structure.</p>
+          <p>It can use lines, dimensions, views, symbols, abbreviations and notes.</p>
+          <p class="key-idea"><strong>Boilermaker term:</strong> Drawing interpretation means understanding what the technical drawing is communicating.</p>
+        </section>
+
+        <section class="lesson-card">
+          <h3>2. Different views describe the same object</h3>
+          <p>A drawing may show the same object from different directions.</p>
+          <div class="diagram-grid" role="img" aria-label="Simple training diagram showing front, top and side views of one rectangular object">
+            <div class="diagram-box"><span>FRONT VIEW</span><div class="shape front"></div></div>
+            <div class="diagram-box"><span>TOP VIEW</span><div class="shape top"></div></div>
+            <div class="diagram-box"><span>SIDE VIEW</span><div class="shape side"></div></div>
+          </div>
+        </section>
+
+        <section class="lesson-card">
+          <h3>3. Dimensions communicate size</h3>
+          <p>A dimension gives numerical information about the size or position of a feature.</p>
+          <p>Examples include length, width, height, diameter and radius.</p>
+          <p class="key-idea"><strong>Important:</strong> The picture size on your phone is not the real component size. Use the stated drawing information.</p>
+        </section>
+
+        <section class="lesson-card">
+          <h3>4. Lines, symbols and abbreviations carry meaning</h3>
+          <p>Different drawing elements communicate different information. If you do not understand a symbol or abbreviation, do not guess. Check an approved source or ask for clarification.</p>
+        </section>
+
+        <section class="lesson-card">
+          <h3>5. Quick glossary</h3>
+          <dl class="glossary">
+            <dt>Dimension</dt><dd>A stated measurement shown on a drawing.</dd>
+            <dt>View</dt><dd>A representation of an object from a particular direction.</dd>
+            <dt>Front view</dt><dd>The object represented from the front.</dd>
+            <dt>Top view</dt><dd>The object represented as viewed from above.</dd>
+            <dt>Side view</dt><dd>The object represented from the side.</dd>
+            <dt>Template</dt><dd>A pattern or guide used to help transfer a required shape or form.</dd>
+          </dl>
+        </section>
+      </article>
+
+      <button id="startQuizBtn" class="primary-btn" type="button">Start practice quiz</button>
+    </section>
+
+    <section id="quizView" class="view" aria-labelledby="quizTitle">
+      <button class="back-btn" data-open="lessonView" type="button">← Lesson</button>
+      <p class="eyebrow">PRACTICE</p>
+      <h2 id="quizTitle">KM-07 Knowledge Check</h2>
+      <p>Answer all six questions. This is learning practice, not an official assessment.</p>
+      <form id="quizForm" class="quiz-form"></form>
+      <button id="submitQuizBtn" class="primary-btn" type="button">Check my answers</button>
+      <div id="quizResult" class="result-box" aria-live="polite"></div>
+    </section>
+
+    <section id="safetyView" class="view" aria-labelledby="safetyTitle">
+      <button class="back-btn" data-open="homeView" type="button">← Home</button>
+      <p class="eyebrow">SAFETY</p>
+      <h2 id="safetyTitle">Know when learning becomes practical work</h2>
+      <div class="panel">
+        <p>This pilot lesson is low-risk educational support.</p>
+        <p>Reading, identifying and explaining drawing information stays in learning mode.</p>
+        <p>If you move into physical fabrication, machinery, hot work, lifting, work at height, pressure, confined spaces or other hazardous work, the task must be safety-classified again and may require supervision.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <span>SAQA 123381 • Pilot V1</span>
+    <span id="offlineHint">Local progress enabled</span>
+  </footer>
+
+  <script src="./storage.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
