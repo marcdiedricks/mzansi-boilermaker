@@ -70,3 +70,7 @@ renderEvidenceQueue = async function () {
 if (document.getElementById('evidenceView')?.classList.contains('active')) {
   renderEvidenceQueue();
 }
+
+const reviewScript = document.createElement('script');
+reviewScript.src = './review-ui.js';
+document.body.appendChild(reviewScript);
