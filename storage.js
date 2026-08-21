@@ -39,10 +39,3 @@ const MzansiStore = (() => {
 
   return { set, get };
 })();
-
-window.addEventListener('load', () => {
-  const script = document.createElement('script');
-  script.src = './attachment-ui.js';
-  script.async = false;
-  document.body.appendChild(script);
-});
