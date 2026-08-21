@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mzansi-boilermaker-v0.1a-09';
+const CACHE_NAME = 'mzansi-boilermaker-v0.1a-10';
 const APP_SHELL = [
   './',
   './index.html',
@@ -12,6 +12,7 @@ const APP_SHELL = [
   './audit-ui.js',
   './backup-ui.js',
   './dashboard-ui.js',
+  './readiness-ui.js',
   './safety-rules.json',
   './manifest.webmanifest',
   './assets/icon.svg'
