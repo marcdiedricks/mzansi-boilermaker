@@ -24,10 +24,24 @@ async function setEvidenceReview(id, status, missing = []) {
   const items = await getEvidenceItems();
   const i = items.findIndex(x => x.id === id);
   if (i < 0) return;
+  const previousStatus = items[i].reviewStatus || 'CAPTURED';
   items[i].reviewStatus = status;
   items[i].reviewMissing = missing;
   items[i].reviewUpdatedAt = new Date().toISOString();
   await MzansiStore.set('evidence-items', items);
+
+  const eventMap = {
+    NEEDS_MORE_INFORMATION: 'REVIEW_NEEDS_MORE_INFORMATION',
+    READY_FOR_HUMAN_REVIEW: 'REVIEW_READY_FOR_HUMAN',
+    PENDING_REVIEW: 'QUEUED_FOR_HUMAN_REVIEW'
+  };
+  if (globalThis.AuditTrail && eventMap[status]) {
+    await AuditTrail.append(eventMap[status], id, {
+      fromStatus: previousStatus,
+      toStatus: status,
+      missing: [...missing]
+    });
+  }
   await renderEvidenceQueue();
 }
 
