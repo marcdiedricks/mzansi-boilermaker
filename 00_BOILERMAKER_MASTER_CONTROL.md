@@ -41,6 +41,10 @@ This file controls:
 - copyright and standards licensing controls
 - offline-first and low-data design rules
 - build-small, test, verify and freeze governance
+- visual-learning and vetted video-link control
+VISUAL LEARNING CONTROL:
+Every learner-facing lesson must include a clearly marked “VISUAL LEARNING • INTERNET REQUIRED” section with at least one vetted video link where a suitable resource exists. The written lesson must remain complete and usable offline. Video is supplementary only and must support understanding, recognition or context. Videos must not authorise hazardous practical work, replace supervision, or be treated as evidence of competence, assessment or certification. Prefer South African, relevant, low-data and appropriate-language resources where practical. Video links must be checked for relevance and availability during build and testing.
+  
 
 ---
 
