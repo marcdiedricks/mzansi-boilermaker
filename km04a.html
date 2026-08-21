@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1f2937">
+  <meta name="description" content="KM-04A Introduction to Fabrication and Pipework learning slice.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <title>KM-04A • Mzansi Boilermaker</title>
+</head>
+<body>
+  <header class="app-header"><div><p class="eyebrow">MZANSI BOILERMAKER</p><h1>Artisan Learning Companion</h1></div><span id="networkStatus" class="status-pill">Checking…</span></header>
+  <main class="app-main">
+    <section class="hero-card"><p class="eyebrow">BUILD 0.1B-04A • KM-04 • TIER 1 LEARNING</p><h2>Introduction to Fabrication and Pipework</h2><p>A short orientation lesson for KM-04, Fabrication and Pipework, in the current South African Boilermaker curriculum.</p></section>
+    <a class="back-btn" href="./index.html" style="display:inline-block;text-decoration:none">← Main app</a>
+    <div class="safety-note"><strong>Learning only.</strong> This lesson explains concepts, planning and recognition. It does not teach cutting, welding, heating, bending, machine operation or any other hazardous practical procedure. Practical work requires approved training, workplace controls and competent human supervision.</div>
+    <article class="lesson-stack">
+      <section class="lesson-card"><h3>1. What does fabrication mean?</h3><p>Fabrication is the process of making metal components or structures from controlled job information such as drawings, dimensions, specifications and material requirements.</p><p class="key-idea"><strong>Key idea:</strong> Fabrication starts with understanding what must be made before any physical work begins.</p></section>
+      <section class="lesson-card"><h3>2. What does pipework mean?</h3><p>Pipework refers to pipe components and assemblies that must fit a defined purpose, arrangement and specification. A learner must understand the drawing, pipe information and required dimensions before practical fabrication is attempted.</p><p>This lesson deals with recognition and planning only.</p></section>
+      <section class="lesson-card"><h3>3. The drawing controls the job</h3><p>Drawings and sketches communicate shape, size, position and relationship between components. Specifications and approved job information add further requirements such as material, tolerances and quality expectations.</p><p>If controlled information is missing or unclear, do not guess. Use the approved training or workplace process to clarify it.</p></section>
+      <section class="lesson-card"><h3>4. Materials and components must match the requirement</h3><p>Fabrication and pipework can involve plate, structural sections, pipe and other metal components. Correct identification matters because different jobs require different dimensions, shapes and specifications.</p><p>Appearance alone is not enough to confirm material identity or suitability.</p></section>
+      <section class="lesson-card"><h3>5. Accuracy and quality begin in planning</h3><p>Good fabrication depends on checking the required dimensions, component relationships and quality requirements before practical work starts.</p><p>A mistake in understanding a drawing or specification can affect the whole component or assembly.</p></section>
+      <section class="lesson-card"><h3>6. KM-04 is larger than one lesson</h3><p>The official KM-04 module covers several knowledge areas, including templates, forming and shaping, structural steel fabrication and pipework topics.</p><p>This KM-04A lesson is only the orientation. Future slices will unpack those topics one small learning unit at a time.</p></section>
+      <section class="lesson-card"><h3>7. Stop-and-ask rule</h3><p>Stop and ask a responsible supervisor or training professional when a drawing, material, dimension, component or work instruction is unclear.</p><p>Knowing when to stop and clarify information is part of safe, accurate learning.</p></section>
+      <section class="lesson-card"><p class="eyebrow">VISUAL LEARNING • INTERNET REQUIRED</p><h3>See a Boilermaker apprenticeship environment</h3><p>This short visual resource provides context for the trade environment around fabrication, tools, materials and apprenticeship learning. The written lesson above remains complete and usable offline.</p><p><a class="primary-btn" href="https://vimeo.com/1126894668" target="_blank" rel="noopener noreferrer" style="display:inline-block;text-decoration:none">Watch visual learning video</a></p><p class="key-idea"><strong>Safety note:</strong> Watch for understanding and context only. Do not copy practical activities from a video. A video does not replace approved training or supervision.</p></section>
+    </article>
+    <section class="panel"><p class="eyebrow">QUICK CHECK</p><h2>KM-04A Learning Check</h2><form id="km04aQuiz" class="quiz-form"></form><button id="km04aSubmit" class="primary-btn" type="button">Check my answers</button><div id="km04aResult" class="result-box" aria-live="polite"></div></section>
+  </main>
+  <footer class="app-footer"><span>SAQA 123381 • KM-04A</span><span>Learning progress only</span></footer>
+  <script src="./storage.js"></script>
+  <script>
+    const questions=[
+      {q:'What should happen before physical fabrication work begins?',o:['Understand the drawing, specification and job information','Start immediately and check later','Choose materials by appearance'],a:0},
+      {q:'What should you do if a drawing or dimension is unclear?',o:['Guess the likely answer','Stop and use the approved process to clarify it','Ignore the unclear part'],a:1},
+      {q:'Can material suitability always be confirmed by appearance alone?',o:['Yes','No','Only for pipe'],a:1},
+      {q:'Does completing KM-04A authorise cutting, welding, heating, bending or machine operation?',o:['Yes','No','Only after a perfect quiz score'],a:1}
+    ];
+    const form=document.getElementById('km04aQuiz'),result=document.getElementById('km04aResult'),status=document.getElementById('networkStatus');
+    function updateNetwork(){const online=navigator.onLine;status.textContent=online?'ONLINE':'OFFLINE';status.style.background=online?'#dcfce7':'#fee2e2';}
+    questions.forEach((item,i)=>{const section=document.createElement('section');section.className='quiz-question';const fieldset=document.createElement('fieldset');const legend=document.createElement('legend');legend.textContent=`${i+1}. ${item.q}`;fieldset.appendChild(legend);item.o.forEach((option,j)=>{const label=document.createElement('label');label.className='option-row';label.innerHTML=`<input type="radio" name="km04aq${i}" value="${j}"><span>${option}</span>`;fieldset.appendChild(label);});section.appendChild(fieldset);form.appendChild(section);});
+    document.getElementById('km04aSubmit').addEventListener('click',async()=>{let answered=0,score=0;questions.forEach((item,i)=>{const selected=form.querySelector(`input[name="km04aq${i}"]:checked`);if(selected){answered+=1;if(Number(selected.value)===item.a)score+=1;}});result.className='result-box show';if(answered<questions.length){result.textContent='Please answer all four questions first.';return;}const old=(await MzansiStore.get('km04a-progress'))||{attempts:0};const completed=score>=3;await MzansiStore.set('km04a-progress',{completed,score,attempts:(old.attempts||0)+1,updatedAt:new Date().toISOString()});result.innerHTML=completed?`<strong>${score}/4.</strong> KM-04A learning slice completed. This records learning progress only, not competence or practical authorisation.`:`<strong>${score}/4.</strong> Review the lesson and try the weak areas again.`;});
+    window.addEventListener('online',updateNetwork);window.addEventListener('offline',updateNetwork);updateNetwork();if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js'));}
+  </script>
+</body>
+</html>
