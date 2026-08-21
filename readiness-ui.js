@@ -4,6 +4,7 @@
     .readiness-card { border-left: 5px solid #355d7a; }
     .km01-card { border-left: 5px solid #1f6f4a; }
     .km02-card { border-left: 5px solid #b7791f; }
+    .km03-card { border-left: 5px solid #6b46c1; }
     .readiness-summary { padding: 14px; border-radius: 12px; margin: 12px 0 18px; background: #f6f8fa; border: 1px solid #d8dee4; }
     .readiness-list { display: grid; gap: 10px; }
     .readiness-row { display: grid; grid-template-columns: 96px 1fr; gap: 10px; align-items: start; padding: 12px; border: 1px solid #d8dee4; border-radius: 12px; background: #fff; }
@@ -18,10 +19,17 @@
   const main = document.querySelector('.app-main');
   if (!menu || !main) return;
 
+  const km03Button = document.createElement('button');
+  km03Button.type = 'button';
+  km03Button.className = 'menu-card km03-card';
+  km03Button.innerHTML = '<span class="menu-title">Next: KM-03</span><span class="menu-copy">Boilermaker Tools, Equipment, Machines and Materials</span>';
+  km03Button.addEventListener('click', () => { window.location.href = './km03.html'; });
+  menu.prepend(km03Button);
+
   const km02Button = document.createElement('button');
   km02Button.type = 'button';
   km02Button.className = 'menu-card km02-card';
-  km02Button.innerHTML = '<span class="menu-title">Next: KM-02</span><span class="menu-copy">Environmental Protection, Health and Safety</span>';
+  km02Button.innerHTML = '<span class="menu-title">KM-02</span><span class="menu-copy">Environmental Protection, Health and Safety</span>';
   km02Button.addEventListener('click', () => { window.location.href = './km02.html'; });
   menu.prepend(km02Button);
 
@@ -43,7 +51,7 @@
   section.className = 'view';
   section.innerHTML = `
     <button id="readinessHomeBtn" class="back-btn" type="button">← Home</button>
-    <p class="eyebrow">PILOT CHECKPOINT • BUILD 0.1B-02</p>
+    <p class="eyebrow">PILOT CHECKPOINT • BUILD 0.1B-03</p>
     <h2>Pilot Readiness Check</h2>
     <div class="safety-note"><strong>This is a technical pilot check only.</strong> It does not assess trade competence, authorise practical work, verify evidence or replace a human assessor or supervisor.</div>
     <div id="readinessSummary" class="readiness-summary" aria-live="polite">Checking local pilot components…</div>
@@ -53,17 +61,14 @@
   main.appendChild(section);
 
   const buildLabel = document.querySelector('.hero-card .eyebrow');
-  if (buildLabel) buildLabel.textContent = 'BUILD 0.1B-02';
+  if (buildLabel) buildLabel.textContent = 'BUILD 0.1B-03';
 
   function showView(id) {
     document.querySelectorAll('.view').forEach(view => view.classList.toggle('active', view.id === id));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  menuButton.addEventListener('click', async () => {
-    showView('readinessView');
-    await runCheck();
-  });
+  menuButton.addEventListener('click', async () => { showView('readinessView'); await runCheck(); });
   document.getElementById('readinessHomeBtn').addEventListener('click', () => showView('homeView'));
   document.getElementById('rerunReadinessBtn').addEventListener('click', runCheck);
 
@@ -83,6 +88,7 @@
       const learner = await MzansiStore.get('learner');
       const km01Progress = await MzansiStore.get('km01-progress');
       const km02Progress = await MzansiStore.get('km02-progress');
+      const km03Progress = await MzansiStore.get('km03-progress');
       const km07Progress = await MzansiStore.get('km07-progress');
       const evidence = (await MzansiStore.get('evidence-items')) || [];
       const audit = (await MzansiStore.get('audit-events')) || [];
@@ -98,6 +104,7 @@
         ['Learner profile', !!learner?.name, learner?.name ? `Learner profile found for ${learner.name}.` : 'No learner name is currently saved on this device.'],
         ['KM-01 progress', !!km01Progress, km01Progress ? 'KM-01 progress record is present.' : 'No KM-01 progress record is currently saved on this device.'],
         ['KM-02 progress', !!km02Progress, km02Progress ? 'KM-02 progress record is present.' : 'No KM-02 progress record is currently saved on this device.'],
+        ['KM-03 progress', !!km03Progress, km03Progress ? 'KM-03 progress record is present.' : 'No KM-03 progress record is currently saved on this device.'],
         ['KM-07 progress', !!km07Progress, km07Progress ? 'KM-07 progress record is present.' : 'No KM-07 progress record is currently saved on this device.'],
         ['Evidence queue', Array.isArray(evidence), `${evidence.length} local evidence record(s) found.`],
         ['Audit integrity', auditOk, auditOk ? `${audit.length} audit event(s), integrity chain valid.` : 'Audit chain could not be validated.'],

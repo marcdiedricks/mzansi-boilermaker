@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1f2937">
+  <meta name="description" content="KM-03 Boilermaker Tools, Equipment, Machines and Materials learning slice.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <title>KM-03 • Mzansi Boilermaker</title>
+</head>
+<body>
+  <header class="app-header"><div><p class="eyebrow">MZANSI BOILERMAKER</p><h1>Artisan Learning Companion</h1></div><span id="networkStatus" class="status-pill">Checking…</span></header>
+  <main class="app-main">
+    <section class="hero-card"><p class="eyebrow">BUILD 0.1B-03 • KM-03 • TIER 1 LEARNING</p><h2>Boilermaker Tools, Equipment, Machines and Materials</h2><p>A short recognition-and-selection lesson based on the current South African Boilermaker curriculum.</p></section>
+    <a class="back-btn" href="./index.html" style="display:inline-block;text-decoration:none">← Main app</a>
+    <div class="safety-note"><strong>Learning only.</strong> This lesson helps you recognise categories, purposes and safe decision points. It does not teach machine operation, authorise practical work or prove occupational competence.</div>
+    <article class="lesson-stack">
+      <section class="lesson-card"><h3>1. Start with the job information</h3><p>Tools, equipment and materials are selected for a particular job. The drawing, specification, material requirement and approved workplace process tell you what is needed.</p><p class="key-idea"><strong>Key idea:</strong> Do not choose a tool or material by guesswork.</p></section>
+      <section class="lesson-card"><h3>2. Know the main tool groups</h3><dl class="glossary"><dt>Measuring and layout tools</dt><dd>Used to support accurate checking, marking and layout.</dd><dt>Hand tools</dt><dd>Manual tools used for appropriate workshop tasks.</dd><dt>Powered tools and machines</dt><dd>Equipment that requires the correct training, controls and supervision.</dd><dt>Handling and access equipment</dt><dd>Equipment used in controlled workplaces for moving materials or reaching work areas.</dd></dl><p>This lesson is about recognition and safe selection. Practical operation belongs in supervised training.</p></section>
+      <section class="lesson-card"><h3>3. Condition matters</h3><p>A tool or item of equipment that is damaged, unsuitable or not approved for the task must not simply be used because it is available.</p><p>If condition, inspection status or suitability is uncertain, stop and follow the approved reporting or supervisor process.</p></section>
+      <section class="lesson-card"><h3>4. Materials are not all the same</h3><p>Boilermaker work can involve different metal products, sections, plate, pipe and related materials. Material identity, dimensions and specification matter because they affect how the job is planned and checked.</p><p>The learner should confirm material requirements from controlled job information rather than relying only on appearance.</p></section>
+      <section class="lesson-card"><h3>5. Match the item to the task</h3><p>Correct selection means matching the approved tool, equipment or material to the task and to the workplace requirement.</p><p>Being able to name an item is useful, but safe work also requires knowing when you are not yet trained or authorised to use it.</p></section>
+      <section class="lesson-card"><h3>6. Stop-and-ask rule</h3><p>Stop and ask a responsible supervisor or training professional when the item is unfamiliar, damaged, incorrectly labelled, unsuitable, or the work instruction is unclear.</p><p>This rule is more important than trying to appear experienced.</p></section>
+      <section class="lesson-card"><p class="eyebrow">VISUAL LEARNING • INTERNET REQUIRED</p><h3>See the apprenticeship environment</h3><p>This Boilermaker apprenticeship video gives visual context for the trade environment and the kinds of learning that happen around tools, equipment and materials. The written lesson remains complete offline.</p><p><a class="primary-btn" href="https://vimeo.com/1126894668" target="_blank" rel="noopener noreferrer" style="display:inline-block;text-decoration:none">Watch visual learning video</a></p><p class="key-idea"><strong>Safety note:</strong> Watch for recognition and context only. Do not copy practical activities from a video without approved training and supervision.</p></section>
+    </article>
+    <section class="panel"><p class="eyebrow">QUICK CHECK</p><h2>KM-03 Learning Check</h2><form id="km03Quiz" class="quiz-form"></form><button id="km03Submit" class="primary-btn" type="button">Check my answers</button><div id="km03Result" class="result-box" aria-live="polite"></div></section>
+  </main>
+  <footer class="app-footer"><span>SAQA 123381 • KM-03</span><span>Learning progress only</span></footer>
+  <script src="./storage.js"></script>
+  <script>
+    const questions=[{q:'What should guide the selection of a tool or material?',o:['Guesswork','Job information and the approved workplace process','Whichever item is closest'],a:1},{q:'What should you do if a tool is damaged or its condition is uncertain?',o:['Use it carefully anyway','Stop and follow the approved reporting or supervisor process','Hide the damage'],a:1},{q:'Can material identity always be confirmed by appearance alone?',o:['Yes','No','Only when the material is new'],a:1},{q:'Does completing KM-03 authorise you to operate powered machinery?',o:['Yes','No','Only after a perfect quiz score'],a:1}];
+    const form=document.getElementById('km03Quiz'),result=document.getElementById('km03Result'),status=document.getElementById('networkStatus');
+    function updateNetwork(){const online=navigator.onLine;status.textContent=online?'ONLINE':'OFFLINE';status.style.background=online?'#dcfce7':'#fee2e2';}
+    questions.forEach((item,i)=>{const section=document.createElement('section');section.className='quiz-question';const fieldset=document.createElement('fieldset');const legend=document.createElement('legend');legend.textContent=`${i+1}. ${item.q}`;fieldset.appendChild(legend);item.o.forEach((option,j)=>{const label=document.createElement('label');label.className='option-row';label.innerHTML=`<input type="radio" name="km03q${i}" value="${j}"><span>${option}</span>`;fieldset.appendChild(label);});section.appendChild(fieldset);form.appendChild(section);});
+    document.getElementById('km03Submit').addEventListener('click',async()=>{let answered=0,score=0;questions.forEach((item,i)=>{const selected=form.querySelector(`input[name="km03q${i}"]:checked`);if(selected){answered+=1;if(Number(selected.value)===item.a)score+=1;}});result.className='result-box show';if(answered<questions.length){result.textContent='Please answer all four questions first.';return;}const old=(await MzansiStore.get('km03-progress'))||{attempts:0};const completed=score>=3;await MzansiStore.set('km03-progress',{completed,score,attempts:(old.attempts||0)+1,updatedAt:new Date().toISOString()});result.innerHTML=completed?`<strong>${score}/4.</strong> KM-03 learning slice completed. This records learning progress only, not competence or practical authorisation.`:`<strong>${score}/4.</strong> Review the lesson and try the weak areas again.`;});
+    window.addEventListener('online',updateNetwork);window.addEventListener('offline',updateNetwork);updateNetwork();if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js'));}
+  </script>
+</body>
+</html>
