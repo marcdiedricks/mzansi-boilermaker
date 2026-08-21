@@ -1,3 +1,15 @@
+const buildLabel = document.querySelector('.hero-card .eyebrow');
+if (buildLabel) buildLabel.textContent = 'BUILD 0.1A-05';
+
+const reviewStyle = document.createElement('style');
+reviewStyle.textContent = `
+.review-box { margin-top: 14px; padding: 12px; border-radius: 10px; background: #f6f8fa; border: 1px solid #d8dee4; }
+.review-box p { margin: 6px 0 0; }
+.review-action-btn { width: 100%; min-height: 48px; margin-top: 10px; border: 0; border-radius: 12px; padding: 12px 16px; font-weight: 700; background: #315b7d; color: white; }
+.secondary-review-btn { background: #5f6b76; }
+`;
+document.head.appendChild(reviewStyle);
+
 function evidenceReadiness(item) {
   const missing = [];
   if (!item.title) missing.push('title');
@@ -66,3 +78,5 @@ renderEvidenceQueue = async function () {
     }
   });
 };
+
+if (document.getElementById('evidenceView')?.classList.contains('active')) renderEvidenceQueue();
