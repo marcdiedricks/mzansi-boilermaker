@@ -5,6 +5,7 @@
     .km01-card { border-left: 5px solid #1f6f4a; }
     .km02-card { border-left: 5px solid #b7791f; }
     .km03-card { border-left: 5px solid #6b46c1; }
+    .km04a-card { border-left: 5px solid #355d7a; }
     .readiness-summary { padding: 14px; border-radius: 12px; margin: 12px 0 18px; background: #f6f8fa; border: 1px solid #d8dee4; }
     .readiness-list { display: grid; gap: 10px; }
     .readiness-row { display: grid; grid-template-columns: 96px 1fr; gap: 10px; align-items: start; padding: 12px; border: 1px solid #d8dee4; border-radius: 12px; background: #fff; }
@@ -19,10 +20,17 @@
   const main = document.querySelector('.app-main');
   if (!menu || !main) return;
 
+  const km04aButton = document.createElement('button');
+  km04aButton.type = 'button';
+  km04aButton.className = 'menu-card km04a-card';
+  km04aButton.innerHTML = '<span class="menu-title">Next: KM-04A</span><span class="menu-copy">Introduction to Fabrication and Pipework</span>';
+  km04aButton.addEventListener('click', () => { window.location.href = './km04a.html'; });
+  menu.prepend(km04aButton);
+
   const km03Button = document.createElement('button');
   km03Button.type = 'button';
   km03Button.className = 'menu-card km03-card';
-  km03Button.innerHTML = '<span class="menu-title">Next: KM-03</span><span class="menu-copy">Boilermaker Tools, Equipment, Machines and Materials</span>';
+  km03Button.innerHTML = '<span class="menu-title">KM-03</span><span class="menu-copy">Boilermaker Tools, Equipment, Machines and Materials</span>';
   km03Button.addEventListener('click', () => { window.location.href = './km03.html'; });
   menu.prepend(km03Button);
 
@@ -51,7 +59,7 @@
   section.className = 'view';
   section.innerHTML = `
     <button id="readinessHomeBtn" class="back-btn" type="button">← Home</button>
-    <p class="eyebrow">PILOT CHECKPOINT • BUILD 0.1B-03</p>
+    <p class="eyebrow">PILOT CHECKPOINT • BUILD 0.1B-04A</p>
     <h2>Pilot Readiness Check</h2>
     <div class="safety-note"><strong>This is a technical pilot check only.</strong> It does not assess trade competence, authorise practical work, verify evidence or replace a human assessor or supervisor.</div>
     <div id="readinessSummary" class="readiness-summary" aria-live="polite">Checking local pilot components…</div>
@@ -61,7 +69,7 @@
   main.appendChild(section);
 
   const buildLabel = document.querySelector('.hero-card .eyebrow');
-  if (buildLabel) buildLabel.textContent = 'BUILD 0.1B-03';
+  if (buildLabel) buildLabel.textContent = 'BUILD 0.1B-04A';
 
   function showView(id) {
     document.querySelectorAll('.view').forEach(view => view.classList.toggle('active', view.id === id));
@@ -89,6 +97,7 @@
       const km01Progress = await MzansiStore.get('km01-progress');
       const km02Progress = await MzansiStore.get('km02-progress');
       const km03Progress = await MzansiStore.get('km03-progress');
+      const km04aProgress = await MzansiStore.get('km04a-progress');
       const km07Progress = await MzansiStore.get('km07-progress');
       const evidence = (await MzansiStore.get('evidence-items')) || [];
       const audit = (await MzansiStore.get('audit-events')) || [];
@@ -105,6 +114,7 @@
         ['KM-01 progress', !!km01Progress, km01Progress ? 'KM-01 progress record is present.' : 'No KM-01 progress record is currently saved on this device.'],
         ['KM-02 progress', !!km02Progress, km02Progress ? 'KM-02 progress record is present.' : 'No KM-02 progress record is currently saved on this device.'],
         ['KM-03 progress', !!km03Progress, km03Progress ? 'KM-03 progress record is present.' : 'No KM-03 progress record is currently saved on this device.'],
+        ['KM-04A progress', !!km04aProgress, km04aProgress ? 'KM-04A progress record is present.' : 'No KM-04A progress record is currently saved on this device.'],
         ['KM-07 progress', !!km07Progress, km07Progress ? 'KM-07 progress record is present.' : 'No KM-07 progress record is currently saved on this device.'],
         ['Evidence queue', Array.isArray(evidence), `${evidence.length} local evidence record(s) found.`],
         ['Audit integrity', auditOk, auditOk ? `${audit.length} audit event(s), integrity chain valid.` : 'Audit chain could not be validated.'],
