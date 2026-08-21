@@ -3,6 +3,7 @@
   style.textContent = `
     .readiness-card { border-left: 5px solid #355d7a; }
     .km01-card { border-left: 5px solid #1f6f4a; }
+    .km02-card { border-left: 5px solid #b7791f; }
     .readiness-summary { padding: 14px; border-radius: 12px; margin: 12px 0 18px; background: #f6f8fa; border: 1px solid #d8dee4; }
     .readiness-list { display: grid; gap: 10px; }
     .readiness-row { display: grid; grid-template-columns: 96px 1fr; gap: 10px; align-items: start; padding: 12px; border: 1px solid #d8dee4; border-radius: 12px; background: #fff; }
@@ -16,6 +17,13 @@
   const menu = document.querySelector('.menu-grid');
   const main = document.querySelector('.app-main');
   if (!menu || !main) return;
+
+  const km02Button = document.createElement('button');
+  km02Button.type = 'button';
+  km02Button.className = 'menu-card km02-card';
+  km02Button.innerHTML = '<span class="menu-title">Next: KM-02</span><span class="menu-copy">Environmental Protection, Health and Safety</span>';
+  km02Button.addEventListener('click', () => { window.location.href = './km02.html'; });
+  menu.prepend(km02Button);
 
   const km01Button = document.createElement('button');
   km01Button.type = 'button';
@@ -35,7 +43,7 @@
   section.className = 'view';
   section.innerHTML = `
     <button id="readinessHomeBtn" class="back-btn" type="button">← Home</button>
-    <p class="eyebrow">PILOT CHECKPOINT • BUILD 0.1B-01</p>
+    <p class="eyebrow">PILOT CHECKPOINT • BUILD 0.1B-02</p>
     <h2>Pilot Readiness Check</h2>
     <div class="safety-note"><strong>This is a technical pilot check only.</strong> It does not assess trade competence, authorise practical work, verify evidence or replace a human assessor or supervisor.</div>
     <div id="readinessSummary" class="readiness-summary" aria-live="polite">Checking local pilot components…</div>
@@ -45,7 +53,7 @@
   main.appendChild(section);
 
   const buildLabel = document.querySelector('.hero-card .eyebrow');
-  if (buildLabel) buildLabel.textContent = 'BUILD 0.1B-01';
+  if (buildLabel) buildLabel.textContent = 'BUILD 0.1B-02';
 
   function showView(id) {
     document.querySelectorAll('.view').forEach(view => view.classList.toggle('active', view.id === id));
@@ -73,7 +81,9 @@
 
     try {
       const learner = await MzansiStore.get('learner');
-      const progress = await MzansiStore.get('km07-progress');
+      const km01Progress = await MzansiStore.get('km01-progress');
+      const km02Progress = await MzansiStore.get('km02-progress');
+      const km07Progress = await MzansiStore.get('km07-progress');
       const evidence = (await MzansiStore.get('evidence-items')) || [];
       const audit = (await MzansiStore.get('audit-events')) || [];
       const latestBackup = [...audit].reverse().find(event => event.eventType === 'LOCAL_BACKUP_CREATED' || event.eventType === 'LOCAL_BACKUP_RESTORED');
@@ -86,7 +96,9 @@
       const checks = [
         ['Local data store', storageOk, storageOk ? 'IndexedDB storage layer is available.' : 'Local storage layer is not available.'],
         ['Learner profile', !!learner?.name, learner?.name ? `Learner profile found for ${learner.name}.` : 'No learner name is currently saved on this device.'],
-        ['KM-07 progress', !!progress, progress ? 'KM-07 progress record is present.' : 'No KM-07 progress record is currently saved on this device.'],
+        ['KM-01 progress', !!km01Progress, km01Progress ? 'KM-01 progress record is present.' : 'No KM-01 progress record is currently saved on this device.'],
+        ['KM-02 progress', !!km02Progress, km02Progress ? 'KM-02 progress record is present.' : 'No KM-02 progress record is currently saved on this device.'],
+        ['KM-07 progress', !!km07Progress, km07Progress ? 'KM-07 progress record is present.' : 'No KM-07 progress record is currently saved on this device.'],
         ['Evidence queue', Array.isArray(evidence), `${evidence.length} local evidence record(s) found.`],
         ['Audit integrity', auditOk, auditOk ? `${audit.length} audit event(s), integrity chain valid.` : 'Audit chain could not be validated.'],
         ['Backup history', !!latestBackup, latestBackup ? `Latest backup event: ${latestBackup.eventType} at ${latestBackup.createdAt}.` : 'No local backup event recorded yet. Create a backup before relying on device-only data.'],
