@@ -66,3 +66,7 @@ renderEvidenceQueue = async function () {
     evidenceQueue.appendChild(card);
   });
 };
+
+if (document.getElementById('evidenceView')?.classList.contains('active')) {
+  renderEvidenceQueue();
+}
