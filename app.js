@@ -7,6 +7,19 @@ const quizQuestions = [
   { q: 'Why can several views be shown?', options: ['To make the page fuller', 'To describe the same object from different directions', 'To change the component', 'To confuse the reader'], answer: 1 }
 ];
 
+const fallbackSafetyPolicy = {
+  policyVersion: '0.1A-02',
+  rules: [
+    { id: 'study-theory', label: 'Study or revise theory', tier: 1, decision: 'ALLOW', heading: 'Learning mode', message: 'You can continue with approved theory, drawings, glossary work and revision.' },
+    { id: 'controlled-practice', label: 'Low-risk practice in an approved training area', tier: 2, decision: 'ALLOW_WITH_CONTROLS', heading: 'Practise safely', message: 'Use the approved training task, required controls and local supervision rules. The app does not authorise workplace activity.' },
+    { id: 'hot-work', label: 'Hot work, cutting or grinding', tier: 3, decision: 'HUMAN_REQUIRED', heading: 'Supervision required', message: 'This is a higher-risk practical activity. Continue only through an approved workplace or training process with the required competent human supervision.' },
+    { id: 'lifting-height-machinery', label: 'Lifting, work at height or powered machinery', tier: 3, decision: 'HUMAN_REQUIRED', heading: 'Supervision required', message: 'This activity needs a new safety check and competent human supervision. The app can support theory and preparation only.' },
+    { id: 'critical-hazard', label: 'Pressure, confined space, electrical exposure or other critical hazard', tier: 4, decision: 'DENY', heading: 'Restricted activity', message: 'The learning companion will not authorise or guide this activity. Use the applicable authorised workplace process and competent human control.' }
+  ]
+};
+
+let safetyPolicy = fallbackSafetyPolicy;
+
 const views = [...document.querySelectorAll('.view')];
 const networkStatus = document.getElementById('networkStatus');
 const learnerName = document.getElementById('learnerName');
@@ -15,6 +28,9 @@ const quizForm = document.getElementById('quizForm');
 const quizResult = document.getElementById('quizResult');
 const pathProgress = document.getElementById('pathProgress');
 const pathProgressText = document.getElementById('pathProgressText');
+const safetyScenario = document.getElementById('safetyScenario');
+const safetyDecision = document.getElementById('safetyDecision');
+const policyVersion = document.getElementById('policyVersion');
 
 function openView(id) {
   views.forEach(view => view.classList.toggle('active', view.id === id));
@@ -41,8 +57,10 @@ async function loadSavedState() {
   try {
     const savedLearner = await MzansiStore.get('learner');
     const savedProgress = await MzansiStore.get('km07-progress');
+    const savedSafety = await MzansiStore.get('latest-safety-decision');
     if (savedLearner?.name) learnerName.value = savedLearner.name;
     applyProgress(savedProgress || { completed: false, score: null, attempts: 0 });
+    if (savedSafety?.ruleId) renderSafetyDecision(savedSafety, true);
   } catch (error) {
     console.error('Local storage unavailable', error);
   }
@@ -125,6 +143,74 @@ document.getElementById('submitQuizBtn').addEventListener('click', async () => {
     : `<strong>${score}/6.</strong> Let’s review the parts that were difficult, then try again.`;
 });
 
+function populateSafetyOptions() {
+  safetyScenario.innerHTML = '<option value="">Choose an activity</option>';
+  safetyPolicy.rules.forEach(rule => {
+    const option = document.createElement('option');
+    option.value = rule.id;
+    option.textContent = rule.label;
+    safetyScenario.appendChild(option);
+  });
+  policyVersion.textContent = `Local safety policy ${safetyPolicy.policyVersion}`;
+}
+
+function renderSafetyDecision(record, restored = false) {
+  const rule = safetyPolicy.rules.find(item => item.id === record.ruleId) || record;
+  if (!rule?.decision) return;
+
+  const classMap = {
+    ALLOW: 'allow',
+    ALLOW_WITH_CONTROLS: 'controlled',
+    HUMAN_REQUIRED: 'human-required',
+    DENY: 'deny'
+  };
+  const labelMap = {
+    ALLOW: 'LEARN',
+    ALLOW_WITH_CONTROLS: 'PRACTISE SAFELY',
+    HUMAN_REQUIRED: 'SUPERVISION REQUIRED',
+    DENY: 'RESTRICTED ACTIVITY'
+  };
+
+  safetyDecision.className = `safety-decision show ${classMap[rule.decision] || ''}`;
+  safetyDecision.innerHTML = `
+    <p class="decision-label">${labelMap[rule.decision] || rule.decision}</p>
+    <h3>${rule.heading}</h3>
+    <p>${rule.message}</p>
+    <p class="decision-meta">Tier ${rule.tier} • ${restored ? 'Last local decision' : 'Saved locally'} • Policy ${safetyPolicy.policyVersion}</p>
+  `;
+}
+
+async function loadSafetyPolicy() {
+  try {
+    const response = await fetch('./safety-rules.json', { cache: 'no-cache' });
+    if (response.ok) safetyPolicy = await response.json();
+  } catch (error) {
+    console.info('Using bundled offline safety policy', error);
+  }
+  populateSafetyOptions();
+}
+
+document.getElementById('checkSafetyBtn').addEventListener('click', async () => {
+  const rule = safetyPolicy.rules.find(item => item.id === safetyScenario.value);
+  if (!rule) {
+    safetyDecision.className = 'safety-decision show controlled';
+    safetyDecision.innerHTML = '<h3>Choose an activity first</h3><p>Select the closest activity so the local policy gate can classify it.</p>';
+    return;
+  }
+
+  const record = {
+    ruleId: rule.id,
+    tier: rule.tier,
+    decision: rule.decision,
+    heading: rule.heading,
+    message: rule.message,
+    policyVersion: safetyPolicy.policyVersion,
+    updatedAt: new Date().toISOString()
+  };
+  await MzansiStore.set('latest-safety-decision', record);
+  renderSafetyDecision(record);
+});
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./service-worker.js').catch(error => {
@@ -134,4 +220,4 @@ if ('serviceWorker' in navigator) {
 }
 
 renderQuiz();
-loadSavedState();
+loadSafetyPolicy().then(loadSavedState);
