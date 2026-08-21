@@ -22,9 +22,9 @@
   <main class="app-main">
     <section id="homeView" class="view active" aria-labelledby="homeTitle">
       <div class="hero-card">
-        <p class="eyebrow">BUILD 0.1A-04</p>
+        <p class="eyebrow">BUILD 0.1A-06</p>
         <h2 id="homeTitle">Learn. Practise safely. Keep your progress.</h2>
-        <p>This pilot includes offline learning, a local practical-work safety gate and local evidence capture.</p>
+        <p>This pilot includes offline learning, a local practical-work safety gate, local evidence capture and local human-review preparation.</p>
       </div>
 
       <section class="panel" aria-labelledby="learnerHeading">
@@ -36,28 +36,12 @@
       </section>
 
       <section class="menu-grid" aria-label="Main menu">
-        <button class="menu-card" data-open="pathView" type="button">
-          <span class="menu-title">My Boilermaker Path</span>
-          <span class="menu-copy">Start with KM-07: Boilermaker's Drawings</span>
-        </button>
-        <button class="menu-card" data-open="lessonView" type="button">
-          <span class="menu-title">Continue Learning</span>
-          <span class="menu-copy">Reading the Drawing Before You Make the Job</span>
-        </button>
-        <button class="menu-card safety-card" data-open="safetyRouterView" type="button">
-          <span class="menu-title">Practise Safely</span>
-          <span class="menu-copy">Check the safety gate before moving from theory into practical work</span>
-        </button>
-        <button class="menu-card evidence-card" data-open="evidenceView" type="button">
-          <span class="menu-title">My Evidence</span>
-          <span class="menu-copy">Capture and keep evidence locally until sync is added</span>
-        </button>
-        <button class="menu-card disabled-card" type="button" disabled>
-          <span class="menu-title">Ask My Companion</span>
-          <span class="menu-copy">Cloud AI comes later</span>
-        </button>
+        <button class="menu-card" data-open="pathView" type="button"><span class="menu-title">My Boilermaker Path</span><span class="menu-copy">Start with KM-07: Boilermaker's Drawings</span></button>
+        <button class="menu-card" data-open="lessonView" type="button"><span class="menu-title">Continue Learning</span><span class="menu-copy">Reading the Drawing Before You Make the Job</span></button>
+        <button class="menu-card safety-card" data-open="safetyRouterView" type="button"><span class="menu-title">Practise Safely</span><span class="menu-copy">Check the safety gate before moving from theory into practical work</span></button>
+        <button class="menu-card evidence-card" data-open="evidenceView" type="button"><span class="menu-title">My Evidence</span><span class="menu-copy">Capture, prepare and hand off evidence for human review</span></button>
+        <button class="menu-card disabled-card" type="button" disabled><span class="menu-title">Ask My Companion</span><span class="menu-copy">Cloud AI comes later</span></button>
       </section>
-
       <button id="safetyBtn" class="safety-btn" type="button">Safety</button>
     </section>
 
@@ -69,10 +53,7 @@
         <p class="module-code">KM-07</p>
         <h3>Boilermaker's Drawings</h3>
         <p>Learn how technical drawings communicate shape, size, views, dimensions, symbols and abbreviations.</p>
-        <div class="progress-wrap" aria-label="Lesson progress">
-          <div class="progress-track"><div id="pathProgress" class="progress-fill"></div></div>
-          <span id="pathProgressText">0% complete</span>
-        </div>
+        <div class="progress-wrap" aria-label="Lesson progress"><div class="progress-track"><div id="pathProgress" class="progress-fill"></div></div><span id="pathProgressText">0% complete</span></div>
         <button class="primary-btn" data-open="lessonView" type="button">Open first lesson</button>
       </div>
     </section>
@@ -94,63 +75,29 @@
 
     <section id="quizView" class="view" aria-labelledby="quizTitle">
       <button class="back-btn" data-open="lessonView" type="button">← Lesson</button>
-      <p class="eyebrow">PRACTICE</p>
-      <h2 id="quizTitle">KM-07 Knowledge Check</h2>
-      <p>Answer all six questions. This is learning practice, not an official assessment.</p>
-      <form id="quizForm" class="quiz-form"></form>
-      <button id="submitQuizBtn" class="primary-btn" type="button">Check my answers</button>
-      <div id="quizResult" class="result-box" aria-live="polite"></div>
+      <p class="eyebrow">PRACTICE</p><h2 id="quizTitle">KM-07 Knowledge Check</h2><p>Answer all six questions. This is learning practice, not an official assessment.</p><form id="quizForm" class="quiz-form"></form><button id="submitQuizBtn" class="primary-btn" type="button">Check my answers</button><div id="quizResult" class="result-box" aria-live="polite"></div>
     </section>
 
     <section id="safetyRouterView" class="view" aria-labelledby="routerTitle">
-      <button class="back-btn" data-open="homeView" type="button">← Home</button>
-      <p class="eyebrow">PRACTISE SAFELY • LOCAL POLICY GATE</p>
-      <h2 id="routerTitle">What are you planning to do?</h2>
-      <div class="panel"><p>Select the closest activity. The app uses fixed pilot safety rules. It does not authorise practical work.</p><label for="safetyScenario">Activity type</label><select id="safetyScenario"><option value="">Choose an activity</option></select><button id="checkSafetyBtn" class="primary-btn" type="button">Check safety gate</button></div>
-      <div id="safetyDecision" class="safety-decision" aria-live="polite"></div>
-      <p id="policyVersion" class="policy-version"></p>
+      <button class="back-btn" data-open="homeView" type="button">← Home</button><p class="eyebrow">PRACTISE SAFELY • LOCAL POLICY GATE</p><h2 id="routerTitle">What are you planning to do?</h2><div class="panel"><p>Select the closest activity. The app uses fixed pilot safety rules. It does not authorise practical work.</p><label for="safetyScenario">Activity type</label><select id="safetyScenario"><option value="">Choose an activity</option></select><button id="checkSafetyBtn" class="primary-btn" type="button">Check safety gate</button></div><div id="safetyDecision" class="safety-decision" aria-live="polite"></div><p id="policyVersion" class="policy-version"></p>
     </section>
 
     <section id="evidenceView" class="view" aria-labelledby="evidenceTitle">
-      <button class="back-btn" data-open="homeView" type="button">← Home</button>
-      <p class="eyebrow">MY EVIDENCE • LOCAL FIRST</p>
-      <h2 id="evidenceTitle">Capture evidence</h2>
+      <button class="back-btn" data-open="homeView" type="button">← Home</button><p class="eyebrow">MY EVIDENCE • LOCAL FIRST</p><h2 id="evidenceTitle">Capture evidence</h2>
       <div class="safety-note"><strong>Evidence must never create a new unsafe task.</strong> Only capture work, documents or records you are authorised to record. Do not perform hazardous activity just to create evidence.</div>
       <div class="panel">
-        <label for="evidenceTitleInput">Evidence title</label>
-        <input id="evidenceTitleInput" type="text" placeholder="Example: Drawing interpretation exercise">
-        <label for="evidenceType">Evidence type</label>
-        <select id="evidenceType">
-          <option value="">Choose evidence type</option>
-          <option value="PHOTO">Photo</option>
-          <option value="DOCUMENT">Document</option>
-          <option value="TRAINING_RECORD">Training record</option>
-          <option value="JOB_CARD">Job card</option>
-          <option value="SUPERVISOR_STATEMENT">Supervisor statement</option>
-          <option value="OTHER">Other</option>
-        </select>
-        <label for="evidenceModule">Curriculum area</label>
-        <select id="evidenceModule"><option value="KM-07">KM-07 • Boilermaker's Drawings</option><option value="UNMAPPED">Not mapped yet</option></select>
-        <label for="evidenceNotes">Short note</label>
-        <textarea id="evidenceNotes" rows="4" placeholder="What does this evidence show?"></textarea>
-        <label for="evidenceFile">Optional photo or document</label>
-        <input id="evidenceFile" type="file" accept="image/*,.pdf,.txt,.doc,.docx">
-        <p class="file-help">Pilot limit: one file up to 8 MB. Stored on this device only. Cloud sync is not active yet.</p>
-        <button id="saveEvidenceBtn" class="primary-btn" type="button">Save evidence locally</button>
-        <p id="evidenceMessage" class="helper" aria-live="polite"></p>
+        <label for="evidenceTitleInput">Evidence title</label><input id="evidenceTitleInput" type="text" placeholder="Example: Drawing interpretation exercise">
+        <label for="evidenceType">Evidence type</label><select id="evidenceType"><option value="">Choose evidence type</option><option value="PHOTO">Photo</option><option value="DOCUMENT">Document</option><option value="TRAINING_RECORD">Training record</option><option value="JOB_CARD">Job card</option><option value="SUPERVISOR_STATEMENT">Supervisor statement</option><option value="OTHER">Other</option></select>
+        <label for="evidenceModule">Curriculum area</label><select id="evidenceModule"><option value="KM-07">KM-07 • Boilermaker's Drawings</option><option value="UNMAPPED">Not mapped yet</option></select>
+        <label for="evidenceNotes">Short note</label><textarea id="evidenceNotes" rows="4" placeholder="What does this evidence show?"></textarea>
+        <label for="evidenceFile">Optional photo or document</label><input id="evidenceFile" type="file" accept="image/*,.pdf,.txt,.doc,.docx"><p class="file-help">Pilot limit: one file up to 8 MB. Stored on this device only. Cloud sync is not active yet.</p>
+        <button id="saveEvidenceBtn" class="primary-btn" type="button">Save evidence locally</button><p id="evidenceMessage" class="helper" aria-live="polite"></p>
       </div>
-      <section aria-labelledby="queueTitle">
-        <p class="eyebrow">LOCAL EVIDENCE QUEUE</p>
-        <h2 id="queueTitle">Saved on this device</h2>
-        <div id="evidenceQueue" class="evidence-list"></div>
-      </section>
+      <section aria-labelledby="queueTitle"><p class="eyebrow">LOCAL EVIDENCE QUEUE</p><h2 id="queueTitle">Saved on this device</h2><div id="evidenceQueue" class="evidence-list"></div></section>
     </section>
 
     <section id="safetyView" class="view" aria-labelledby="safetyTitle">
-      <button class="back-btn" data-open="homeView" type="button">← Home</button>
-      <p class="eyebrow">SAFETY</p>
-      <h2 id="safetyTitle">Know when learning becomes practical work</h2>
-      <div class="panel"><p>This pilot lesson is low-risk educational support.</p><p>Reading, identifying and explaining drawing information stays in learning mode.</p><p>If you move into physical fabrication, machinery, hot work, lifting, work at height, pressure, confined spaces or other hazardous work, the task must be safety-classified again and may require supervision.</p><button class="primary-btn" data-open="safetyRouterView" type="button">Open Practise Safely gate</button></div>
+      <button class="back-btn" data-open="homeView" type="button">← Home</button><p class="eyebrow">SAFETY</p><h2 id="safetyTitle">Know when learning becomes practical work</h2><div class="panel"><p>This pilot lesson is low-risk educational support.</p><p>Reading, identifying and explaining drawing information stays in learning mode.</p><p>If you move into physical fabrication, machinery, hot work, lifting, work at height, pressure, confined spaces or other hazardous work, the task must be safety-classified again and may require supervision.</p><button class="primary-btn" data-open="safetyRouterView" type="button">Open Practise Safely gate</button></div>
     </section>
   </main>
 
@@ -158,5 +105,7 @@
   <script src="./storage.js"></script>
   <script src="./app.js"></script>
   <script src="./attachment-ui.js"></script>
+  <script src="./review-ui.js"></script>
+  <script src="./handoff-ui.js"></script>
 </body>
 </html>
