@@ -45,9 +45,16 @@ async function saveHandoffPackage(item) {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   const safeId = String(item.id || 'evidence').replace(/[^a-zA-Z0-9_-]/g, '-');
+  const fileName = `boilermaker-human-review-${safeId}.txt`;
   link.href = url;
-  link.download = `boilermaker-human-review-${safeId}.txt`;
+  link.download = fileName;
   link.click();
+  if (globalThis.AuditTrail) {
+    await AuditTrail.append('HANDOFF_PACKAGE_CREATED', item.id, {
+      packageFileName: fileName,
+      reviewStatus: item.reviewStatus || 'CAPTURED'
+    });
+  }
   setTimeout(() => URL.revokeObjectURL(url), 2000);
 }
 
