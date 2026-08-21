@@ -2,6 +2,7 @@
   const style = document.createElement('style');
   style.textContent = `
     .readiness-card { border-left: 5px solid #355d7a; }
+    .km01-card { border-left: 5px solid #1f6f4a; }
     .readiness-summary { padding: 14px; border-radius: 12px; margin: 12px 0 18px; background: #f6f8fa; border: 1px solid #d8dee4; }
     .readiness-list { display: grid; gap: 10px; }
     .readiness-row { display: grid; grid-template-columns: 96px 1fr; gap: 10px; align-items: start; padding: 12px; border: 1px solid #d8dee4; border-radius: 12px; background: #fff; }
@@ -16,6 +17,13 @@
   const main = document.querySelector('.app-main');
   if (!menu || !main) return;
 
+  const km01Button = document.createElement('button');
+  km01Button.type = 'button';
+  km01Button.className = 'menu-card km01-card';
+  km01Button.innerHTML = '<span class="menu-title">Start Here: KM-01</span><span class="menu-copy">Introduction to the Boilermaker Trade</span>';
+  km01Button.addEventListener('click', () => { window.location.href = './km01.html'; });
+  menu.prepend(km01Button);
+
   const menuButton = document.createElement('button');
   menuButton.type = 'button';
   menuButton.className = 'menu-card readiness-card';
@@ -27,7 +35,7 @@
   section.className = 'view';
   section.innerHTML = `
     <button id="readinessHomeBtn" class="back-btn" type="button">← Home</button>
-    <p class="eyebrow">PILOT CHECKPOINT • BUILD 0.1A-10</p>
+    <p class="eyebrow">PILOT CHECKPOINT • BUILD 0.1B-01</p>
     <h2>Pilot Readiness Check</h2>
     <div class="safety-note"><strong>This is a technical pilot check only.</strong> It does not assess trade competence, authorise practical work, verify evidence or replace a human assessor or supervisor.</div>
     <div id="readinessSummary" class="readiness-summary" aria-live="polite">Checking local pilot components…</div>
@@ -37,7 +45,7 @@
   main.appendChild(section);
 
   const buildLabel = document.querySelector('.hero-card .eyebrow');
-  if (buildLabel) buildLabel.textContent = 'BUILD 0.1A-10';
+  if (buildLabel) buildLabel.textContent = 'BUILD 0.1B-01';
 
   function showView(id) {
     document.querySelectorAll('.view').forEach(view => view.classList.toggle('active', view.id === id));
