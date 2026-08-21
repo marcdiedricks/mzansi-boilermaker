@@ -22,9 +22,9 @@
   <main class="app-main">
     <section id="homeView" class="view active" aria-labelledby="homeTitle">
       <div class="hero-card">
-        <p class="eyebrow">BUILD 0.1A-01</p>
+        <p class="eyebrow">BUILD 0.1A-02</p>
         <h2 id="homeTitle">Learn. Practise safely. Keep your progress.</h2>
-        <p>This pilot starts with basic Boilermaker drawing interpretation and works offline after the first load.</p>
+        <p>This pilot starts with basic Boilermaker drawing interpretation and now includes a local safety gate for practical-work requests.</p>
       </div>
 
       <section class="panel" aria-labelledby="learnerHeading">
@@ -43,6 +43,10 @@
         <button class="menu-card" data-open="lessonView" type="button">
           <span class="menu-title">Continue Learning</span>
           <span class="menu-copy">Reading the Drawing Before You Make the Job</span>
+        </button>
+        <button class="menu-card safety-card" data-open="safetyRouterView" type="button">
+          <span class="menu-title">Practise Safely</span>
+          <span class="menu-copy">Check the safety gate before moving from theory into practical work</span>
         </button>
         <button class="menu-card disabled-card" type="button" disabled>
           <span class="menu-title">My Evidence</span>
@@ -79,7 +83,7 @@
       <h2 id="lessonTitle">Reading the Drawing Before You Make the Job</h2>
 
       <div class="safety-note">
-        This lesson is for drawing interpretation only. If the request changes to real fabrication or hazardous practical work, the safety context must be checked again.
+        This lesson is for drawing interpretation only. If the request changes to real fabrication or hazardous practical work, use the Practise Safely gate so the safety context is checked again.
       </div>
 
       <article class="lesson-stack">
@@ -138,6 +142,22 @@
       <div id="quizResult" class="result-box" aria-live="polite"></div>
     </section>
 
+    <section id="safetyRouterView" class="view" aria-labelledby="routerTitle">
+      <button class="back-btn" data-open="homeView" type="button">← Home</button>
+      <p class="eyebrow">PRACTISE SAFELY • LOCAL POLICY GATE</p>
+      <h2 id="routerTitle">What are you planning to do?</h2>
+      <div class="panel">
+        <p>Select the closest activity. The app uses fixed pilot safety rules. It does not authorise practical work.</p>
+        <label for="safetyScenario">Activity type</label>
+        <select id="safetyScenario">
+          <option value="">Choose an activity</option>
+        </select>
+        <button id="checkSafetyBtn" class="primary-btn" type="button">Check safety gate</button>
+      </div>
+      <div id="safetyDecision" class="safety-decision" aria-live="polite"></div>
+      <p id="policyVersion" class="policy-version"></p>
+    </section>
+
     <section id="safetyView" class="view" aria-labelledby="safetyTitle">
       <button class="back-btn" data-open="homeView" type="button">← Home</button>
       <p class="eyebrow">SAFETY</p>
@@ -146,6 +166,7 @@
         <p>This pilot lesson is low-risk educational support.</p>
         <p>Reading, identifying and explaining drawing information stays in learning mode.</p>
         <p>If you move into physical fabrication, machinery, hot work, lifting, work at height, pressure, confined spaces or other hazardous work, the task must be safety-classified again and may require supervision.</p>
+        <button class="primary-btn" data-open="safetyRouterView" type="button">Open Practise Safely gate</button>
       </div>
     </section>
   </main>
