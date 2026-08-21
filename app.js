@@ -31,10 +31,18 @@ const pathProgressText = document.getElementById('pathProgressText');
 const safetyScenario = document.getElementById('safetyScenario');
 const safetyDecision = document.getElementById('safetyDecision');
 const policyVersion = document.getElementById('policyVersion');
+const evidenceTitleInput = document.getElementById('evidenceTitleInput');
+const evidenceType = document.getElementById('evidenceType');
+const evidenceModule = document.getElementById('evidenceModule');
+const evidenceNotes = document.getElementById('evidenceNotes');
+const evidenceFile = document.getElementById('evidenceFile');
+const evidenceMessage = document.getElementById('evidenceMessage');
+const evidenceQueue = document.getElementById('evidenceQueue');
 
 function openView(id) {
   views.forEach(view => view.classList.toggle('active', view.id === id));
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (id === 'evidenceView') renderEvidenceQueue();
 }
 
 document.querySelectorAll('[data-open]').forEach(button => {
@@ -85,7 +93,6 @@ function renderQuiz() {
     const legend = document.createElement('legend');
     legend.textContent = `${index + 1}. ${item.q}`;
     fieldset.appendChild(legend);
-
     item.options.forEach((option, optionIndex) => {
       const label = document.createElement('label');
       label.className = 'option-row';
@@ -119,24 +126,16 @@ document.getElementById('submitQuizBtn').addEventListener('click', async () => {
       if (Number(selected.value) === item.answer) score += 1;
     }
   });
-
   if (answered < quizQuestions.length) {
     quizResult.className = 'result-box show';
     quizResult.textContent = 'Please answer all six questions before checking your answers.';
     return;
   }
-
   const oldProgress = (await MzansiStore.get('km07-progress')) || { attempts: 0 };
   const completed = score >= 4;
-  const progress = {
-    completed,
-    score,
-    attempts: (oldProgress.attempts || 0) + 1,
-    updatedAt: new Date().toISOString()
-  };
+  const progress = { completed, score, attempts: (oldProgress.attempts || 0) + 1, updatedAt: new Date().toISOString() };
   await MzansiStore.set('km07-progress', progress);
   applyProgress(progress);
-
   quizResult.className = 'result-box show';
   quizResult.innerHTML = completed
     ? `<strong>${score}/6.</strong> Learning slice completed. This records learning progress only, not official competence.`
@@ -157,27 +156,10 @@ function populateSafetyOptions() {
 function renderSafetyDecision(record, restored = false) {
   const rule = safetyPolicy.rules.find(item => item.id === record.ruleId) || record;
   if (!rule?.decision) return;
-
-  const classMap = {
-    ALLOW: 'allow',
-    ALLOW_WITH_CONTROLS: 'controlled',
-    HUMAN_REQUIRED: 'human-required',
-    DENY: 'deny'
-  };
-  const labelMap = {
-    ALLOW: 'LEARN',
-    ALLOW_WITH_CONTROLS: 'PRACTISE SAFELY',
-    HUMAN_REQUIRED: 'SUPERVISION REQUIRED',
-    DENY: 'RESTRICTED ACTIVITY'
-  };
-
+  const classMap = { ALLOW: 'allow', ALLOW_WITH_CONTROLS: 'controlled', HUMAN_REQUIRED: 'human-required', DENY: 'deny' };
+  const labelMap = { ALLOW: 'LEARN', ALLOW_WITH_CONTROLS: 'PRACTISE SAFELY', HUMAN_REQUIRED: 'SUPERVISION REQUIRED', DENY: 'RESTRICTED ACTIVITY' };
   safetyDecision.className = `safety-decision show ${classMap[rule.decision] || ''}`;
-  safetyDecision.innerHTML = `
-    <p class="decision-label">${labelMap[rule.decision] || rule.decision}</p>
-    <h3>${rule.heading}</h3>
-    <p>${rule.message}</p>
-    <p class="decision-meta">Tier ${rule.tier} • ${restored ? 'Last local decision' : 'Saved locally'} • Policy ${safetyPolicy.policyVersion}</p>
-  `;
+  safetyDecision.innerHTML = `<p class="decision-label">${labelMap[rule.decision] || rule.decision}</p><h3>${rule.heading}</h3><p>${rule.message}</p><p class="decision-meta">Tier ${rule.tier} • ${restored ? 'Last local decision' : 'Saved locally'} • Policy ${safetyPolicy.policyVersion}</p>`;
 }
 
 async function loadSafetyPolicy() {
@@ -197,25 +179,125 @@ document.getElementById('checkSafetyBtn').addEventListener('click', async () => 
     safetyDecision.innerHTML = '<h3>Choose an activity first</h3><p>Select the closest activity so the local policy gate can classify it.</p>';
     return;
   }
-
-  const record = {
-    ruleId: rule.id,
-    tier: rule.tier,
-    decision: rule.decision,
-    heading: rule.heading,
-    message: rule.message,
-    policyVersion: safetyPolicy.policyVersion,
-    updatedAt: new Date().toISOString()
-  };
+  const record = { ruleId: rule.id, tier: rule.tier, decision: rule.decision, heading: rule.heading, message: rule.message, policyVersion: safetyPolicy.policyVersion, updatedAt: new Date().toISOString() };
   await MzansiStore.set('latest-safety-decision', record);
   renderSafetyDecision(record);
 });
 
+function makeEvidenceId() {
+  return `EVD-${Date.now()}-${Math.random().toString(36).slice(2, 7).toUpperCase()}`;
+}
+
+async function sha256File(file) {
+  if (!file) return null;
+  const bytes = await file.arrayBuffer();
+  const digest = await crypto.subtle.digest('SHA-256', bytes);
+  return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+}
+
+function formatBytes(bytes) {
+  if (!bytes) return 'No attachment';
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+async function getEvidenceItems() {
+  return (await MzansiStore.get('evidence-items')) || [];
+}
+
+async function renderEvidenceQueue() {
+  const items = await getEvidenceItems();
+  evidenceQueue.innerHTML = '';
+  if (!items.length) {
+    evidenceQueue.innerHTML = '<div class="empty-state">No evidence saved yet.</div>';
+    return;
+  }
+  [...items].reverse().forEach(item => {
+    const card = document.createElement('article');
+    card.className = 'evidence-item';
+    const fileText = item.fileName ? `${item.fileName} • ${formatBytes(item.fileSize)}` : 'No attachment';
+    card.innerHTML = `
+      <div class="evidence-status-row"><span class="evidence-status">CAPTURED</span><span class="sync-status">LOCAL ONLY</span></div>
+      <h3>${escapeHtml(item.title)}</h3>
+      <p><strong>Type:</strong> ${escapeHtml(item.type)}</p>
+      <p><strong>Curriculum:</strong> ${escapeHtml(item.module)}</p>
+      ${item.notes ? `<p>${escapeHtml(item.notes)}</p>` : ''}
+      <p class="evidence-meta">${escapeHtml(fileText)}</p>
+      <p class="evidence-meta">Not verified • ${escapeHtml(item.id)}</p>
+    `;
+    evidenceQueue.appendChild(card);
+  });
+}
+
+function escapeHtml(value) {
+  return String(value || '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+document.getElementById('saveEvidenceBtn').addEventListener('click', async () => {
+  const title = evidenceTitleInput.value.trim();
+  const type = evidenceType.value;
+  const module = evidenceModule.value;
+  const notes = evidenceNotes.value.trim();
+  const file = evidenceFile.files?.[0] || null;
+
+  if (!title || !type) {
+    evidenceMessage.textContent = 'Add an evidence title and choose an evidence type first.';
+    return;
+  }
+  if (file && file.size > 8 * 1024 * 1024) {
+    evidenceMessage.textContent = 'This file is larger than the 8 MB pilot limit. Choose a smaller file.';
+    return;
+  }
+
+  const learner = await MzansiStore.get('learner');
+  evidenceMessage.textContent = file ? 'Saving attachment locally…' : 'Saving evidence locally…';
+
+  let hash = null;
+  try {
+    hash = await sha256File(file);
+  } catch (error) {
+    console.warn('Could not hash attachment', error);
+  }
+
+  const item = {
+    id: makeEvidenceId(),
+    learnerName: learner?.name || 'Unassigned learner',
+    title,
+    type,
+    module,
+    notes,
+    status: 'CAPTURED',
+    verificationStatus: 'NOT_VERIFIED',
+    syncStatus: 'LOCAL_ONLY',
+    fileName: file?.name || null,
+    fileType: file?.type || null,
+    fileSize: file?.size || 0,
+    fileHash: hash,
+    fileBlob: file || null,
+    createdAt: new Date().toISOString()
+  };
+
+  const items = await getEvidenceItems();
+  items.push(item);
+  await MzansiStore.set('evidence-items', items);
+
+  evidenceTitleInput.value = '';
+  evidenceType.value = '';
+  evidenceNotes.value = '';
+  evidenceFile.value = '';
+  evidenceMessage.textContent = 'Evidence captured locally. It is not verified and has not been uploaded.';
+  await renderEvidenceQueue();
+});
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./service-worker.js').catch(error => {
-      console.error('Service worker registration failed', error);
-    });
+    navigator.serviceWorker.register('./service-worker.js').catch(error => console.error('Service worker registration failed', error));
   });
 }
 
