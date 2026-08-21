@@ -7,6 +7,7 @@
     .km03-card { border-left: 5px solid #6b46c1; }
     .km04a-card { border-left: 5px solid #355d7a; }
     .km04b-card { border-left: 5px solid #2f6f68; }
+    .km04c-card { border-left: 5px solid #8a5a00; }
     .readiness-summary { padding: 14px; border-radius: 12px; margin: 12px 0 18px; background: #f6f8fa; border: 1px solid #d8dee4; }
     .readiness-list { display: grid; gap: 10px; }
     .readiness-row { display: grid; grid-template-columns: 96px 1fr; gap: 10px; align-items: start; padding: 12px; border: 1px solid #d8dee4; border-radius: 12px; background: #fff; }
@@ -21,10 +22,17 @@
   const main = document.querySelector('.app-main');
   if (!menu || !main) return;
 
+  const km04cButton = document.createElement('button');
+  km04cButton.type = 'button';
+  km04cButton.className = 'menu-card km04c-card';
+  km04cButton.innerHTML = '<span class="menu-title">Next: KM-04C</span><span class="menu-copy">Identify Materials and Components Before Fabrication</span>';
+  km04cButton.addEventListener('click', () => { window.location.href = './km04c.html'; });
+  menu.prepend(km04cButton);
+
   const km04bButton = document.createElement('button');
   km04bButton.type = 'button';
   km04bButton.className = 'menu-card km04b-card';
-  km04bButton.innerHTML = '<span class="menu-title">Next: KM-04B</span><span class="menu-copy">Read the Job Information Before Fabrication</span>';
+  km04bButton.innerHTML = '<span class="menu-title">KM-04B</span><span class="menu-copy">Read the Job Information Before Fabrication</span>';
   km04bButton.addEventListener('click', () => { window.location.href = './km04b.html'; });
   menu.prepend(km04bButton);
 
@@ -67,7 +75,7 @@
   section.className = 'view';
   section.innerHTML = `
     <button id="readinessHomeBtn" class="back-btn" type="button">← Home</button>
-    <p class="eyebrow">PILOT CHECKPOINT • BUILD 0.1B-04B</p>
+    <p class="eyebrow">PILOT CHECKPOINT • BUILD 0.1B-04C</p>
     <h2>Pilot Readiness Check</h2>
     <div class="safety-note"><strong>This is a technical pilot check only.</strong> It does not assess trade competence, authorise practical work, verify evidence or replace a human assessor or supervisor.</div>
     <div id="readinessSummary" class="readiness-summary" aria-live="polite">Checking local pilot components…</div>
@@ -77,7 +85,7 @@
   main.appendChild(section);
 
   const buildLabel = document.querySelector('.hero-card .eyebrow');
-  if (buildLabel) buildLabel.textContent = 'BUILD 0.1B-04B';
+  if (buildLabel) buildLabel.textContent = 'BUILD 0.1B-04C';
 
   function showView(id) {
     document.querySelectorAll('.view').forEach(view => view.classList.toggle('active', view.id === id));
@@ -107,6 +115,7 @@
       const km03Progress = await MzansiStore.get('km03-progress');
       const km04aProgress = await MzansiStore.get('km04a-progress');
       const km04bProgress = await MzansiStore.get('km04b-progress');
+      const km04cProgress = await MzansiStore.get('km04c-progress');
       const km07Progress = await MzansiStore.get('km07-progress');
       const evidence = (await MzansiStore.get('evidence-items')) || [];
       const audit = (await MzansiStore.get('audit-events')) || [];
@@ -125,6 +134,7 @@
         ['KM-03 progress', !!km03Progress, km03Progress ? 'KM-03 progress record is present.' : 'No KM-03 progress record is currently saved on this device.'],
         ['KM-04A progress', !!km04aProgress, km04aProgress ? 'KM-04A progress record is present.' : 'No KM-04A progress record is currently saved on this device.'],
         ['KM-04B progress', !!km04bProgress, km04bProgress ? 'KM-04B progress record is present.' : 'No KM-04B progress record is currently saved on this device.'],
+        ['KM-04C progress', !!km04cProgress, km04cProgress ? 'KM-04C progress record is present.' : 'No KM-04C progress record is currently saved on this device.'],
         ['KM-07 progress', !!km07Progress, km07Progress ? 'KM-07 progress record is present.' : 'No KM-07 progress record is currently saved on this device.'],
         ['Evidence queue', Array.isArray(evidence), `${evidence.length} local evidence record(s) found.`],
         ['Audit integrity', auditOk, auditOk ? `${audit.length} audit event(s), integrity chain valid.` : 'Audit chain could not be validated.'],

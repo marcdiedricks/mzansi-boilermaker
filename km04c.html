@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f2937">
+  <title>KM-04C • Identify Materials and Components Before Fabrication</title>
+  <link rel="stylesheet" href="./styles.css?v=0.1b-04c-mobile2">
+</head>
+<body>
+<header class="app-header"><div><p class="app-kicker">MZANSI BOILERMAKER</p><h1>Artisan Learning Companion</h1></div><span id="networkBadge" class="status-pill">ONLINE</span></header>
+<main class="lesson-shell">
+  <section class="hero-card"><p class="eyebrow">BUILD 0.1B-04C • KM-04 • TIER 1 LEARNING</p><h2>Identify Materials and Components Before Fabrication</h2><p>A short recognition-and-verification lesson within KM-04 Fabrication and Pipework.</p></section>
+  <a class="back-btn" href="./index.html">← Main app</a>
+  <div class="safety-note"><strong>Learning only.</strong> This lesson supports recognition and checking of materials against controlled job information. It does not teach cutting, welding, heating, bending, lifting, machine setup or machine operation. Practical work requires approved training, workplace controls and competent human supervision.</div>
+
+  <section class="content-card"><h3>1. Match the material to the job information</h3><p>A fabrication job may call for a particular material, section, size, thickness, grade or component. The learner should use the approved drawing, specification, material list, identification marks and workplace documentation to confirm what is required.</p><div class="key-idea"><strong>Key idea:</strong> A material that looks similar is not automatically the correct material.</div></section>
+
+  <section class="content-card"><h3>2. Recognise common forms</h3><p>Boilermaker work can involve plate, flat material, angle sections, channels, beams, hollow sections, pipe and other formed components. Recognition starts with shape and job information, but final suitability must be confirmed from controlled information rather than appearance alone.</p></section>
+
+  <section class="content-card"><h3>3. Size, thickness and grade matter</h3><p>Two pieces can have a similar shape but different dimensions, thicknesses or material grades. These differences can matter to the finished job. Learners should therefore check the specified identifiers and dimensions before material is accepted for the job.</p></section>
+
+  <section class="content-card"><h3>4. Keep material identity traceable</h3><p>Workplace systems may use tags, markings, certificates, material lists or other records to keep material identity traceable. If an identification mark is missing, damaged or unclear, do not guess. Stop and ask the responsible supervisor or training professional.</p></section>
+
+  <section class="content-card"><h3>5. Check condition before use</h3><p>Material condition can affect whether it is suitable for a job. Obvious damage, heavy contamination, unexpected deformation or unclear identification should be reported and checked through the workplace process before practical work continues.</p></section>
+
+  <section class="content-card"><p class="eyebrow">VISUAL LEARNING • INTERNET REQUIRED</p><h3>See common structural steel section shapes</h3><p>This video is supplementary. The written lesson above remains complete and usable offline.</p><a class="primary-btn" href="https://www.youtube.com/watch?v=Qxfjz8o-gkU" target="_blank" rel="noopener noreferrer">Watch visual learning video</a><div class="safety-note"><strong>Watch for recognition and context only.</strong> Focus on the names and shapes of common steel sections. Do not treat the video as workplace instruction, practical authorisation or evidence of competence.</div></section>
+
+  <section class="content-card"><h3>KM-04C learning check</h3><form id="quizForm">
+    <fieldset><legend>1. Can two materials that look similar still have different sizes, thicknesses or grades?</legend><label><input type="radio" name="q1" value="yes"> Yes</label><label><input type="radio" name="q1" value="no"> No</label></fieldset>
+    <fieldset><legend>2. What should guide material selection for a job?</legend><label><input type="radio" name="q2" value="controlled"> Controlled job information and workplace identification</label><label><input type="radio" name="q2" value="memory"> Memory alone</label><label><input type="radio" name="q2" value="appearance"> Appearance alone</label></fieldset>
+    <fieldset><legend>3. What should you do if material identification is missing or unclear?</legend><label><input type="radio" name="q3" value="guess"> Guess from the shape</label><label><input type="radio" name="q3" value="clarify"> Stop and clarify with a responsible supervisor or training professional</label><label><input type="radio" name="q3" value="continue"> Continue because the material is probably correct</label></fieldset>
+    <fieldset><legend>4. Does completing KM-04C authorise practical fabrication work?</legend><label><input type="radio" name="q4" value="yes"> Yes</label><label><input type="radio" name="q4" value="no"> No</label></fieldset>
+    <button class="primary-btn" type="submit">Check my answers</button>
+  </form><div id="quizResult" class="result-card" aria-live="polite"></div></section>
+</main>
+<script src="./storage.js"></script>
+<script>
+const badge=document.getElementById('networkBadge'); function network(){const on=navigator.onLine;badge.textContent=on?'ONLINE':'OFFLINE';badge.classList.toggle('offline',!on);} addEventListener('online',network);addEventListener('offline',network);network();
+document.getElementById('quizForm').addEventListener('submit',async e=>{e.preventDefault();const data=new FormData(e.target);const correct={q1:'yes',q2:'controlled',q3:'clarify',q4:'no'};let score=0;Object.entries(correct).forEach(([q,a])=>{if(data.get(q)===a)score++;});const result=document.getElementById('quizResult');result.innerHTML=`<strong>${score}/4.</strong> ${score===4?'KM-04C learning slice completed.':'Review the lesson and try again.'} This records learning progress only, not competence or practical authorisation.`;if(score===4&&globalThis.MzansiStore){await MzansiStore.set('km04c-progress',{completed:true,score,completedAt:new Date().toISOString(),build:'0.1B-04C'});}});
+if('serviceWorker'in navigator) navigator.serviceWorker.register('./service-worker.js').catch(console.error);
+</script>
+</body>
+</html>
