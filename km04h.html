@@ -33,9 +33,22 @@
 <script>
 document.getElementById('checkKm04h').addEventListener('click', function () {
   const answers = {q1:'b', q2:'a', q3:'a', q4:'b'};
+  const result = document.getElementById('km04hResult');
   let score = 0;
-  Object.keys(answers).forEach(function(q){ const chosen=document.querySelector('input[name="'+q+'"]:checked'); if(chosen && chosen.value===answers[q]) score++; });
-  document.getElementById('km04hResult').textContent = score + '/4. ' + (score===4 ? 'KM-04H learning slice completed. This records learning progress only, not competence or practical authorisation.' : 'Review the lesson and try the learning check again.');
+  let answered = 0;
+  Object.keys(answers).forEach(function(q){
+    const chosen = document.querySelector('input[name="'+q+'"]:checked');
+    if (chosen) {
+      answered++;
+      if (chosen.value === answers[q]) score++;
+    }
+  });
+  result.classList.add('show');
+  if (answered < 4) {
+    result.textContent = 'Please answer all four questions first.';
+    return;
+  }
+  result.textContent = score + '/4. ' + (score===4 ? 'KM-04H learning slice completed. This records learning progress only, not competence or practical authorisation.' : 'Review the lesson and try the learning check again.');
 });
 </script>
 </body>
