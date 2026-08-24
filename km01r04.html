@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#1f2937">
+<meta name="description" content="KM-01 Lesson 4 Fabrication Overview and Controlled Information — curriculum-aligned knowledge lesson.">
+<title>KM-01 Lesson 4 • Fabrication Overview and Controlled Information</title>
+<link rel="stylesheet" href="./styles.css?v=0.1b-km01r-04">
+</head><body>
+<header class="app-header"><div><p class="eyebrow">MZANSI BOILERMAKER</p><h1>Artisan Learning Companion</h1></div><span id="networkBadge" class="status-pill">ONLINE</span></header>
+<main class="lesson-shell">
+<section class="hero-card"><p class="eyebrow">KM-01 • LESSON 4 OF 4</p><h2>Fabrication Overview and Controlled Information</h2><p>Understand what fabrication means in the Boilermaker trade, where it is used, and why approved drawings, specifications and workplace controls must guide the work.</p></section>
+<a class="back-btn" href="./km01.html">← KM-01 lessons</a>
+<div class="safety-note"><strong>Learning only.</strong> This lesson gives a high-level overview of fabrication. It does not teach or authorise cutting, welding, heating, bending, lifting, machine operation or other hazardous practical work. Practical work requires approved training, workplace controls and competent human supervision.</div>
+
+<section class="content-card"><h3>1. What is fabrication?</h3><p>Fabrication is the controlled process of making or repairing metal parts, components and structures to meet defined requirements. In boilermaking, this can involve structural steel, plate, pipe and other materials used in many industries.</p><p class="key-idea"><strong>Key idea:</strong> Fabrication is not simply “making something from metal”. The finished work must match the approved requirement.</p></section>
+
+<section class="content-card"><h3>2. Where is fabrication used?</h3><p>Boilermaker fabrication supports many kinds of work, including buildings, bridges, tanks, towers, boilers, pressure vessels and other industrial structures and products.</p><p>The exact requirements differ by job and industry, so learners must understand that one method, drawing or specification cannot automatically be transferred to another job.</p></section>
+
+<section class="content-card"><h3>3. Fabrication starts with controlled information</h3><p>Approved drawings, specifications, material requirements, dimensions, quality requirements and workplace procedures define what the job requires. These controlled references help keep the work traceable and consistent.</p><p>If information is missing, unclear, conflicting or outdated, the learner should stop and clarify through the responsible process rather than guess.</p></section>
+
+<section class="content-card"><h3>4. From parts to complete units</h3><p>Fabrication can involve individual metal parts that later form larger units or sub-units such as frames, plates, girders or chutes. At knowledge level, the learner should recognise that fit, alignment, sequence and quality requirements all matter to the final result.</p><p>This lesson does not provide practical assembly or joining instructions.</p></section>
+
+<section class="content-card"><h3>5. Quality and safety stay connected to fabrication</h3><p>Fabricated work must be checked against the applicable approved requirements. Quality awareness includes recognising whether the correct information, material, dimensions and acceptance requirements are being used.</p><p>Safety awareness includes recognising that practical fabrication can involve significant hazards and must remain within approved training and workplace controls.</p></section>
+
+<section class="content-card"><p class="eyebrow">VISUAL LEARNING • INTERNET REQUIRED</p><h3>See fabrication in the Boilermaker trade</h3><p>This supplementary career video provides visual context for the types of metal work and structures associated with boilermaking. Use it to recognise the trade environment and the idea of fabrication, not as practical instruction. The written lesson remains complete and usable offline.</p><p><a class="primary-btn" href="https://vimeo.com/480011820" target="_blank" rel="noopener noreferrer">▶ Watch: Boilermaker trade and fabrication overview</a></p><p class="helper">Internet/data required. The written KM-01 Lesson 4 remains complete and usable offline.</p><div class="safety-note"><strong>Watch for recognition and context only.</strong> Do not copy practical actions from the video. It does not replace approved workplace procedures, practical training, supervision or authorisation and is not evidence of competence, assessment or certification.</div></section>
+
+<section class="content-card"><h3>KM-01 Lesson 4 learning check</h3><form id="quizForm">
+<fieldset><legend>1. What should define the requirements for a fabrication job?</legend><label><input type="radio" name="q1" value="controlled"> Current approved drawings, specifications and job information</label><label><input type="radio" name="q1" value="guess"> What looks approximately correct</label></fieldset>
+<fieldset><legend>2. Why can fabrication requirements differ between jobs and industries?</legend><label><input type="radio" name="q2" value="requirements"> Different jobs can have different controlled requirements</label><label><input type="radio" name="q2" value="same"> Every fabrication job uses exactly the same requirements</label></fieldset>
+<fieldset><legend>3. What should happen when important fabrication information is unclear or conflicting?</legend><label><input type="radio" name="q3" value="clarify"> Stop and clarify through the responsible process</label><label><input type="radio" name="q3" value="continue"> Continue using your best guess</label></fieldset>
+<fieldset><legend>4. Does completing this lesson authorise practical fabrication work?</legend><label><input type="radio" name="q4" value="yes"> Yes</label><label><input type="radio" name="q4" value="no"> No</label></fieldset>
+<button class="primary-btn" type="submit">Check my answers</button></form><div id="quizResult" class="result-card" aria-live="polite"></div></section>
+</main>
+<footer class="app-footer"><span>SAQA 123381 • KM-01 Lesson 4</span><span>Learning progress only</span></footer>
+<script src="./storage.js"></script><script>
+const badge=document.getElementById('networkBadge');function network(){const on=navigator.onLine;badge.textContent=on?'ONLINE':'OFFLINE';badge.classList.toggle('offline',!on);}addEventListener('online',network);addEventListener('offline',network);network();
+document.getElementById('quizForm').addEventListener('submit',async e=>{e.preventDefault();const data=new FormData(e.target);const correct={q1:'controlled',q2:'requirements',q3:'clarify',q4:'no'};let answered=0,score=0;Object.entries(correct).forEach(([q,a])=>{if(data.get(q)!==null)answered++;if(data.get(q)===a)score++;});const result=document.getElementById('quizResult');if(answered<4){result.textContent='Please answer all four questions first.';return;}result.innerHTML=`<strong>${score}/4.</strong> ${score===4?'KM-01 Lesson 4 completed.':'Review the lesson and try again.'} This records learning progress only, not competence, practical authorisation or certification.`;if(score===4&&globalThis.MzansiStore){await MzansiStore.set('km01r04-progress',{completed:true,score,completedAt:new Date().toISOString(),build:'0.1B-KM01R-04',topic:'KM-01-KT04'});}});if('serviceWorker'in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.error);
+</script></body></html>
