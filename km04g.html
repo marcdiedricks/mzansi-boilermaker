@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f2937">
+  <title>KM-04G • Recognise Templates, Marking and Layout Information</title>
+  <link rel="stylesheet" href="./styles.css?v=0.1b-04g">
+</head>
+<body>
+<header class="app-header"><div><p class="app-kicker">MZANSI BOILERMAKER</p><h1>Artisan Learning Companion</h1></div><span id="networkBadge" class="status-pill">ONLINE</span></header>
+<main class="lesson-shell">
+  <section class="hero-card"><p class="eyebrow">BUILD 0.1B-04G • KM-04 • TIER 1 LEARNING</p><h2>Recognise Templates, Marking and Layout Information Before Fabrication</h2><p>A short recognition-and-planning lesson within KM-04 Fabrication and Pipework.</p></section>
+  <a class="back-btn" href="./index.html">← Main app</a>
+  <div class="safety-note"><strong>Learning only.</strong> This lesson explains the purpose of templates, marking information and layout information in controlled fabrication planning. It does not teach marking-out procedures, cutting, welding, heating, bending, lifting, machine setup, machine operation or any other hazardous practical activity. Practical work requires approved training, workplace controls and competent human supervision.</div>
+
+  <section class="content-card"><h3>1. What is a template?</h3><p>A template is a controlled shape or reference used to help communicate the required outline, position or relationship of features for a job. A learner should first understand what the template represents and which approved job information controls its use.</p><div class="key-idea"><strong>Key idea:</strong> A template supports controlled interpretation. It does not replace the approved drawing, specification or workplace instruction.</div></section>
+
+  <section class="content-card"><h3>2. What does layout information communicate?</h3><p>Layout information can show how a three-dimensional component or surface is represented as a flat pattern, development or arranged set of features. It helps the learner understand where shapes, edges and relationships come from before any practical fabrication begins.</p></section>
+
+  <section class="content-card"><h3>3. Marking information must come from controlled sources</h3><p>Lines, reference points, centres, outlines and other markings only have meaning when they are linked to the current approved drawing, template, specification or workplace instruction. Do not invent or assume missing information.</p></section>
+
+  <section class="content-card"><h3>4. Check identity, orientation and revision</h3><p>Before relying on a template or layout, confirm that it belongs to the correct job, is oriented correctly for the information being interpreted, and matches the current approved revision. If any of these are uncertain, stop and clarify.</p></section>
+
+  <section class="content-card"><h3>5. Understand flat patterns and developments</h3><p>In engineering drawing, the surface of a three-dimensional form can be represented as a two-dimensional development or flat pattern. This concept helps explain how a finished shape can be planned from controlled drawing information without treating the drawing itself as practical authorisation.</p></section>
+
+  <section class="content-card"><h3>6. Know the learning boundary</h3><p>Recognising a template, layout or development does not authorise a learner to transfer marks to material, cut material, form material or operate equipment. Those practical tasks belong under approved training, workplace procedures and competent supervision.</p></section>
+
+  <section class="content-card"><p class="eyebrow">VISUAL LEARNING • INTERNET REQUIRED</p><h3>See the idea of surface development in engineering graphics</h3><p>This supplementary English visual resource introduces how a three-dimensional surface can be represented as a two-dimensional development. Use it for recognition and context only. The written lesson remains complete and usable offline.</p><p><a class="primary-btn" href="https://www.youtube.com/watch?v=5sBjU7g7W9k" target="_blank" rel="noopener noreferrer">▶ Watch: Development of Surfaces — Engineering Graphics (English)</a></p><p class="helper">Internet/data required. The written KM-04G lesson remains complete and usable offline.</p><div class="safety-note"><strong>Watch for recognition and context only.</strong> The video is supplementary. Do not copy practical fabrication actions from a video. It does not replace approved workplace procedures, practical training, supervision or authorisation, and it is not evidence of competence, assessment or certification.</div></section>
+
+  <section class="content-card"><h3>KM-04G learning check</h3><form id="quizForm">
+    <fieldset><legend>1. What should control the meaning and use of a template?</legend><label><input type="radio" name="q1" value="controlled"> Current approved job information</label><label><input type="radio" name="q1" value="memory"> Memory alone</label><label><input type="radio" name="q1" value="appearance"> Appearance alone</label></fieldset>
+    <fieldset><legend>2. What is a development or flat pattern used to represent?</legend><label><input type="radio" name="q2" value="surface"> A three-dimensional surface represented in two dimensions</label><label><input type="radio" name="q2" value="permission"> Permission to begin fabrication</label></fieldset>
+    <fieldset><legend>3. What should you do if a template, layout or revision is unclear?</legend><label><input type="radio" name="q3" value="guess"> Guess the intended information</label><label><input type="radio" name="q3" value="clarify"> Stop and clarify through the responsible training or workplace process</label></fieldset>
+    <fieldset><legend>4. Does completing KM-04G authorise practical marking, cutting or forming work?</legend><label><input type="radio" name="q4" value="yes"> Yes</label><label><input type="radio" name="q4" value="no"> No</label></fieldset>
+    <button class="primary-btn" type="submit">Check my answers</button>
+  </form><div id="quizResult" class="result-card" aria-live="polite"></div></section>
+</main>
+<script src="./storage.js"></script>
+<script>
+const badge=document.getElementById('networkBadge');function network(){const on=navigator.onLine;badge.textContent=on?'ONLINE':'OFFLINE';badge.classList.toggle('offline',!on);}addEventListener('online',network);addEventListener('offline',network);network();
+document.getElementById('quizForm').addEventListener('submit',async e=>{e.preventDefault();const data=new FormData(e.target);const correct={q1:'controlled',q2:'surface',q3:'clarify',q4:'no'};let score=0;Object.entries(correct).forEach(([q,a])=>{if(data.get(q)===a)score++;});const result=document.getElementById('quizResult');result.innerHTML=`<strong>${score}/4.</strong> ${score===4?'KM-04G learning slice completed.':'Review the lesson and try again.'} This records learning progress only, not competence or practical authorisation.`;if(score===4&&globalThis.MzansiStore){await MzansiStore.set('km04g-progress',{completed:true,score,completedAt:new Date().toISOString(),build:'0.1B-04G'});}});
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.error);
+</script>
+</body>
+</html>
