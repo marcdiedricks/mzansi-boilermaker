@@ -40,9 +40,16 @@ a.primary-btn { width: auto; }
 .primary-btn:active { background: var(--accent-dark); }
 .back-btn { background: #e8edf1; color: var(--text); margin-bottom: 14px; }
 .safety-btn { width: 100%; background: var(--safety); color: white; margin-top: 4px; }
-.menu-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px; }
+.menu-grid, .tool-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 12px; }
 .menu-card { text-align: left; border: 1px solid var(--border); background: white; border-radius: 16px; padding: 16px; cursor: pointer; color: var(--text); text-decoration: none; }
 .path-card { display: block; }
+.km-box-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 12px 0 22px; }
+.km-box { width: 100%; display: block; text-align: left; border: 1px solid var(--border); border-radius: 16px; background: #fff; padding: 16px; color: var(--text); text-decoration: none; cursor: pointer; min-height: 104px; }
+.km-code { display: block; font-size: 1rem; font-weight: 900; margin-bottom: 5px; }
+.km-name { display: block; font-weight: 800; line-height: 1.3; margin-bottom: 7px; }
+.km-meta { display: block; color: var(--muted); font-size: .84rem; line-height: 1.35; }
+.disabled-km { opacity: .58; cursor: not-allowed; }
+.learner-tools { margin-top: 8px; }
 .km01-card { border-left: 5px solid #1f6f4a; }
 .km02-card { border-left: 5px solid #b7791f; }
 .km03-card { border-left: 5px solid #6b46c1; }
@@ -125,4 +132,7 @@ a.primary-btn { width: auto; }
   #quizForm fieldset { padding: 12px; }
   .lesson-card form fieldset { padding: 14px; }
 }
-@media (min-width: 620px) { .menu-grid { grid-template-columns: 1fr 1fr; } .diagram-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 620px) {
+  .menu-grid, .tool-grid, .km-box-grid { grid-template-columns: 1fr 1fr; }
+  .diagram-grid { grid-template-columns: repeat(3, 1fr); }
+}
