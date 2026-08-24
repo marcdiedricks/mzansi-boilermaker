@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#1f2937">
+<meta name="description" content="KM-01 Lesson 2 Occupational Health, Safety and Environment Foundations — curriculum-aligned knowledge lesson.">
+<title>KM-01 Lesson 2 • Occupational Health, Safety and Environment Foundations</title>
+<link rel="stylesheet" href="./styles.css?v=0.1b-km01r-02">
+</head>
+<body>
+<header class="app-header"><div><p class="eyebrow">MZANSI BOILERMAKER</p><h1>Artisan Learning Companion</h1></div><span id="networkBadge" class="status-pill">ONLINE</span></header>
+<main class="lesson-shell">
+<section class="hero-card"><p class="eyebrow">KM-01 • LESSON 2 OF 4</p><h2>Occupational Health, Safety and Environment Foundations</h2><p>Understand the basic safety and environmental responsibilities that form part of learning and working in the Boilermaker trade.</p></section>
+<a class="back-btn" href="./index.html">← Knowledge Modules</a>
+<div class="safety-note"><strong>Learning only.</strong> This lesson builds safety awareness. It does not authorise hazardous practical work, replace workplace procedures or teach the operation of tools, machines, compressed-gas systems, welding equipment or other hazardous equipment. Practical work requires approved training, workplace controls and competent human supervision.</div>
+
+<section class="content-card"><h3>1. What does occupational health, safety and environment mean?</h3><p>Occupational health and safety is about protecting people from harm connected with work. Environmental protection is about preventing avoidable harm to the surroundings through responsible work practices.</p><p>In the Boilermaker trade, both are part of doing the job properly. Safety is not an extra task added after the work has been planned.</p></section>
+
+<section class="content-card"><h3>2. Recognise hazards before work begins</h3><p>A hazard is something with the potential to cause harm. Risk is connected with the chance and possible seriousness of that harm in a particular situation.</p><p>At learner level, the important habit is to look for hazards, use the approved workplace process and ask for clarification when the situation is uncertain.</p><div class="key-idea"><strong>Key idea:</strong> Do not guess your way through an unsafe or unclear situation.</div></section>
+
+<section class="content-card"><h3>3. Safety is a shared responsibility</h3><p>Employers, supervisors, trainers and workers all have responsibilities within workplace safety systems. A learner also has responsibilities: follow approved instructions, use required protective measures, report concerns and do not perform work for which you are not trained or authorised.</p><p>A learner should also understand that raising a genuine safety concern is part of responsible work behaviour.</p></section>
+
+<section class="content-card"><h3>4. Protective equipment supports wider controls</h3><p>Personal protective equipment can be an important part of workplace protection, but it does not make an uncontrolled task automatically safe. The correct protective measures depend on the job, the hazard and the approved workplace requirements.</p><p>This lesson does not instruct the learner to select or use specialised protective equipment for hazardous tasks without workplace guidance.</p></section>
+
+<section class="content-card"><h3>5. Protect other people and the environment</h3><p>Boilermaker work can affect people nearby and the surrounding work area. Good safety awareness includes recognising the need to protect co-workers, visitors and other workers who may be exposed to a hazard.</p><p>Environmental awareness includes following approved controls for waste, spills, emissions, housekeeping and the responsible use of materials and resources.</p></section>
+
+<section class="content-card"><h3>6. Stop, report and clarify when necessary</h3><p>If a learner sees an unsafe condition, conflicting instruction, damaged control, unclear requirement or situation outside their training, the correct response is not to improvise. Use the responsible training or workplace reporting process and obtain clarification before continuing.</p></section>
+
+<section class="content-card"><p class="eyebrow">VISUAL LEARNING • INTERNET REQUIRED</p><h3>See occupational safety and health in the South African workplace context</h3><p>This supplementary resource from South Africa's Department of Employment and Labour highlights the importance of preventing occupational accidents and disease and protecting workers from hazardous workplace conditions. The written lesson remains complete and usable offline.</p><p><a class="primary-btn" href="https://www.youtube.com/watch?v=m8OoHQ1IUTk" target="_blank" rel="noopener noreferrer">▶ Watch: World Day for Safety and Health — Department of Employment and Labour</a></p><p class="helper">Internet/data required. The written KM-01 Lesson 2 remains complete and usable offline.</p><div class="safety-note"><strong>Watch for recognition and context only.</strong> The video supports safety awareness. It does not replace approved workplace procedures, practical training, supervision or authorisation and is not evidence of competence, assessment or certification.</div></section>
+
+<section class="content-card"><h3>KM-01 Lesson 2 learning check</h3><form id="quizForm">
+<fieldset><legend>1. What is a hazard?</legend><label><input type="radio" name="q1" value="harm"> Something with the potential to cause harm</label><label><input type="radio" name="q1" value="permission"> Permission to begin work</label></fieldset>
+<fieldset><legend>2. What should a learner do when a work situation is unsafe or unclear?</legend><label><input type="radio" name="q2" value="clarify"> Stop and use the responsible process to report or clarify</label><label><input type="radio" name="q2" value="guess"> Guess and continue</label></fieldset>
+<fieldset><legend>3. Does personal protective equipment make every uncontrolled task safe?</legend><label><input type="radio" name="q3" value="yes"> Yes</label><label><input type="radio" name="q3" value="no"> No</label></fieldset>
+<fieldset><legend>4. Does completing this lesson authorise hazardous practical Boilermaker work?</legend><label><input type="radio" name="q4" value="yes"> Yes</label><label><input type="radio" name="q4" value="no"> No</label></fieldset>
+<button class="primary-btn" type="submit">Check my answers</button></form><div id="quizResult" class="result-card" aria-live="polite"></div></section>
+</main>
+<script src="./storage.js"></script><script>
+const badge=document.getElementById('networkBadge');function network(){const on=navigator.onLine;badge.textContent=on?'ONLINE':'OFFLINE';badge.classList.toggle('offline',!on);}addEventListener('online',network);addEventListener('offline',network);network();
+document.getElementById('quizForm').addEventListener('submit',async e=>{e.preventDefault();const data=new FormData(e.target);const correct={q1:'harm',q2:'clarify',q3:'no',q4:'no'};let answered=0,score=0;Object.entries(correct).forEach(([q,a])=>{if(data.get(q)!==null)answered++;if(data.get(q)===a)score++;});const result=document.getElementById('quizResult');if(answered<4){result.textContent='Please answer all four questions first.';return;}result.innerHTML=`<strong>${score}/4.</strong> ${score===4?'KM-01 Lesson 2 completed.':'Review the lesson and try again.'} This records learning progress only, not competence, practical authorisation or certification.`;if(score===4&&globalThis.MzansiStore){await MzansiStore.set('km01r02-progress',{completed:true,score,completedAt:new Date().toISOString(),build:'0.1B-KM01R-02',topic:'KM-01-KT02'});}});if('serviceWorker'in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.error);
+</script></body></html>
