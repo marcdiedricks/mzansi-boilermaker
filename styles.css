@@ -55,6 +55,7 @@ a.primary-btn { width: auto; }
 .km04g-card { border-left: 5px solid #0f766e; }
 .km04h-card { border-left: 5px solid #9333ea; }
 .km04i-card { border-left: 5px solid #2563eb; }
+.km04j-card { border-left: 5px solid #0e7490; }
 .safety-card { border-left: 5px solid #a15c00; }
 .evidence-card { border-left: 5px solid var(--evidence); }
 .menu-title { display: block; font-weight: 800; margin-bottom: 6px; }
