@@ -14,28 +14,59 @@
 <header class="app-header"><div><p class="eyebrow">MZANSI BOILERMAKER</p><h1>Artisan Learning Companion</h1></div><span id="networkStatus" class="status-pill">Checking…</span></header>
 <main class="app-main">
 <section id="homeView" class="view active" aria-labelledby="homeTitle">
-<div class="hero-card"><p class="eyebrow">BUILD 0.1B-04I</p><h2 id="homeTitle">Learn. Practise safely. Keep your progress.</h2><p>This pilot includes offline learning, local progress and strict practical-work safety boundaries.</p></div>
+<div class="hero-card"><p class="eyebrow">LEARNER HOME</p><h2 id="homeTitle">Learn one module at a time.</h2><p>Choose a Knowledge Module below. Lessons stay short, clear and usable offline.</p></div>
 <section class="panel"><h2>Learner profile</h2><label for="learnerName">Your name</label><input id="learnerName" type="text" autocomplete="name" placeholder="Enter learner name"><button id="saveLearnerBtn" class="primary-btn" type="button">Save learner</button><p id="learnerSaved" class="helper" aria-live="polite"></p></section>
-<section class="menu-grid" aria-label="Main menu">
-<a class="menu-card path-card km01-card" href="./km01.html"><span class="menu-title">Start Here: KM-01</span><span class="menu-copy">Introduction to the Boilermaker Trade</span></a>
-<a class="menu-card path-card km02-card" href="./km02.html"><span class="menu-title">KM-02</span><span class="menu-copy">Environmental Protection, Health and Safety</span></a>
-<a class="menu-card path-card km03-card" href="./km03.html"><span class="menu-title">KM-03</span><span class="menu-copy">Boilermaker Tools, Equipment, Machines and Materials</span></a>
-<a class="menu-card path-card km04a-card" href="./km04a.html"><span class="menu-title">KM-04A</span><span class="menu-copy">Introduction to Fabrication and Pipework</span></a>
-<a class="menu-card path-card km04b-card" href="./km04b.html"><span class="menu-title">KM-04B</span><span class="menu-copy">Read the Job Information Before Fabrication</span></a>
-<a class="menu-card path-card km04c-card" href="./km04c.html"><span class="menu-title">KM-04C</span><span class="menu-copy">Identify Materials and Components Before Fabrication</span></a>
-<a class="menu-card path-card km04d-card" href="./km04d.html"><span class="menu-title">KM-04D</span><span class="menu-copy">Check the Job Before Fabrication</span></a>
-<a class="menu-card path-card km04e-card" href="./km04e.html"><span class="menu-title">KM-04E</span><span class="menu-copy">Check Dimensions and Measurement Information</span></a>
-<a class="menu-card path-card km04f-card" href="./km04f.html"><span class="menu-title">KM-04F</span><span class="menu-copy">Recognise Quality Requirements Before Fabrication</span></a>
-<a class="menu-card path-card km04g-card" href="./km04g.html"><span class="menu-title">KM-04G</span><span class="menu-copy">Recognise Templates, Marking and Layout Information Before Fabrication</span></a>
-<a class="menu-card path-card km04h-card" href="./km04h.html"><span class="menu-title">KM-04H</span><span class="menu-copy">Recognise Material Allowances and Controlled Reference Information Before Fabrication</span></a>
-<a class="menu-card path-card km04i-card" href="./km04i.html"><span class="menu-title">KM-04I</span><span class="menu-copy">Recognise the Controlled Fabrication Sequence Before Work Begins</span></a>
-<a class="menu-card path-card km04j-card" href="./km04j.html"><span class="menu-title">Next: KM-04J</span><span class="menu-copy">Recognise Fabrication Records and Material Traceability Before Work Begins</span></a>
-<button class="menu-card" data-open="pathView" type="button"><span class="menu-title">My Boilermaker Path</span><span class="menu-copy">Start with KM-07: Boilermaker's Drawings</span></button>
-<button class="menu-card" data-open="lessonView" type="button"><span class="menu-title">Continue Learning</span><span class="menu-copy">Reading the Drawing Before You Make the Job</span></button>
-<button class="menu-card safety-card" data-open="safetyRouterView" type="button"><span class="menu-title">Practise Safely</span><span class="menu-copy">Check the safety gate before moving from theory into practical work</span></button>
-<button class="menu-card evidence-card" data-open="evidenceView" type="button"><span class="menu-title">My Evidence</span><span class="menu-copy">Capture, prepare and hand off evidence for human review</span></button>
-<button class="menu-card disabled-card" type="button" disabled><span class="menu-title">Ask My Companion</span><span class="menu-copy">Cloud AI comes later</span></button>
-</section><button id="safetyBtn" class="safety-btn" type="button">Safety</button></section>
+
+<section aria-labelledby="knowledgeModulesTitle">
+<p class="eyebrow">MY KNOWLEDGE MODULES</p>
+<h2 id="knowledgeModulesTitle">Choose a module</h2>
+<div class="km-box-grid">
+<a class="km-box km01-card" href="./km01.html"><span class="km-code">KM-01</span><span class="km-name">Introduction to the Boilermaker Trade</span><span class="km-meta">4 lessons planned • current foundation lesson available</span></a>
+<a class="km-box km02-card" href="./km02.html"><span class="km-code">KM-02</span><span class="km-name">Environmental Protection, Health and Safety</span><span class="km-meta">2 lessons planned • current foundation lesson available</span></a>
+<a class="km-box km03-card" href="./km03.html"><span class="km-code">KM-03</span><span class="km-name">Tools, Equipment, Machines and Materials</span><span class="km-meta">4 lessons planned • current foundation lesson available</span></a>
+<button class="km-box km04a-card" data-open="km04View" type="button"><span class="km-code">KM-04</span><span class="km-name">Fabrication and Pipework</span><span class="km-meta">9 reconciled lessons planned • pilot content available</span></button>
+<button class="km-box disabled-km" type="button" disabled><span class="km-code">KM-05</span><span class="km-name">Assembling and Joining</span><span class="km-meta">Curriculum map ready • lessons not yet built</span></button>
+<button class="km-box disabled-km" type="button" disabled><span class="km-code">KM-06</span><span class="km-name">Cutting and Welding</span><span class="km-meta">Curriculum map ready • lessons not yet built</span></button>
+<button class="km-box disabled-km" type="button" disabled><span class="km-code">KM-07</span><span class="km-name">Boilermaker's Drawings</span><span class="km-meta">Curriculum map ready • lessons not yet reconciled</span></button>
+<button class="km-box disabled-km" type="button" disabled><span class="km-code">KM-08</span><span class="km-name">Environmental Awareness and Ethics</span><span class="km-meta">Curriculum map ready • lessons not yet built</span></button>
+<button class="km-box disabled-km" type="button" disabled><span class="km-code">KM-09</span><span class="km-name">Emotional Intelligence and Active Learning</span><span class="km-meta">Curriculum map ready • lessons not yet built</span></button>
+<button class="km-box disabled-km" type="button" disabled><span class="km-code">KM-10</span><span class="km-name">Basics of Computers and Computing Systems</span><span class="km-meta">Curriculum map ready • lessons not yet built</span></button>
+<button class="km-box disabled-km" type="button" disabled><span class="km-code">KM-11</span><span class="km-name">Workplace Fundamentals and Workplace Safety</span><span class="km-meta">Curriculum map ready • lessons not yet built</span></button>
+<button class="km-box disabled-km" type="button" disabled><span class="km-code">KM-12</span><span class="km-name">Workplace Relationships and Performance</span><span class="km-meta">Curriculum map ready • lessons not yet built</span></button>
+<button class="km-box disabled-km" type="button" disabled><span class="km-code">KM-13</span><span class="km-name">Decision Making</span><span class="km-meta">Curriculum map ready • lessons not yet built</span></button>
+<button class="km-box disabled-km" type="button" disabled><span class="km-code">KM-14</span><span class="km-name">Basic Slinging, Lifting and Load Securing</span><span class="km-meta">Curriculum map ready • lessons not yet built</span></button>
+</div>
+</section>
+
+<section class="learner-tools" aria-labelledby="learnerToolsTitle">
+<p class="eyebrow">LEARNER TOOLS</p><h2 id="learnerToolsTitle">Useful tools</h2>
+<div class="tool-grid">
+<button class="menu-card safety-card" data-open="safetyRouterView" type="button"><span class="menu-title">Practise Safely</span><span class="menu-copy">Check the safety gate before practical work</span></button>
+<button class="menu-card evidence-card" data-open="evidenceView" type="button"><span class="menu-title">My Evidence</span><span class="menu-copy">Prepare evidence for human review</span></button>
+</div>
+</section>
+<button id="safetyBtn" class="safety-btn" type="button">Safety</button>
+</section>
+
+<section id="km04View" class="view">
+<button class="back-btn" data-open="homeView" type="button">← Knowledge Modules</button>
+<p class="eyebrow">KM-04 • FABRICATION AND PIPEWORK</p>
+<h2>Current pilot lessons</h2>
+<div class="safety-note"><strong>Curriculum reconciliation in progress.</strong> These existing pilot lessons remain available while useful content is being remapped into the final nine curriculum-aligned KM-04 lessons.</div>
+<div class="menu-grid">
+<a class="menu-card" href="./km04a.html"><span class="menu-title">KM-04A</span><span class="menu-copy">Introduction to Fabrication and Pipework</span></a>
+<a class="menu-card" href="./km04b.html"><span class="menu-title">KM-04B</span><span class="menu-copy">Read the Job Information Before Fabrication</span></a>
+<a class="menu-card" href="./km04c.html"><span class="menu-title">KM-04C</span><span class="menu-copy">Identify Materials and Components Before Fabrication</span></a>
+<a class="menu-card" href="./km04d.html"><span class="menu-title">KM-04D</span><span class="menu-copy">Check the Job Before Fabrication</span></a>
+<a class="menu-card" href="./km04e.html"><span class="menu-title">KM-04E</span><span class="menu-copy">Check Dimensions and Measurement Information</span></a>
+<a class="menu-card" href="./km04f.html"><span class="menu-title">KM-04F</span><span class="menu-copy">Recognise Quality Requirements Before Fabrication</span></a>
+<a class="menu-card" href="./km04g.html"><span class="menu-title">KM-04G</span><span class="menu-copy">Recognise Templates, Marking and Layout Information</span></a>
+<a class="menu-card" href="./km04h.html"><span class="menu-title">KM-04H</span><span class="menu-copy">Recognise Material Allowances and Controlled References</span></a>
+<a class="menu-card" href="./km04i.html"><span class="menu-title">KM-04I</span><span class="menu-copy">Recognise the Controlled Fabrication Sequence</span></a>
+<a class="menu-card" href="./km04j.html"><span class="menu-title">KM-04J</span><span class="menu-copy">Recognise Fabrication Records and Material Traceability</span></a>
+</div>
+</section>
+
 <section id="pathView" class="view"><button class="back-btn" data-open="homeView" type="button">← Home</button><p class="eyebrow">MY BOILERMAKER PATH</p><h2>READ IT & PLAN IT</h2><div class="panel"><p class="module-code">KM-07</p><h3>Boilermaker's Drawings</h3><p>Learn how technical drawings communicate shape, size, views, dimensions, symbols and abbreviations.</p><div class="progress-wrap"><div class="progress-track"><div id="pathProgress" class="progress-fill"></div></div><span id="pathProgressText">0% complete</span></div><button class="primary-btn" data-open="lessonView" type="button">Open first lesson</button></div></section>
 <section id="lessonView" class="view"><button class="back-btn" data-open="homeView" type="button">← Home</button><p class="eyebrow">KM-07 • TIER 1 LEARNING</p><h2>Reading the Drawing Before You Make the Job</h2><div class="safety-note">This lesson is for drawing interpretation only. If the request changes to real fabrication or hazardous practical work, use the Practise Safely gate.</div><article class="lesson-stack"><section class="lesson-card"><h3>1. What is a technical drawing?</h3><p>A technical drawing is a controlled way of communicating information about an object, component or structure.</p></section><section class="lesson-card"><h3>2. Different views describe the same object</h3><p>A drawing may show the same object from different directions.</p></section><section class="lesson-card"><h3>3. Dimensions communicate size</h3><p>A dimension gives numerical information about the size or position of a feature.</p></section></article><button id="startQuizBtn" class="primary-btn" type="button">Start practice quiz</button></section>
 <section id="quizView" class="view"><button class="back-btn" data-open="lessonView" type="button">← Lesson</button><p class="eyebrow">PRACTICE</p><h2>KM-07 Knowledge Check</h2><form id="quizForm" class="quiz-form"></form><button id="submitQuizBtn" class="primary-btn" type="button">Check my answers</button><div id="quizResult" class="result-box"></div></section>
