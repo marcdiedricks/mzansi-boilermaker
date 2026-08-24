@@ -11,105 +11,31 @@
   <title>Mzansi Boilermaker</title>
 </head>
 <body>
-  <header class="app-header">
-    <div>
-      <p class="eyebrow">MZANSI BOILERMAKER</p>
-      <h1>Artisan Learning Companion</h1>
-    </div>
-    <span id="networkStatus" class="status-pill">Checking…</span>
-  </header>
-
-  <main class="app-main">
-    <section id="homeView" class="view active" aria-labelledby="homeTitle">
-      <div class="hero-card">
-        <p class="eyebrow">BUILD 0.1A-06</p>
-        <h2 id="homeTitle">Learn. Practise safely. Keep your progress.</h2>
-        <p>This pilot includes offline learning, a local practical-work safety gate, local evidence capture and local human-review preparation.</p>
-      </div>
-
-      <section class="panel" aria-labelledby="learnerHeading">
-        <h2 id="learnerHeading">Learner profile</h2>
-        <label for="learnerName">Your name</label>
-        <input id="learnerName" type="text" autocomplete="name" placeholder="Enter learner name">
-        <button id="saveLearnerBtn" class="primary-btn" type="button">Save learner</button>
-        <p id="learnerSaved" class="helper" aria-live="polite"></p>
-      </section>
-
-      <section class="menu-grid" aria-label="Main menu">
-        <button class="menu-card" data-open="pathView" type="button"><span class="menu-title">My Boilermaker Path</span><span class="menu-copy">Start with KM-07: Boilermaker's Drawings</span></button>
-        <button class="menu-card" data-open="lessonView" type="button"><span class="menu-title">Continue Learning</span><span class="menu-copy">Reading the Drawing Before You Make the Job</span></button>
-        <button class="menu-card safety-card" data-open="safetyRouterView" type="button"><span class="menu-title">Practise Safely</span><span class="menu-copy">Check the safety gate before moving from theory into practical work</span></button>
-        <button class="menu-card evidence-card" data-open="evidenceView" type="button"><span class="menu-title">My Evidence</span><span class="menu-copy">Capture, prepare and hand off evidence for human review</span></button>
-        <button class="menu-card disabled-card" type="button" disabled><span class="menu-title">Ask My Companion</span><span class="menu-copy">Cloud AI comes later</span></button>
-      </section>
-      <button id="safetyBtn" class="safety-btn" type="button">Safety</button>
-    </section>
-
-    <section id="pathView" class="view" aria-labelledby="pathTitle">
-      <button class="back-btn" data-open="homeView" type="button">← Home</button>
-      <p class="eyebrow">MY BOILERMAKER PATH</p>
-      <h2 id="pathTitle">READ IT & PLAN IT</h2>
-      <div class="panel">
-        <p class="module-code">KM-07</p>
-        <h3>Boilermaker's Drawings</h3>
-        <p>Learn how technical drawings communicate shape, size, views, dimensions, symbols and abbreviations.</p>
-        <div class="progress-wrap" aria-label="Lesson progress"><div class="progress-track"><div id="pathProgress" class="progress-fill"></div></div><span id="pathProgressText">0% complete</span></div>
-        <button class="primary-btn" data-open="lessonView" type="button">Open first lesson</button>
-      </div>
-    </section>
-
-    <section id="lessonView" class="view" aria-labelledby="lessonTitle">
-      <button class="back-btn" data-open="homeView" type="button">← Home</button>
-      <p class="eyebrow">KM-07 • TIER 1 LEARNING</p>
-      <h2 id="lessonTitle">Reading the Drawing Before You Make the Job</h2>
-      <div class="safety-note">This lesson is for drawing interpretation only. If the request changes to real fabrication or hazardous practical work, use the Practise Safely gate so the safety context is checked again.</div>
-      <article class="lesson-stack">
-        <section class="lesson-card"><h3>1. What is a technical drawing?</h3><p>A technical drawing is a controlled way of communicating information about an object, component or structure.</p><p>It can use lines, dimensions, views, symbols, abbreviations and notes.</p><p class="key-idea"><strong>Boilermaker term:</strong> Drawing interpretation means understanding what the technical drawing is communicating.</p></section>
-        <section class="lesson-card"><h3>2. Different views describe the same object</h3><p>A drawing may show the same object from different directions.</p><div class="diagram-grid" role="img" aria-label="Simple training diagram showing front, top and side views of one rectangular object"><div class="diagram-box"><span>FRONT VIEW</span><div class="shape front"></div></div><div class="diagram-box"><span>TOP VIEW</span><div class="shape top"></div></div><div class="diagram-box"><span>SIDE VIEW</span><div class="shape side"></div></div></div></section>
-        <section class="lesson-card"><h3>3. Dimensions communicate size</h3><p>A dimension gives numerical information about the size or position of a feature.</p><p>Examples include length, width, height, diameter and radius.</p><p class="key-idea"><strong>Important:</strong> The picture size on your phone is not the real component size. Use the stated drawing information.</p></section>
-        <section class="lesson-card"><h3>4. Lines, symbols and abbreviations carry meaning</h3><p>Different drawing elements communicate different information. If you do not understand a symbol or abbreviation, do not guess. Check an approved source or ask for clarification.</p></section>
-        <section class="lesson-card"><h3>5. Quick glossary</h3><dl class="glossary"><dt>Dimension</dt><dd>A stated measurement shown on a drawing.</dd><dt>View</dt><dd>A representation of an object from a particular direction.</dd><dt>Front view</dt><dd>The object represented from the front.</dd><dt>Top view</dt><dd>The object represented as viewed from above.</dd><dt>Side view</dt><dd>The object represented from the side.</dd><dt>Template</dt><dd>A pattern or guide used to help transfer a required shape or form.</dd></dl></section>
-      </article>
-      <button id="startQuizBtn" class="primary-btn" type="button">Start practice quiz</button>
-    </section>
-
-    <section id="quizView" class="view" aria-labelledby="quizTitle">
-      <button class="back-btn" data-open="lessonView" type="button">← Lesson</button><p class="eyebrow">PRACTICE</p><h2 id="quizTitle">KM-07 Knowledge Check</h2><p>Answer all six questions. This is learning practice, not an official assessment.</p><form id="quizForm" class="quiz-form"></form><button id="submitQuizBtn" class="primary-btn" type="button">Check my answers</button><div id="quizResult" class="result-box" aria-live="polite"></div>
-    </section>
-
-    <section id="safetyRouterView" class="view" aria-labelledby="routerTitle">
-      <button class="back-btn" data-open="homeView" type="button">← Home</button><p class="eyebrow">PRACTISE SAFELY • LOCAL POLICY GATE</p><h2 id="routerTitle">What are you planning to do?</h2><div class="panel"><p>Select the closest activity. The app uses fixed pilot safety rules. It does not authorise practical work.</p><label for="safetyScenario">Activity type</label><select id="safetyScenario"><option value="">Choose an activity</option></select><button id="checkSafetyBtn" class="primary-btn" type="button">Check safety gate</button></div><div id="safetyDecision" class="safety-decision" aria-live="polite"></div><p id="policyVersion" class="policy-version"></p>
-    </section>
-
-    <section id="evidenceView" class="view" aria-labelledby="evidenceTitle">
-      <button class="back-btn" data-open="homeView" type="button">← Home</button><p class="eyebrow">MY EVIDENCE • LOCAL FIRST</p><h2 id="evidenceTitle">Capture evidence</h2>
-      <div class="safety-note"><strong>Evidence must never create a new unsafe task.</strong> Only capture work, documents or records you are authorised to record. Do not perform hazardous activity just to create evidence.</div>
-      <div class="panel">
-        <label for="evidenceTitleInput">Evidence title</label><input id="evidenceTitleInput" type="text" placeholder="Example: Drawing interpretation exercise">
-        <label for="evidenceType">Evidence type</label><select id="evidenceType"><option value="">Choose evidence type</option><option value="PHOTO">Photo</option><option value="DOCUMENT">Document</option><option value="TRAINING_RECORD">Training record</option><option value="JOB_CARD">Job card</option><option value="SUPERVISOR_STATEMENT">Supervisor statement</option><option value="OTHER">Other</option></select>
-        <label for="evidenceModule">Curriculum area</label><select id="evidenceModule"><option value="KM-07">KM-07 • Boilermaker's Drawings</option><option value="UNMAPPED">Not mapped yet</option></select>
-        <label for="evidenceNotes">Short note</label><textarea id="evidenceNotes" rows="4" placeholder="What does this evidence show?"></textarea>
-        <label for="evidenceFile">Optional photo or document</label><input id="evidenceFile" type="file" accept="image/*,.pdf,.txt,.doc,.docx"><p class="file-help">Pilot limit: one file up to 8 MB. Stored on this device only. Cloud sync is not active yet.</p>
-        <button id="saveEvidenceBtn" class="primary-btn" type="button">Save evidence locally</button><p id="evidenceMessage" class="helper" aria-live="polite"></p>
-      </div>
-      <section aria-labelledby="queueTitle"><p class="eyebrow">LOCAL EVIDENCE QUEUE</p><h2 id="queueTitle">Saved on this device</h2><div id="evidenceQueue" class="evidence-list"></div></section>
-    </section>
-
-    <section id="safetyView" class="view" aria-labelledby="safetyTitle">
-      <button class="back-btn" data-open="homeView" type="button">← Home</button><p class="eyebrow">SAFETY</p><h2 id="safetyTitle">Know when learning becomes practical work</h2><div class="panel"><p>This pilot lesson is low-risk educational support.</p><p>Reading, identifying and explaining drawing information stays in learning mode.</p><p>If you move into physical fabrication, machinery, hot work, lifting, work at height, pressure, confined spaces or other hazardous work, the task must be safety-classified again and may require supervision.</p><button class="primary-btn" data-open="safetyRouterView" type="button">Open Practise Safely gate</button></div>
-    </section>
-  </main>
-
-  <footer class="app-footer"><span>SAQA 123381 • Pilot V1</span><span id="offlineHint">Local progress enabled</span></footer>
-  <script src="./storage.js"></script>
-  <script src="./audit.js"></script>
-  <script src="./app.js"></script>
-  <script src="./attachment-ui.js"></script>
-  <script src="./review-ui.js"></script>
-  <script src="./handoff-ui.js"></script>
-  <script src="./audit-ui.js"></script>
-  <script src="./backup-ui.js"></script>
-  <script src="./dashboard-ui.js"></script>
-  <script src="./readiness-ui.js"></script>
-</body>
-</html>
+<header class="app-header"><div><p class="eyebrow">MZANSI BOILERMAKER</p><h1>Artisan Learning Companion</h1></div><span id="networkStatus" class="status-pill">Checking…</span></header>
+<main class="app-main">
+<section id="homeView" class="view active" aria-labelledby="homeTitle">
+<div class="hero-card"><p class="eyebrow">BUILD 0.1B-04F</p><h2 id="homeTitle">Learn. Practise safely. Keep your progress.</h2><p>This pilot includes offline learning, local progress and strict practical-work safety boundaries.</p></div>
+<section class="panel"><h2>Learner profile</h2><label for="learnerName">Your name</label><input id="learnerName" type="text" autocomplete="name" placeholder="Enter learner name"><button id="saveLearnerBtn" class="primary-btn" type="button">Save learner</button><p id="learnerSaved" class="helper" aria-live="polite"></p></section>
+<section class="menu-grid" aria-label="Main menu">
+<a class="menu-card" href="./km04a.html"><span class="menu-title">KM-04A</span><span class="menu-copy">Introduction to Fabrication and Pipework</span></a>
+<a class="menu-card" href="./km04b.html"><span class="menu-title">KM-04B</span><span class="menu-copy">Read the Job Information Before Fabrication</span></a>
+<a class="menu-card" href="./km04c.html"><span class="menu-title">KM-04C</span><span class="menu-copy">Identify Materials and Components Before Fabrication</span></a>
+<a class="menu-card" href="./km04d.html"><span class="menu-title">KM-04D</span><span class="menu-copy">Check the Job Before Fabrication</span></a>
+<a class="menu-card" href="./km04e.html"><span class="menu-title">KM-04E</span><span class="menu-copy">Check Dimensions and Measurement Information</span></a>
+<a class="menu-card" href="./km04f.html"><span class="menu-title">Next: KM-04F</span><span class="menu-copy">Recognise Quality Requirements Before Fabrication</span></a>
+<button class="menu-card" data-open="pathView" type="button"><span class="menu-title">My Boilermaker Path</span><span class="menu-copy">Start with KM-07: Boilermaker's Drawings</span></button>
+<button class="menu-card" data-open="lessonView" type="button"><span class="menu-title">Continue Learning</span><span class="menu-copy">Reading the Drawing Before You Make the Job</span></button>
+<button class="menu-card safety-card" data-open="safetyRouterView" type="button"><span class="menu-title">Practise Safely</span><span class="menu-copy">Check the safety gate before moving from theory into practical work</span></button>
+<button class="menu-card evidence-card" data-open="evidenceView" type="button"><span class="menu-title">My Evidence</span><span class="menu-copy">Capture, prepare and hand off evidence for human review</span></button>
+<button class="menu-card disabled-card" type="button" disabled><span class="menu-title">Ask My Companion</span><span class="menu-copy">Cloud AI comes later</span></button>
+</section><button id="safetyBtn" class="safety-btn" type="button">Safety</button></section>
+<section id="pathView" class="view"><button class="back-btn" data-open="homeView" type="button">← Home</button><p class="eyebrow">MY BOILERMAKER PATH</p><h2>READ IT & PLAN IT</h2><div class="panel"><p class="module-code">KM-07</p><h3>Boilermaker's Drawings</h3><p>Learn how technical drawings communicate shape, size, views, dimensions, symbols and abbreviations.</p><div class="progress-wrap"><div class="progress-track"><div id="pathProgress" class="progress-fill"></div></div><span id="pathProgressText">0% complete</span></div><button class="primary-btn" data-open="lessonView" type="button">Open first lesson</button></div></section>
+<section id="lessonView" class="view"><button class="back-btn" data-open="homeView" type="button">← Home</button><p class="eyebrow">KM-07 • TIER 1 LEARNING</p><h2>Reading the Drawing Before You Make the Job</h2><div class="safety-note">This lesson is for drawing interpretation only. If the request changes to real fabrication or hazardous practical work, use the Practise Safely gate.</div><article class="lesson-stack"><section class="lesson-card"><h3>1. What is a technical drawing?</h3><p>A technical drawing is a controlled way of communicating information about an object, component or structure.</p></section><section class="lesson-card"><h3>2. Different views describe the same object</h3><p>A drawing may show the same object from different directions.</p></section><section class="lesson-card"><h3>3. Dimensions communicate size</h3><p>A dimension gives numerical information about the size or position of a feature.</p></section></article><button id="startQuizBtn" class="primary-btn" type="button">Start practice quiz</button></section>
+<section id="quizView" class="view"><button class="back-btn" data-open="lessonView" type="button">← Lesson</button><p class="eyebrow">PRACTICE</p><h2>KM-07 Knowledge Check</h2><form id="quizForm" class="quiz-form"></form><button id="submitQuizBtn" class="primary-btn" type="button">Check my answers</button><div id="quizResult" class="result-box"></div></section>
+<section id="safetyRouterView" class="view"><button class="back-btn" data-open="homeView" type="button">← Home</button><p class="eyebrow">PRACTISE SAFELY • LOCAL POLICY GATE</p><h2>What are you planning to do?</h2><div class="panel"><label for="safetyScenario">Activity type</label><select id="safetyScenario"><option value="">Choose an activity</option></select><button id="checkSafetyBtn" class="primary-btn" type="button">Check safety gate</button></div><div id="safetyDecision" class="safety-decision"></div><p id="policyVersion" class="policy-version"></p></section>
+<section id="evidenceView" class="view"><button class="back-btn" data-open="homeView" type="button">← Home</button><p class="eyebrow">MY EVIDENCE • LOCAL FIRST</p><h2>Capture evidence</h2><div class="safety-note"><strong>Evidence must never create a new unsafe task.</strong></div><div class="panel"><label for="evidenceTitleInput">Evidence title</label><input id="evidenceTitleInput" type="text"><label for="evidenceType">Evidence type</label><select id="evidenceType"><option value="">Choose evidence type</option><option value="PHOTO">Photo</option><option value="DOCUMENT">Document</option></select><label for="evidenceModule">Curriculum area</label><select id="evidenceModule"><option value="KM-07">KM-07</option></select><label for="evidenceNotes">Short note</label><textarea id="evidenceNotes"></textarea><label for="evidenceFile">Optional photo or document</label><input id="evidenceFile" type="file"><button id="saveEvidenceBtn" class="primary-btn" type="button">Save evidence locally</button><p id="evidenceMessage" class="helper"></p></div><div id="evidenceQueue" class="evidence-list"></div></section>
+<section id="safetyView" class="view"><button class="back-btn" data-open="homeView" type="button">← Home</button><p class="eyebrow">SAFETY</p><h2>Know when learning becomes practical work</h2><div class="panel"><p>This pilot lesson is low-risk educational support.</p><button class="primary-btn" data-open="safetyRouterView" type="button">Open Practise Safely gate</button></div></section>
+</main>
+<footer class="app-footer"><span>SAQA 123381 • Pilot V1</span><span id="offlineHint">Local progress enabled</span></footer>
+<script src="./storage.js"></script><script src="./audit.js"></script><script src="./app.js"></script><script src="./attachment-ui.js"></script><script src="./review-ui.js"></script><script src="./handoff-ui.js"></script><script src="./audit-ui.js"></script><script src="./backup-ui.js"></script><script src="./dashboard-ui.js"></script><script src="./readiness-ui.js"></script>
+</body></html>
