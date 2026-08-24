@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f2937">
+  <meta name="description" content="KM-04 Lesson 1 Basic Templates — curriculum-aligned knowledge lesson.">
+  <title>KM-04 Lesson 1 • Basic Templates</title>
+  <link rel="stylesheet" href="./styles.css?v=0.1b-km04r-01">
+</head>
+<body>
+<header class="app-header"><div><p class="eyebrow">MZANSI BOILERMAKER</p><h1>Artisan Learning Companion</h1></div><span id="networkBadge" class="status-pill">ONLINE</span></header>
+<main class="lesson-shell">
+  <section class="hero-card">
+    <p class="eyebrow">KM-04 • LESSON 1 OF 9</p>
+    <h2>Basic Templates</h2>
+    <p>Learn what fabrication templates are, why different template types and materials are used, and how approved job information gives a template its meaning.</p>
+  </section>
+
+  <a class="back-btn" href="./index.html">← Knowledge Modules</a>
+
+  <div class="safety-note"><strong>Learning only.</strong> This lesson is for recognising and understanding templates. It does not teach practical marking-out, cutting, forming, machine operation or any other hazardous fabrication activity. Practical work requires approved training, workplace controls and competent human supervision.</div>
+
+  <section class="content-card">
+    <h3>1. What is a fabrication template?</h3>
+    <p>A fabrication template is a controlled reference used to represent a required shape, outline, position or relationship for a component. Its meaning comes from the approved drawing, specification or other controlled job information.</p>
+    <div class="key-idea"><strong>Key idea:</strong> A template supports accurate interpretation. It does not replace the current approved drawing or specification.</div>
+  </section>
+
+  <section class="content-card">
+    <h3>2. Why are there different kinds of templates?</h3>
+    <p>Different jobs can require different template forms. Some may represent a full shape, part of a shape, a repeated feature, a profile or a reference used to check relationships between features.</p>
+    <p>The learner should recognise that the correct template type depends on the controlled job requirement, not on guesswork or convenience.</p>
+  </section>
+
+  <section class="content-card">
+    <h3>3. Template materials</h3>
+    <p>Templates may be made from different suitable materials depending on the workplace requirement, durability needed, accuracy expected and how the reference will be controlled or reused.</p>
+    <p>The correct material and identification method must come from approved workplace or training information. This lesson does not instruct the learner to manufacture a template.</p>
+  </section>
+
+  <section class="content-card">
+    <h3>4. What information gives a template meaning?</h3>
+    <p>A template should be linked to the correct job, drawing or specification. Important controlled information can include identity, orientation, dimensions, reference points, revision status and the component or feature represented.</p>
+    <p>If the identity, revision or purpose is unclear, stop and clarify through the responsible training or workplace process.</p>
+  </section>
+
+  <section class="content-card">
+    <h3>5. Basic marking-off principles at knowledge level</h3>
+    <p>Marking-off is the controlled transfer or representation of job information so that positions, outlines or reference features can be understood before fabrication. Accuracy depends on using the correct approved information and recognising the correct reference points.</p>
+    <p>This lesson explains the principle only. Practical marking-out belongs in supervised practical training.</p>
+  </section>
+
+  <section class="content-card">
+    <h3>6. How templates fit into fabrication planning</h3>
+    <p>Templates help connect drawing information to a planned component or feature. Before a template is relied on, the learner should recognise the need to check that it belongs to the correct job, matches the current controlled information and is suitable for the intended purpose.</p>
+  </section>
+
+  <section class="content-card">
+    <p class="eyebrow">VISUAL LEARNING • INTERNET REQUIRED</p>
+    <h3>See the idea of a flat development in engineering graphics</h3>
+    <p>This supplementary English visual resource shows the concept of representing a three-dimensional surface as a two-dimensional development. It supports recognition of why templates and flat patterns are useful in fabrication planning. The written lesson remains complete and usable offline.</p>
+    <p><a class="primary-btn" href="https://www.youtube.com/watch?v=5sBjU7g7W9k" target="_blank" rel="noopener noreferrer">▶ Watch: Development of Surfaces — Engineering Graphics (English)</a></p>
+    <p class="helper">Internet/data required. The written KM-04 Lesson 1 remains complete and usable offline.</p>
+    <div class="safety-note"><strong>Watch for recognition and context only.</strong> The video is supplementary. Do not copy practical fabrication actions from any video. It does not replace approved workplace procedures, practical training, supervision or authorisation, and it is not evidence of competence, assessment or certification.</div>
+  </section>
+
+  <section class="content-card">
+    <h3>KM-04 Lesson 1 learning check</h3>
+    <form id="quizForm">
+      <fieldset><legend>1. What gives a fabrication template its correct meaning?</legend><label><input type="radio" name="q1" value="controlled"> The current approved job information</label><label><input type="radio" name="q1" value="memory"> Memory or appearance alone</label></fieldset>
+      <fieldset><legend>2. Why can different kinds of templates be used?</legend><label><input type="radio" name="q2" value="purpose"> Different jobs and features can require different controlled references</label><label><input type="radio" name="q2" value="random"> The choice is random</label></fieldset>
+      <fieldset><legend>3. What should you do if a template identity or revision is unclear?</legend><label><input type="radio" name="q3" value="guess"> Guess and continue</label><label><input type="radio" name="q3" value="clarify"> Stop and clarify through the responsible process</label></fieldset>
+      <fieldset><legend>4. Does completing this lesson authorise practical marking-out or fabrication work?</legend><label><input type="radio" name="q4" value="yes"> Yes</label><label><input type="radio" name="q4" value="no"> No</label></fieldset>
+      <button class="primary-btn" type="submit">Check my answers</button>
+    </form>
+    <div id="quizResult" class="result-card" aria-live="polite"></div>
+  </section>
+</main>
+<script src="./storage.js"></script>
+<script>
+const badge=document.getElementById('networkBadge');
+function network(){const on=navigator.onLine;badge.textContent=on?'ONLINE':'OFFLINE';badge.classList.toggle('offline',!on);}
+addEventListener('online',network);addEventListener('offline',network);network();
+document.getElementById('quizForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const data=new FormData(e.target);
+  const correct={q1:'controlled',q2:'purpose',q3:'clarify',q4:'no'};
+  let answered=0,score=0;
+  Object.entries(correct).forEach(([q,a])=>{if(data.get(q)!==null)answered++;if(data.get(q)===a)score++;});
+  const result=document.getElementById('quizResult');
+  if(answered<4){result.textContent='Please answer all four questions first.';return;}
+  result.innerHTML=`<strong>${score}/4.</strong> ${score===4?'KM-04 Lesson 1 completed.':'Review the lesson and try again.'} This records learning progress only, not competence, practical authorisation or certification.`;
+  if(score===4&&globalThis.MzansiStore){await MzansiStore.set('km04r01-progress',{completed:true,score,completedAt:new Date().toISOString(),build:'0.1B-KM04R-01',topic:'KM-04-KT01'});}
+});
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.error);
+</script>
+</body>
+</html>
