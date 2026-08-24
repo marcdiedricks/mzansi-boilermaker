@@ -86,6 +86,10 @@ a.primary-btn { width: auto; }
 #quizForm legend { max-width: 100%; padding: 0 4px; font-weight: 800; line-height: 1.35; }
 #quizForm label { display: flex; align-items: flex-start; gap: 10px; margin: 8px 0; line-height: 1.35; }
 #quizForm input[type="radio"] { flex: 0 0 auto; margin: 3px 0 0; }
+.lesson-card form fieldset { min-width: 0; margin: 0 0 14px; padding: 16px; border: 0; border-radius: 12px; background: #fbfcfd; }
+.lesson-card form legend { width: 100%; max-width: 100%; padding: 0; margin: 0 0 12px; font-weight: 800; line-height: 1.35; }
+.lesson-card form label { display: flex; align-items: flex-start; gap: 10px; margin: 10px 0; line-height: 1.35; }
+.lesson-card form input[type="radio"] { flex: 0 0 auto; margin: 3px 0 0; }
 .option-row { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; }
 .option-row input { margin-top: 3px; }
 .result-box { display: none; margin-top: 16px; }
@@ -118,5 +122,6 @@ a.primary-btn { width: auto; }
   .app-main, .lesson-shell { padding: 14px; }
   .hero-card, .panel, .lesson-card, .content-card, .result-box, .result-card { padding: 16px; }
   #quizForm fieldset { padding: 12px; }
+  .lesson-card form fieldset { padding: 14px; }
 }
 @media (min-width: 620px) { .menu-grid { grid-template-columns: 1fr 1fr; } .diagram-grid { grid-template-columns: repeat(3, 1fr); } }
