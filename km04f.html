@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f2937">
+  <title>KM-04F • Recognise Quality Requirements Before Fabrication</title>
+  <link rel="stylesheet" href="./styles.css?v=0.1b-04f">
+</head>
+<body>
+<header class="app-header"><div><p class="app-kicker">MZANSI BOILERMAKER</p><h1>Artisan Learning Companion</h1></div><span id="networkBadge" class="status-pill">ONLINE</span></header>
+<main class="lesson-shell">
+  <section class="hero-card"><p class="eyebrow">BUILD 0.1B-04F • KM-04 • TIER 1 LEARNING</p><h2>Recognise Quality Requirements Before Fabrication</h2><p>A short quality-awareness lesson within KM-04 Fabrication and Pipework.</p></section>
+  <a class="back-btn" href="./index.html">← Main app</a>
+  <div class="safety-note"><strong>Learning only.</strong> This lesson supports recognition of quality requirements in controlled job information. It does not teach cutting, welding, heating, bending, lifting, machine setup, machine operation or physical inspection procedures. Practical work requires approved training, workplace controls and competent human supervision.</div>
+
+  <section class="content-card"><h3>1. Quality starts with controlled job information</h3><p>Before fabrication, the learner should understand what the current approved drawing, specification, job card or other controlled workplace information requires. Quality is not based on what looks approximately right.</p><div class="key-idea"><strong>Key idea:</strong> The requirement for the job must come from controlled information, not memory or appearance alone.</div></section>
+
+  <section class="content-card"><h3>2. Identify what must be checked</h3><p>Job information may specify material, dimensions, quantity, orientation, identification, finish or other acceptance requirements. The learner should recognise which requirements apply before practical work begins.</p></section>
+
+  <section class="content-card"><h3>3. Use the correct document revision</h3><p>A superseded or unclear document can lead to the wrong result even when work appears neat. Confirm that the information being used is the current approved information for the job.</p></section>
+
+  <section class="content-card"><h3>4. Do not hide or guess around a mismatch</h3><p>If material, dimensions, identification or other controlled information does not match, stop and report the mismatch through the workplace process. Do not invent a correction or continue on assumption.</p></section>
+
+  <section class="content-card"><h3>5. Know the learning boundary</h3><p>Recognising a quality requirement is not the same as carrying out or approving a fabrication inspection. Formal acceptance, practical decisions and authorisation remain with appropriately responsible people and workplace processes.</p></section>
+
+  <section class="content-card"><p class="eyebrow">VISUAL LEARNING • INTERNET REQUIRED</p><h3>See how engineering drawings communicate requirements</h3><p>Use a trainer-approved English visual resource to reinforce how drawings and specifications communicate requirements that must be understood before fabrication.</p><p class="helper">Internet/data required. The written KM-04F lesson remains complete and usable offline.</p><div class="safety-note"><strong>Watch for recognition and context only.</strong> Focus on how controlled information communicates requirements. A visual resource must not replace workplace procedures, practical training, supervision or authorisation, and it is not evidence of competence, assessment or certification.</div></section>
+
+  <section class="content-card"><h3>KM-04F learning check</h3><form id="quizForm">
+    <fieldset><legend>1. What should define the quality requirement for a fabrication job?</legend><label><input type="radio" name="q1" value="controlled"> Current controlled job information</label><label><input type="radio" name="q1" value="appearance"> Appearance alone</label><label><input type="radio" name="q1" value="memory"> Memory alone</label></fieldset>
+    <fieldset><legend>2. Why should the document revision be checked?</legend><label><input type="radio" name="q2" value="current"> To confirm the information is current and approved for the job</label><label><input type="radio" name="q2" value="optional"> Because revisions are optional</label></fieldset>
+    <fieldset><legend>3. What should you do if controlled information and the material or job details do not match?</legend><label><input type="radio" name="q3" value="guess"> Guess the intended requirement</label><label><input type="radio" name="q3" value="clarify"> Stop and clarify through the responsible workplace process</label></fieldset>
+    <fieldset><legend>4. Does completing KM-04F authorise you to approve fabrication quality or practical work?</legend><label><input type="radio" name="q4" value="yes"> Yes</label><label><input type="radio" name="q4" value="no"> No</label></fieldset>
+    <button class="primary-btn" type="submit">Check my answers</button>
+  </form><div id="quizResult" class="result-card" aria-live="polite"></div></section>
+</main>
+<script src="./storage.js"></script>
+<script>
+const badge=document.getElementById('networkBadge');function network(){const on=navigator.onLine;badge.textContent=on?'ONLINE':'OFFLINE';badge.classList.toggle('offline',!on);}addEventListener('online',network);addEventListener('offline',network);network();
+document.getElementById('quizForm').addEventListener('submit',async e=>{e.preventDefault();const data=new FormData(e.target);const correct={q1:'controlled',q2:'current',q3:'clarify',q4:'no'};let score=0;Object.entries(correct).forEach(([q,a])=>{if(data.get(q)===a)score++;});const result=document.getElementById('quizResult');result.innerHTML=`<strong>${score}/4.</strong> ${score===4?'KM-04F learning slice completed.':'Review the lesson and try again.'} This records learning progress only, not competence, inspection approval or practical authorisation.`;if(score===4&&globalThis.MzansiStore){await MzansiStore.set('km04f-progress',{completed:true,score,completedAt:new Date().toISOString(),build:'0.1B-04F'});}});
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.error);
+</script>
+</body>
+</html>
