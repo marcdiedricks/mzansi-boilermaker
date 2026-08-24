@@ -1,9 +1,10 @@
-const CACHE_NAME = 'mzansi-boilermaker-v0.1b-km04r-02a';
+const CACHE_NAME = 'mzansi-boilermaker-v0.1b-km01r-02';
 
 const APP_SHELL = [
   './',
   './index.html',
   './km01.html',
+  './km01r02.html',
   './km02.html',
   './km03.html',
   './km04a.html',
