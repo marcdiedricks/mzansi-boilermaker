@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="theme-color" content="#1f2937">
+<meta name="description" content="KM-03 Lesson 3 — Computer Numerical Control (CNC) Applications.">
+<link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./assets/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="./styles.css?v=0.1b-km03r-03">
+<title>KM-03 Lesson 3 • Mzansi Boilermaker</title>
+</head><body>
+<header class="app-header"><div><p class="eyebrow">MZANSI BOILERMAKER</p><h1>Artisan Learning Companion</h1></div><span id="networkStatus" class="status-pill">Checking…</span></header>
+<main class="app-main">
+<section class="hero-card"><p class="eyebrow">KM-03 • LESSON 3 OF 4</p><h2>Computer Numerical Control (CNC) Applications</h2><p>Understand what CNC means, where it can support fabrication, its limitations, and why controlled specifications and authorised procedures matter.</p></section>
+<a class="back-btn" href="./km03.html">← KM-03 lessons</a>
+<div class="safety-note"><strong>Learning only.</strong> This lesson explains CNC concepts and safe decision points. It does not teach CNC setup, programming, machine operation, cutting parameters or any other hazardous practical procedure.</div>
+<article class="lesson-stack">
+<section class="lesson-card"><h3>1. What does CNC mean?</h3><p>Computer Numerical Control (CNC) refers to machines whose movements or processes are controlled by programmed numerical information. In fabrication, CNC systems can support repeatable work where approved specifications are converted into controlled machine instructions.</p><p class="key-idea"><strong>Key idea:</strong> CNC does not remove the need for correct drawings, specifications, inspection, authorised procedures or competent supervision.</p></section>
+<section class="lesson-card"><h3>2. Where CNC can be used</h3><p>CNC technology can be applied in fabrication environments for controlled cutting, shaping or other machine processes. The exact application depends on the machine, approved job information and workplace process.</p><p>This lesson focuses on recognition and understanding, not machine operation.</p></section>
+<section class="lesson-card"><h3>3. CNC has limitations</h3><p>A CNC machine can only produce reliable results when the correct information, machine capability, material, tooling, maintenance status and approved process are in place.</p><p>Incorrect specifications, unsuitable materials, machine limitations or unapproved changes can lead to incorrect work or unsafe conditions.</p></section>
+<section class="lesson-card"><h3>4. Controlled specifications matter</h3><p>The curriculum expects learners to understand that component specifications may be captured into a CNC programme. At learner-companion level, the important point is that specifications must come from approved job information and must be checked through the responsible process.</p><p>This app does not provide CNC programming steps or operating instructions.</p></section>
+<section class="lesson-card"><h3>5. CNC and conventional machines are different</h3><p>Conventional machines depend more directly on manual machine control, while CNC machines use programmed numerical instructions to control defined movements or processes. Both still require competent people, approved procedures, inspection and maintenance.</p></section>
+<section class="lesson-card"><h3>6. Stop-and-clarify rule</h3><p>If the programme, drawing, specification, machine status or instruction is unclear, conflicting or outside your training, stop and clarify through the responsible workplace or training process.</p></section>
+<section class="lesson-card"><p class="eyebrow">VISUAL LEARNING • INTERNET REQUIRED</p><h3>Vetted video pending</h3><p>A CNC video will only be added when it supports recognition and context without becoming step-by-step machine setup, programming or operating instruction.</p><p class="helper">The written KM-03 Lesson 3 remains complete and usable offline.</p><div class="safety-note"><strong>Standing rule:</strong> Visual learning is supplementary only and never authorises CNC programming, machine setup, machine operation, practical competence or certification.</div></section>
+</article>
+<section class="panel"><p class="eyebrow">LEARNING CHECK</p><h2>KM-03 Lesson 3 learning check</h2><form id="quiz" class="quiz-form"></form><button id="submit" class="primary-btn" type="button">Check my answers</button><div id="result" class="result-box" aria-live="polite"></div></section>
+</main>
+<footer class="app-footer"><span>SAQA 123381 • KM-03 Lesson 3</span><span>Learning progress only</span></footer>
+<script src="./storage.js"></script><script>
+const questions=[
+{q:'What does CNC describe?',o:['Machine processes controlled by programmed numerical information','Any hand tool used in fabrication','A material identification system'],a:0},
+{q:'What is one limitation of CNC?',o:['It always corrects wrong specifications automatically','Reliable results still depend on correct information, machine capability and approved controls','It removes the need for inspection'],a:1},
+{q:'What should happen if CNC job information or machine status is unclear?',o:['Change the programme until it works','Stop and clarify through the responsible process','Continue if the job is urgent'],a:1},
+{q:'Does completing this lesson authorise CNC programming, setup or machine operation?',o:['Yes','No','Only after 4/4'],a:1}
+];
+const form=document.getElementById('quiz'),result=document.getElementById('result'),status=document.getElementById('networkStatus');
+function updateNetwork(){const online=navigator.onLine;status.textContent=online?'ONLINE':'OFFLINE';status.style.background=online?'#dcfce7':'#fee2e2';}
+questions.forEach((item,i)=>{const section=document.createElement('section');section.className='quiz-question';const fieldset=document.createElement('fieldset');const legend=document.createElement('legend');legend.textContent=`${i+1}. ${item.q}`;fieldset.appendChild(legend);item.o.forEach((option,j)=>{const label=document.createElement('label');label.className='option-row';label.innerHTML=`<input type="radio" name="q${i}" value="${j}"><span>${option}</span>`;fieldset.appendChild(label);});section.appendChild(fieldset);form.appendChild(section);});
+document.getElementById('submit').addEventListener('click',async()=>{let answered=0,score=0;questions.forEach((item,i)=>{const selected=form.querySelector(`input[name="q${i}"]:checked`);if(selected){answered++;if(Number(selected.value)===item.a)score++;}});result.className='result-box show';if(answered<4){result.textContent='Please answer all four questions first.';return;}const completed=score===4;if(globalThis.MzansiStore)await MzansiStore.set('km03r03-progress',{completed,score,updatedAt:new Date().toISOString(),topic:'KM-03-KT03'});result.innerHTML=completed?`<strong>${score}/4.</strong> KM-03 Lesson 3 completed. This records learning progress only, not competence, CNC programming authority, machine authorisation or certification.`:`<strong>${score}/4.</strong> Review the lesson and try again.`;});
+addEventListener('online',updateNetwork);addEventListener('offline',updateNetwork);updateNetwork();if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js'));
+</script></body></html>
