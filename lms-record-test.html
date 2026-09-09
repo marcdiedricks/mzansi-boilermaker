@@ -15,6 +15,11 @@
 <section class="content-card">
 <h3 id="statusTitle">Checking local record…</h3>
 <div id="recordResult" class="result-card" aria-live="polite"></div>
+<div id="exportArea" hidden style="margin-top:1rem">
+  <button id="exportUmla" class="primary-btn" type="button">Export UMLA record</button>
+  <p class="helper">Creates one local JSON handoff file for import into Mzansi Learning Hub. Nothing is uploaded.</p>
+  <div id="exportStatus" class="result-card" aria-live="polite"></div>
+</div>
 </section>
 </main>
 <script src="./storage.js"></script>
@@ -25,6 +30,7 @@ function network(){const on=navigator.onLine;badge.textContent=on?'ONLINE':'OFFL
 (async()=>{
   const title=document.getElementById('statusTitle');
   const box=document.getElementById('recordResult');
+  const exportArea=document.getElementById('exportArea');
   try{
     const events=await MzansiLearningRecord.list();
     if(!events.length){
@@ -45,12 +51,23 @@ function network(){const on=navigator.onLine;badge.textContent=on?'ONLINE':'OFFL
       <p><strong>Score:</strong> ${scoreText}</p>
       <p><strong>Sync:</strong> ${latest.syncStatus||'—'}</p>
       <p><strong>Stored events:</strong> ${events.length}</p>`;
+    exportArea.hidden=false;
   }catch(error){
     title.textContent='RECORD CHECK FAILED';
     box.textContent='The local learning record could not be read.';
     console.error(error);
   }
 })();
+document.getElementById('exportUmla').addEventListener('click',async()=>{
+  const status=document.getElementById('exportStatus');
+  try{
+    const payload=await MzansiLearningRecord.exportLatest();
+    status.textContent=`Export ready: ${payload.events.length} UMLA event saved as JSON.`;
+  }catch(error){
+    status.textContent='Export failed. No UMLA learning event is available yet.';
+    console.error(error);
+  }
+});
 if('serviceWorker'in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.error);
 </script>
 </body>
