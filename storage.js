@@ -1,4 +1,4 @@
-const MzansiStore = (() => {
+globalThis.MzansiStore = (() => {
   const DB_NAME = 'mzansi-boilermaker-db';
   const DB_VERSION = 1;
   const STORE = 'app';
