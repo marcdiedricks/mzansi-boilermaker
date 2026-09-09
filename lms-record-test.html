@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1f2937">
+<title>UMLA Learning Record Test</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="app-header"><div><p class="eyebrow">MZANSI BOILERMAKER</p><h1>UMLA Learning Record Test</h1></div><span id="networkBadge" class="status-pill">CHECKING</span></header>
+<main class="lesson-shell">
+<a class="back-btn" href="./index.html">← Boilermaker home</a>
+<section class="hero-card"><p class="eyebrow">LMS PILOT VERIFICATION</p><h2>Local learning record</h2><p>This page reads the local UMLA learning-event queue only. It does not upload anything.</p></section>
+<section class="content-card">
+<h3 id="statusTitle">Checking local record…</h3>
+<div id="recordResult" class="result-card" aria-live="polite"></div>
+</section>
+</main>
+<script src="./storage.js"></script>
+<script src="./learning-record.js"></script>
+<script>
+const badge=document.getElementById('networkBadge');
+function network(){const on=navigator.onLine;badge.textContent=on?'ONLINE':'OFFLINE';badge.classList.toggle('offline',!on);}addEventListener('online',network);addEventListener('offline',network);network();
+(async()=>{
+  const title=document.getElementById('statusTitle');
+  const box=document.getElementById('recordResult');
+  try{
+    const events=await MzansiLearningRecord.list();
+    if(!events.length){
+      title.textContent='NO UMLA EVENT FOUND';
+      box.innerHTML='<p>No local learning event is stored yet. Return to KM-04 Lesson 3, complete the 4/4 learning check, then reopen this page.</p>';
+      return;
+    }
+    const latest=events[events.length-1];
+    const isPilot=latest.schemaVersion==='UMLA-LR-0.1'&&latest.programmeId==='mzansi-boilermaker'&&latest.moduleId==='KM-04'&&latest.activityId==='KM-04-R03'&&latest.outcome==='PASSED';
+    title.textContent=isPilot?'PASS — UMLA EVENT FOUND':'EVENT FOUND — CHECK DETAILS';
+    box.innerHTML=`
+      <p><strong>Schema:</strong> ${latest.schemaVersion||'—'}</p>
+      <p><strong>Programme:</strong> ${latest.programmeId||'—'}</p>
+      <p><strong>Module:</strong> ${latest.moduleId||'—'}</p>
+      <p><strong>Activity:</strong> ${latest.activityId||'—'}</p>
+      <p><strong>Outcome:</strong> ${latest.outcome||'—'}</p>
+      <p><strong>Score:</strong> ${latest.score ?? '—'}</p>
+      <p><strong>Sync:</strong> ${latest.syncStatus||'—'}</p>
+      <p><strong>Stored events:</strong> ${events.length}</p>`;
+  }catch(error){
+    title.textContent='RECORD CHECK FAILED';
+    box.textContent='The local learning record could not be read.';
+    console.error(error);
+  }
+})();
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.error);
+</script>
+</body>
+</html>
