@@ -50,5 +50,27 @@ globalThis.MzansiLearningRecord = (() => {
     return (await MzansiStore.get(EVENTS_KEY)) || [];
   }
 
-  return { record, list, getLearnerId, schemaVersion: SCHEMA_VERSION };
+  async function exportLatest() {
+    const events = await list();
+    if (!events.length) throw new Error('No UMLA learning event found');
+    const latest = events[events.length - 1];
+    const payload = {
+      handoffVersion: 'UMLA-HANDOFF-0.1',
+      exportedAt: new Date().toISOString(),
+      source: 'mzansi-boilermaker',
+      events: [latest]
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `mzansi-boilermaker-umla-${latest.moduleId || 'record'}-${latest.activityId || 'activity'}.json`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    return payload;
+  }
+
+  return { record, list, exportLatest, getLearnerId, schemaVersion: SCHEMA_VERSION };
 })();
