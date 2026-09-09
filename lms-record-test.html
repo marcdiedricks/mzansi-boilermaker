@@ -33,7 +33,8 @@ function network(){const on=navigator.onLine;badge.textContent=on?'ONLINE':'OFFL
       return;
     }
     const latest=events[events.length-1];
-    const isPilot=latest.schemaVersion==='UMLA-LR-0.1'&&latest.programmeId==='mzansi-boilermaker'&&latest.moduleId==='KM-04'&&latest.activityId==='KM-04-R03'&&latest.outcome==='PASSED';
+    const isPilot=latest.schemaVersion==='UMLA-LR-0.1'&&latest.programmeId==='mzansi-boilermaker'&&latest.moduleId==='KM-04'&&latest.activityId==='KM-04-L03'&&latest.outcome==='passed';
+    const scoreText=latest.score&&typeof latest.score==='object'?`${latest.score.raw ?? '—'}/${latest.score.max ?? '—'} (${latest.score.percent ?? '—'}%)`:String(latest.score ?? '—');
     title.textContent=isPilot?'PASS — UMLA EVENT FOUND':'EVENT FOUND — CHECK DETAILS';
     box.innerHTML=`
       <p><strong>Schema:</strong> ${latest.schemaVersion||'—'}</p>
@@ -41,7 +42,7 @@ function network(){const on=navigator.onLine;badge.textContent=on?'ONLINE':'OFFL
       <p><strong>Module:</strong> ${latest.moduleId||'—'}</p>
       <p><strong>Activity:</strong> ${latest.activityId||'—'}</p>
       <p><strong>Outcome:</strong> ${latest.outcome||'—'}</p>
-      <p><strong>Score:</strong> ${latest.score ?? '—'}</p>
+      <p><strong>Score:</strong> ${scoreText}</p>
       <p><strong>Sync:</strong> ${latest.syncStatus||'—'}</p>
       <p><strong>Stored events:</strong> ${events.length}</p>`;
   }catch(error){
