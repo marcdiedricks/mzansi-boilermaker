@@ -1,4 +1,4 @@
-const MzansiLearningRecord = (() => {
+globalThis.MzansiLearningRecord = (() => {
   const SCHEMA_VERSION = 'UMLA-LR-0.1';
   const EVENTS_KEY = 'learning-events-v0.1';
   const LEARNER_ID_KEY = 'lms-learner-id';
