@@ -95,8 +95,49 @@ This supports the template consistency of the PM/WM layers. Full field behaviour
 4. Confirm no stale Netlify build is being mistaken for the current GitHub baseline.
 5. Only after these gates pass, calculate final readiness score and freeze the Boilermaker baseline.
 
+## FINAL MOBILE / OFFLINE ACCEPTANCE — PASS
+
+Evidence date: 2026-09-21  
+Device/browser: Android mobile / Chrome  
+Production URL: https://mzansi-boilermaker.netlify.app/acceptance-test.html  
+Production baseline tested: cache `mzansi-boilermaker-v0.3c-acceptance`
+
+Observed field evidence:
+- ONLINE acceptance: 8/8 checks passed.
+- OFFLINE relaunch: PASS.
+- OFFLINE acceptance: 8/8 checks passed.
+- Service worker ready: PASS.
+- Current offline cache found: PASS.
+- Critical app-shell files: PASS after checker correction.
+- Local IndexedDB write/read: PASS.
+- Manifest available from installed/cached PWA context: PASS.
+- Browser explicitly reported OFFLINE during final proof.
+
+The first offline run exposed a checker lookup defect, not a PWA cache failure. The checker was corrected, redeployed and rerun. Final online and offline results both passed 8/8.
+
+## FINAL READINESS SCORE — 97 / 100 — GREEN
+
+Scoring basis:
+- Curriculum coverage: 20/20
+- Content depth: 14/15
+- Technical accuracy: 14/15
+- Progression / learning design: 10/10
+- Practical relevance: 9/10
+- Assessments / checks: 10/10
+- Source verification: 5/5
+- Safety boundaries: 5/5
+- Mobile / offline usability: 5/5
+- Pilot completeness: 5/5
+
+Interpretation: GREEN — Pilot Ready.
+
+The three withheld points reflect deliberate conservatism: hazardous practical competence remains outside the app, some official-source inconsistencies are controlled rather than silently normalised, and edition-specific proprietary standards remain governed by the standards register rather than overstated.
+
 ## FREEZE STATUS
 
-NOT FROZEN.
+FROZEN BASELINE — 0.3C  
+Freeze date: 2026-09-21
 
-The content architecture and visual-learning vetting are complete. Source/provenance consistency and final field/offline acceptance remain open.
+This freeze covers the current Boilermaker learner-facing baseline, curriculum mapping, KM/PM/WM support structure, safety boundaries, evidence support, visual-learning control, source/provenance controls and verified offline PWA behaviour.
+
+Any future change must be treated as a post-freeze revision and must pass the relevant Mzansi Build Intelligence change, test, verify and refreeze controls.
