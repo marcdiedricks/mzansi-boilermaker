@@ -41,25 +41,35 @@ Official-document anomalies are not silently corrected in source provenance. The
 
 ## VISUAL LEARNING VETTING PROGRESS — 2026-09-21
 
-- ACTIVE vetted supplementary resources: 25
-- NO SUITABLE VETTED RESOURCE (safety-controlled): 31
-- VETTING REQUIRED: 18
+- ACTIVE vetted supplementary resources: 36
+- NO SUITABLE VETTED RESOURCE (safety/relevance controlled): 38
+- VETTING REQUIRED: 0
 - Total controlled KM lesson rows: 74
+- Learner-facing `visual-learning.html`: built and linked from Learner Tools
+- External resources: internet-only and not cached as dependencies
 
-High-risk lessons are intentionally allowed to close with NO SUITABLE VETTED RESOURCE where an external visual could drift into operational or safety-critical instruction. The complete offline lesson remains the controlling learning resource.
+The visual-learning inventory gate is complete. High-risk rows are intentionally closed without external learner-facing links where available material could drift into operational or safety-critical instruction.
+
+## STANDARDS / LEGISLATION INVESTIGATION — 2026-09-21
+
+- Occupational Health and Safety Act 85 of 1993: official government source rechecked.
+- General Safety Regulations: current government source located and placed under module-specific control.
+- Driven Machinery Regulations: official 2015 regulations and 2017 guidelines rechecked; 2024 lifting-machine-operator training-provider code incorporation noted.
+- Pressure Equipment Regulations, 2009: official government source and guidance rechecked.
+- SANS 347 regulatory relevance confirmed through government pressure-equipment guidance. Edition-specific SABS status remains controlled as UNDER REVIEW before any edition-specific learner claim.
+- `BOILERMAKER_STANDARDS_REGISTER.md`: created.
 
 ## REMAINING PRE-FREEZE GATES
 
-1. Complete the remaining 18 visual-resource vetting rows; 25 are ACTIVE and 31 are safety-controlled as NO SUITABLE VETTED RESOURCE.
-2. Check learner-facing source/provenance wording across all KM/PM/WM pages.
-3. Verify any specific standards references against the Standard Register before publication.
-4. Run full mobile online/offline acceptance test on the deployed PWA.
-5. Verify fresh install, offline relaunch, module navigation, quiz/progress storage, evidence storage and restore paths.
-6. Confirm no stale Netlify build is being mistaken for the current GitHub baseline.
-7. Only after these gates pass, calculate final readiness score and freeze the Boilermaker baseline.
+1. Check learner-facing source/provenance wording across all KM/PM/WM pages.
+2. Verify any edition-specific technical-standard references against BOILERMAKER_STANDARDS_REGISTER.md before publication.
+3. Run full mobile online/offline acceptance test on the deployed PWA.
+4. Verify fresh install, offline relaunch, module navigation, quiz/progress storage, evidence storage and restore paths.
+5. Confirm no stale Netlify build is being mistaken for the current GitHub baseline.
+6. Only after these gates pass, calculate final readiness score and freeze the Boilermaker baseline.
 
 ## FREEZE STATUS
 
 NOT FROZEN.
 
-The content architecture is substantially complete, but visual vetting and final field/offline acceptance remain open.
+The content architecture and visual-learning vetting are complete. Source/provenance consistency and final field/offline acceptance remain open.
