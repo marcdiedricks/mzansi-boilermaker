@@ -8,7 +8,7 @@
 <section class="content-card"><h3>Offline confirmation</h3><p>After this check shows the app shell is cached, switch off Wi-Fi/mobile data, close the PWA, reopen it from the Home Screen, return to this page and run the check again. The network line should show OFFLINE while the cached-shell checks still pass.</p></section>
 </main><footer class="app-footer"><span>Pre-freeze acceptance</span><span>Device-local checks only</span></footer>
 <script src="./storage.js"></script><script>
-const expectedCache='mzansi-boilermaker-v0.3b-visual-library';
+const expectedCache='mzansi-boilermaker-v0.3c-acceptance';
 const critical=['./index.html','./visual-learning.html','./km01.html','./pm01.html','./wm01.html','./styles.css','./app.js','./manifest.webmanifest'];
 const results=document.getElementById('results'),summary=document.getElementById('summary'),net=document.getElementById('net');
 function updateNet(){const on=navigator.onLine;net.textContent=on?'ONLINE':'OFFLINE';net.style.background=on?'#dcfce7':'#fee2e2'}addEventListener('online',updateNet);addEventListener('offline',updateNet);updateNet();
