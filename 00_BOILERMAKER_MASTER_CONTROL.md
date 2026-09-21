@@ -3,7 +3,7 @@
 ## MZANSI BOILERMAKER ARTISAN AGENT
 ### Master Qualification, Curriculum, Authority, Standards, Safety and Build-Control File
 Version: 1.0  
-Status: CONTROLLED MASTER SOURCE  
+Status: CONTROLLED MASTER SOURCE — FROZEN BASELINE 0.3C (2026-09-21)  
 Country: South Africa  
 Trade: Boilermaker  
 Primary Qualification: National Occupational Certificate: Boilermaker  
@@ -1210,3 +1210,27 @@ Future curriculum expansion: CONTROLLED BY THIS FILE
 ---
 
 # END OF CONTROL FILE
+
+
+---
+
+## FROZEN BASELINE 0.3C
+
+Freeze date: 2026-09-21  
+Readiness: GREEN — 97/100  
+Mobile online acceptance: 8/8 PASS  
+Mobile offline acceptance: 8/8 PASS  
+Offline relaunch: PASS
+
+Scope frozen:
+- KM-01 to KM-14
+- PM-01 to PM-09 preparation/evidence support
+- WM-01 to WM-05 workplace-evidence support
+- 74-lesson visual-learning control inventory
+- learner-facing vetted visual library
+- safety router and human-handoff boundaries
+- local evidence capture and storage
+- service-worker offline shell
+- standards/source/provenance controls
+
+This freeze does not claim accreditation, assessor authority, workplace competence, trade-test equivalence or practical authorisation.
