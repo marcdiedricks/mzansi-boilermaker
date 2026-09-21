@@ -59,9 +59,25 @@ The visual-learning inventory gate is complete. High-risk rows are intentionally
 - SANS 347 regulatory relevance confirmed through government pressure-equipment guidance. Edition-specific SABS status remains controlled as UNDER REVIEW before any edition-specific learner claim.
 - `BOILERMAKER_STANDARDS_REGISTER.md`: created.
 
+## SOURCE / VISUAL CONTROL AUDIT — 2026-09-21
+
+- All 74 KM lesson pages were checked for source/safety/quiz structure.
+- One provenance gap was found in `km01r02.html`; the official CHIETA curriculum source block has now been added.
+- Result after correction: 74/74 KM lesson pages carry curriculum/source provenance, a safety boundary and a learner check.
+- Older scattered visual-learning links found in early KM-01 to KM-04 lessons are being centralised through `visual-learning.html` and `BOILERMAKER_VISUAL_LEARNING_LIBRARY.md`.
+- Direct older visual sections already centralised: KM-01 lessons 1–4, KM-02 lessons 1–2, KM-03 lessons 2–4, and KM-04 lessons 1–3.
+- Current controlled visual inventory: 36 ACTIVE, 38 NO SUITABLE VETTED RESOURCE, 0 pending.
+
+## LATEST STATIC INTEGRITY CHECK — 2026-09-21
+
+- Service-worker cached paths checked against repository tree: PASS — no missing cached paths
+- Learner-home internal links checked against repository tree: PASS — no missing targets
+- Learner-facing visual library exists and is linked from Learner Tools.
+- `km01r02.html` official-source marker after correction: PASS
+
 ## REMAINING PRE-FREEZE GATES
 
-1. Check learner-facing source/provenance wording across all KM/PM/WM pages.
+1. Complete final provenance spot-check across PM/WM pages and confirm no uncontrolled external learner-facing links remain.
 2. Verify any edition-specific technical-standard references against BOILERMAKER_STANDARDS_REGISTER.md before publication.
 3. Run full mobile online/offline acceptance test on the deployed PWA.
 4. Verify fresh install, offline relaunch, module navigation, quiz/progress storage, evidence storage and restore paths.
