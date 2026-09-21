@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mzansi-boilermaker-v0.3-wm-complete';
+const CACHE_NAME = 'mzansi-boilermaker-v0.3a-visual-control';
 
 const APP_SHELL = [
   './',
@@ -197,6 +197,7 @@ const APP_SHELL = [
   './wm05we07.html',
   './wm05we08.html',
   './wm05we09.html',
+  './BOILERMAKER_VISUAL_LEARNING_LIBRARY.md',
   './lms-record-test.html',
   './styles.css',
   './app.js',
