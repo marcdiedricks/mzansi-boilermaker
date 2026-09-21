@@ -1,12 +1,3 @@
-const quizQuestions = [
-  { q: 'What is the main purpose of a technical drawing?', options: ['Decoration', 'Technical communication', 'Advertising', 'Entertainment'], answer: 1 },
-  { q: 'Which view represents an object from above?', options: ['Side view', 'Front view', 'Top view', 'Bottom note'], answer: 2 },
-  { q: 'What does a dimension communicate?', options: ['A measurement', 'The learner name', 'Internet speed', 'The app colour'], answer: 0 },
-  { q: 'If you do not understand a drawing symbol, what should you do?', options: ['Guess', 'Ignore it', 'Verify what it means', 'Replace it'], answer: 2 },
-  { q: 'A drawing says a component is 300 mm long. It looks small on your phone. What stated length should you use?', options: ['Whatever looks correct', '300 mm', 'The phone width', '5 cm'], answer: 1 },
-  { q: 'Why can several views be shown?', options: ['To make the page fuller', 'To describe the same object from different directions', 'To change the component', 'To confuse the reader'], answer: 1 }
-];
-
 const fallbackSafetyPolicy = {
   policyVersion: '0.1A-02',
   rules: [
@@ -24,10 +15,6 @@ const views = [...document.querySelectorAll('.view')];
 const networkStatus = document.getElementById('networkStatus');
 const learnerName = document.getElementById('learnerName');
 const learnerSaved = document.getElementById('learnerSaved');
-const quizForm = document.getElementById('quizForm');
-const quizResult = document.getElementById('quizResult');
-const pathProgress = document.getElementById('pathProgress');
-const pathProgressText = document.getElementById('pathProgressText');
 const safetyScenario = document.getElementById('safetyScenario');
 const safetyDecision = document.getElementById('safetyDecision');
 const policyVersion = document.getElementById('policyVersion');
@@ -49,11 +36,12 @@ document.querySelectorAll('[data-open]').forEach(button => {
   button.addEventListener('click', () => openView(button.dataset.open));
 });
 
-document.getElementById('safetyBtn').addEventListener('click', () => openView('safetyView'));
-document.getElementById('startQuizBtn').addEventListener('click', () => openView('quizView'));
+const safetyBtn = document.getElementById('safetyBtn');
+if (safetyBtn) safetyBtn.addEventListener('click', () => openView('safetyView'));
 
 function updateNetwork() {
   const online = navigator.onLine;
+  if (!networkStatus) return;
   networkStatus.textContent = online ? 'ONLINE' : 'OFFLINE';
   networkStatus.style.background = online ? '#dcfce7' : '#fee2e2';
 }
@@ -64,85 +52,27 @@ updateNetwork();
 async function loadSavedState() {
   try {
     const savedLearner = await MzansiStore.get('learner');
-    const savedProgress = await MzansiStore.get('km07-progress');
     const savedSafety = await MzansiStore.get('latest-safety-decision');
-    if (savedLearner?.name) learnerName.value = savedLearner.name;
-    applyProgress(savedProgress || { completed: false, score: null, attempts: 0 });
+    if (savedLearner?.name && learnerName) learnerName.value = savedLearner.name;
     if (savedSafety?.ruleId) renderSafetyDecision(savedSafety, true);
   } catch (error) {
     console.error('Local storage unavailable', error);
   }
 }
 
-document.getElementById('saveLearnerBtn').addEventListener('click', async () => {
-  const name = learnerName.value.trim();
+const saveLearnerBtn = document.getElementById('saveLearnerBtn');
+if (saveLearnerBtn) saveLearnerBtn.addEventListener('click', async () => {
+  const name = learnerName?.value.trim() || '';
   if (!name) {
-    learnerSaved.textContent = 'Please enter a learner name first.';
+    if (learnerSaved) learnerSaved.textContent = 'Please enter a learner name first.';
     return;
   }
   await MzansiStore.set('learner', { name, updatedAt: new Date().toISOString() });
-  learnerSaved.textContent = `Saved locally for ${name}.`;
-});
-
-function renderQuiz() {
-  quizForm.innerHTML = '';
-  quizQuestions.forEach((item, index) => {
-    const section = document.createElement('section');
-    section.className = 'quiz-question';
-    const fieldset = document.createElement('fieldset');
-    const legend = document.createElement('legend');
-    legend.textContent = `${index + 1}. ${item.q}`;
-    fieldset.appendChild(legend);
-    item.options.forEach((option, optionIndex) => {
-      const label = document.createElement('label');
-      label.className = 'option-row';
-      const input = document.createElement('input');
-      input.type = 'radio';
-      input.name = `q${index}`;
-      input.value = String(optionIndex);
-      const text = document.createElement('span');
-      text.textContent = option;
-      label.append(input, text);
-      fieldset.appendChild(label);
-    });
-    section.appendChild(fieldset);
-    quizForm.appendChild(section);
-  });
-}
-
-function applyProgress(progress) {
-  const percent = progress.completed ? 100 : progress.attempts > 0 ? 50 : 0;
-  pathProgress.style.width = `${percent}%`;
-  pathProgressText.textContent = progress.completed ? `100% complete • latest score ${progress.score}/6` : `${percent}% complete`;
-}
-
-document.getElementById('submitQuizBtn').addEventListener('click', async () => {
-  let score = 0;
-  let answered = 0;
-  quizQuestions.forEach((item, index) => {
-    const selected = quizForm.querySelector(`input[name="q${index}"]:checked`);
-    if (selected) {
-      answered += 1;
-      if (Number(selected.value) === item.answer) score += 1;
-    }
-  });
-  if (answered < quizQuestions.length) {
-    quizResult.className = 'result-box show';
-    quizResult.textContent = 'Please answer all six questions before checking your answers.';
-    return;
-  }
-  const oldProgress = (await MzansiStore.get('km07-progress')) || { attempts: 0 };
-  const completed = score >= 4;
-  const progress = { completed, score, attempts: (oldProgress.attempts || 0) + 1, updatedAt: new Date().toISOString() };
-  await MzansiStore.set('km07-progress', progress);
-  applyProgress(progress);
-  quizResult.className = 'result-box show';
-  quizResult.innerHTML = completed
-    ? `<strong>${score}/6.</strong> Learning slice completed. This records learning progress only, not official competence.`
-    : `<strong>${score}/6.</strong> Let’s review the parts that were difficult, then try again.`;
+  if (learnerSaved) learnerSaved.textContent = `Saved locally for ${name}.`;
 });
 
 function populateSafetyOptions() {
+  if (!safetyScenario) return;
   safetyScenario.innerHTML = '<option value="">Choose an activity</option>';
   safetyPolicy.rules.forEach(rule => {
     const option = document.createElement('option');
@@ -150,10 +80,11 @@ function populateSafetyOptions() {
     option.textContent = rule.label;
     safetyScenario.appendChild(option);
   });
-  policyVersion.textContent = `Local safety policy ${safetyPolicy.policyVersion}`;
+  if (policyVersion) policyVersion.textContent = `Local safety policy ${safetyPolicy.policyVersion}`;
 }
 
 function renderSafetyDecision(record, restored = false) {
+  if (!safetyDecision) return;
   const rule = safetyPolicy.rules.find(item => item.id === record.ruleId) || record;
   if (!rule?.decision) return;
   const classMap = { ALLOW: 'allow', ALLOW_WITH_CONTROLS: 'controlled', HUMAN_REQUIRED: 'human-required', DENY: 'deny' };
@@ -172,11 +103,14 @@ async function loadSafetyPolicy() {
   populateSafetyOptions();
 }
 
-document.getElementById('checkSafetyBtn').addEventListener('click', async () => {
-  const rule = safetyPolicy.rules.find(item => item.id === safetyScenario.value);
+const checkSafetyBtn = document.getElementById('checkSafetyBtn');
+if (checkSafetyBtn) checkSafetyBtn.addEventListener('click', async () => {
+  const rule = safetyPolicy.rules.find(item => item.id === safetyScenario?.value);
   if (!rule) {
-    safetyDecision.className = 'safety-decision show controlled';
-    safetyDecision.innerHTML = '<h3>Choose an activity first</h3><p>Select the closest activity so the local policy gate can classify it.</p>';
+    if (safetyDecision) {
+      safetyDecision.className = 'safety-decision show controlled';
+      safetyDecision.innerHTML = '<h3>Choose an activity first</h3><p>Select the closest activity so the local policy gate can classify it.</p>';
+    }
     return;
   }
   const record = { ruleId: rule.id, tier: rule.tier, decision: rule.decision, heading: rule.heading, message: rule.message, policyVersion: safetyPolicy.policyVersion, updatedAt: new Date().toISOString() };
@@ -207,6 +141,7 @@ async function getEvidenceItems() {
 }
 
 async function renderEvidenceQueue() {
+  if (!evidenceQueue) return;
   const items = await getEvidenceItems();
   evidenceQueue.innerHTML = '';
   if (!items.length) {
@@ -239,24 +174,25 @@ function escapeHtml(value) {
     .replaceAll("'", '&#039;');
 }
 
-document.getElementById('saveEvidenceBtn').addEventListener('click', async () => {
-  const title = evidenceTitleInput.value.trim();
-  const type = evidenceType.value;
-  const module = evidenceModule.value;
-  const notes = evidenceNotes.value.trim();
-  const file = evidenceFile.files?.[0] || null;
+const saveEvidenceBtn = document.getElementById('saveEvidenceBtn');
+if (saveEvidenceBtn) saveEvidenceBtn.addEventListener('click', async () => {
+  const title = evidenceTitleInput?.value.trim() || '';
+  const type = evidenceType?.value || '';
+  const module = evidenceModule?.value || '';
+  const notes = evidenceNotes?.value.trim() || '';
+  const file = evidenceFile?.files?.[0] || null;
 
   if (!title || !type) {
-    evidenceMessage.textContent = 'Add an evidence title and choose an evidence type first.';
+    if (evidenceMessage) evidenceMessage.textContent = 'Add an evidence title and choose an evidence type first.';
     return;
   }
   if (file && file.size > 8 * 1024 * 1024) {
-    evidenceMessage.textContent = 'This file is larger than the 8 MB pilot limit. Choose a smaller file.';
+    if (evidenceMessage) evidenceMessage.textContent = 'This file is larger than the 8 MB pilot limit. Choose a smaller file.';
     return;
   }
 
   const learner = await MzansiStore.get('learner');
-  evidenceMessage.textContent = file ? 'Saving attachment locally…' : 'Saving evidence locally…';
+  if (evidenceMessage) evidenceMessage.textContent = file ? 'Saving attachment locally…' : 'Saving evidence locally…';
 
   let hash = null;
   try {
@@ -287,11 +223,11 @@ document.getElementById('saveEvidenceBtn').addEventListener('click', async () =>
   items.push(item);
   await MzansiStore.set('evidence-items', items);
 
-  evidenceTitleInput.value = '';
-  evidenceType.value = '';
-  evidenceNotes.value = '';
-  evidenceFile.value = '';
-  evidenceMessage.textContent = 'Evidence captured locally. It is not verified and has not been uploaded.';
+  if (evidenceTitleInput) evidenceTitleInput.value = '';
+  if (evidenceType) evidenceType.value = '';
+  if (evidenceNotes) evidenceNotes.value = '';
+  if (evidenceFile) evidenceFile.value = '';
+  if (evidenceMessage) evidenceMessage.textContent = 'Evidence captured locally. It is not verified and has not been uploaded.';
   await renderEvidenceQueue();
 });
 
@@ -301,5 +237,4 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-renderQuiz();
 loadSafetyPolicy().then(loadSavedState);
