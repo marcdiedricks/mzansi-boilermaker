@@ -245,17 +245,17 @@ Learning support does not convert a knowledge activity into practical competence
     NQF Level 4  
     6 credits
 
-12. 651302-000-01-KM-12  
+12. 653201-000-01-KM-12  
     Workplace Relationships and Performance  
     NQF Level 4  
     6 credits
 
-13. 651302-000-01-KM-13  
+13. 653202-000-01-KM-13  
     Decision Making  
     NQF Level 4  
     6 credits
 
-14. 651302-000-01-KM-14  
+14. 651302-001-00-KM-14  
     Basic Slinging and Lifting, and Load Securing Operations  
     NQF Level 2  
     15 credits
@@ -320,7 +320,7 @@ Learning support does not convert a knowledge activity into practical competence
 
 2. 651302-000-01-WM-02  
    Tools, Equipment and Machinery Maintenance and Operation Processes  
-   NQF Level 4  
+   NQF Level 3  
    30 credits
 
 3. 651302-000-01-WM-03  
@@ -337,6 +337,19 @@ Learning support does not convert a knowledge activity into practical competence
    Assembling and Erecting Processes for Structures and Components  
    NQF Level 4  
    40 credits
+
+## CURRENT CURRICULUM CODE RECONCILIATION — 2026-09-21
+
+The current CHIETA curriculum summary has been rechecked for the following controlled identifiers:
+
+- KM-11: 651302-000-01-KM-11
+- KM-12: 653201-000-01-KM-12
+- KM-13: 653202-000-01-KM-13
+- KM-14: 651302-001-00-KM-14
+- WM-02: 651302-000-01-WM-02, NQF Level 3, 30 credits
+
+Where later detailed pages in the official curriculum contain inconsistent identifiers or copied wording, those anomalies must remain recorded rather than silently normalised. The summary-module table above is the current controlling mapping unless a newer official correction is issued.
+
 
 ---
 
