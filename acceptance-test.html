@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#1f2937"><title>PWA Acceptance Check • Mzansi Boilermaker</title><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./assets/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="./styles.css?v=0.3c-acceptance"></head><body>
+<header class="app-header"><div><p class="eyebrow">MZANSI BOILERMAKER</p><h1>PWA Acceptance Check</h1></div><span id="net" class="status-pill">Checking…</span></header>
+<main class="app-main"><a class="back-btn" href="./index.html">← Learner Home</a>
+<section class="hero-card"><p class="eyebrow">PRE-FREEZE FIELD CHECK</p><h2>One-tap PWA health check</h2><p>This page checks the current browser/device for the core offline app shell, service worker and local storage. It does not test trade competence or practical work.</p></section>
+<div class="safety-note"><strong>No learner data is sent anywhere by this check.</strong> A temporary local test value is written to the app database and read back on this device.</div>
+<section class="panel"><button id="runBtn" class="primary-btn" type="button">Run PWA Check</button><p id="summary" class="helper" aria-live="polite"></p></section>
+<section class="content-card"><h3>Results</h3><div id="results"></div></section>
+<section class="content-card"><h3>Offline confirmation</h3><p>After this check shows the app shell is cached, switch off Wi-Fi/mobile data, close the PWA, reopen it from the Home Screen, return to this page and run the check again. The network line should show OFFLINE while the cached-shell checks still pass.</p></section>
+</main><footer class="app-footer"><span>Pre-freeze acceptance</span><span>Device-local checks only</span></footer>
+<script src="./storage.js"></script><script>
+const expectedCache='mzansi-boilermaker-v0.3b-visual-library';
+const critical=['./index.html','./visual-learning.html','./km01.html','./pm01.html','./wm01.html','./styles.css','./app.js','./manifest.webmanifest'];
+const results=document.getElementById('results'),summary=document.getElementById('summary'),net=document.getElementById('net');
+function updateNet(){const on=navigator.onLine;net.textContent=on?'ONLINE':'OFFLINE';net.style.background=on?'#dcfce7':'#fee2e2'}addEventListener('online',updateNet);addEventListener('offline',updateNet);updateNet();
+function row(name,pass,detail){const el=document.createElement('div');el.className='result-card';el.innerHTML='<strong>'+(pass?'PASS':'FAIL')+' — '+name+'</strong><p>'+detail+'</p>';results.appendChild(el);return pass}
+async function run(){
+results.innerHTML='';summary.textContent='Running checks…';let pass=0,total=0;
+total++;pass+=row('Secure context',window.isSecureContext,'HTTPS/secure browser context is '+(window.isSecureContext?'available.':'not available.'))?1:0;
+total++;const swSupport='serviceWorker'in navigator;pass+=row('Service worker support',swSupport,swSupport?'Supported by this browser.':'Not supported by this browser.')?1:0;
+if(swSupport){try{await navigator.serviceWorker.register('./service-worker.js');await navigator.serviceWorker.ready;total++;pass+=row('Service worker ready',true,'Registration is active or ready on this device.')?1:0}catch(e){total++;row('Service worker ready',false,String(e))}}
+try{const names=await caches.keys();const has=names.includes(expectedCache);total++;pass+=row('Current offline cache',has,has?'Found '+expectedCache+'.':'Current cache not found yet. Reload once while online and run again.')?1:0;
+if(has){const cache=await caches.open(expectedCache);const missing=[];for(const p of critical){const r=await cache.match(p);if(!r)missing.push(p)}total++;const ok=missing.length===0;pass+=row('Critical app shell files',ok,ok?'All '+critical.length+' critical files are cached.':'Missing: '+missing.join(', '))?1:0}}catch(e){total++;row('Cache storage',false,String(e))}
+try{const test={value:'ok',at:new Date().toISOString()};await MzansiStore.set('__acceptance_test__',test);const got=await MzansiStore.get('__acceptance_test__');total++;const ok=got?.value==='ok';pass+=row('Local IndexedDB storage',ok,ok?'Write/read test passed.':'Write/read test failed.')?1:0}catch(e){total++;row('Local IndexedDB storage',false,String(e))}
+try{const r=await fetch('./manifest.webmanifest',{cache:'no-store'});total++;pass+=row('Web app manifest',r.ok,r.ok?'Manifest is reachable.':'Manifest request failed: '+r.status)?1:0}catch(e){total++;row('Web app manifest',false,'Unavailable in current network state; if offline, this is acceptable only when the app was previously installed/cached.')}
+total++;pass+=row('Network state',true,navigator.onLine?'Device currently reports ONLINE.':'Device currently reports OFFLINE.');
+summary.textContent=pass+'/'+total+' checks passed. '+(pass===total?'Core browser/device checks passed.':'Review any FAIL item before freeze.');
+}
+document.getElementById('runBtn').addEventListener('click',run);
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./service-worker.js').catch(()=>{});
+</script></body></html>
