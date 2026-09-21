@@ -75,14 +75,25 @@ The visual-learning inventory gate is complete. High-risk rows are intentionally
 - Learner-facing visual library exists and is linked from Learner Tools.
 - `km01r02.html` official-source marker after correction: PASS
 
+## PM / WM PROVENANCE SPOT-CHECK — 2026-09-21
+
+Representative first competency pages from PM-01 through PM-09 and WM-01 through WM-05 were checked.
+
+Result: 14/14 PASS for:
+- official CHIETA source/provenance marker;
+- explicit safety/supervision or evidence boundary;
+- learner preparation/evidence check;
+- no uncontrolled external learner-facing links beyond the official curriculum source.
+
+This supports the template consistency of the PM/WM layers. Full field behaviour still requires deployed-device testing before freeze.
+
 ## REMAINING PRE-FREEZE GATES
 
-1. Complete final provenance spot-check across PM/WM pages and confirm no uncontrolled external learner-facing links remain.
-2. Verify any edition-specific technical-standard references against BOILERMAKER_STANDARDS_REGISTER.md before publication.
-3. Run full mobile online/offline acceptance test on the deployed PWA.
-4. Verify fresh install, offline relaunch, module navigation, quiz/progress storage, evidence storage and restore paths.
-5. Confirm no stale Netlify build is being mistaken for the current GitHub baseline.
-6. Only after these gates pass, calculate final readiness score and freeze the Boilermaker baseline.
+1. Verify any edition-specific technical-standard references against BOILERMAKER_STANDARDS_REGISTER.md before publication.
+2. Run full mobile online/offline acceptance test on the deployed PWA.
+3. Verify fresh install, offline relaunch, module navigation, quiz/progress storage, evidence storage and restore paths.
+4. Confirm no stale Netlify build is being mistaken for the current GitHub baseline.
+5. Only after these gates pass, calculate final readiness score and freeze the Boilermaker baseline.
 
 ## FREEZE STATUS
 
