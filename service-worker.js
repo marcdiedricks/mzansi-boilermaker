@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mzansi-boilermaker-v0.1e-umla-export-01';
+const CACHE_NAME = 'mzansi-boilermaker-v0.1f-km04-complete';
 
 const APP_SHELL = [
   './',
@@ -30,6 +30,12 @@ const APP_SHELL = [
   './km04r01.html',
   './km04r02.html',
   './km04r03.html',
+  './km04r04.html',
+  './km04r05.html',
+  './km04r06.html',
+  './km04r07.html',
+  './km04r08.html',
+  './km04r09.html',
   './lms-record-test.html',
   './styles.css',
   './app.js',
