@@ -205,7 +205,7 @@ Learning support does not convert a knowledge activity into practical competence
    NQF Level 4  
    28 credits
 
-7. 651302-000-01-KM-07  
+7. 651302-001-00-KM-07  
    Boilermaker's Drawings  
    NQF Level 4  
    12 credits
@@ -987,7 +987,7 @@ Current Phase 0.1A infrastructure includes:
 
 Current pilot anchor:
 
-651302-000-01-KM-07  
+651302-001-00-KM-07  
 Boilermaker's Drawings  
 NQF Level 4  
 12 credits
