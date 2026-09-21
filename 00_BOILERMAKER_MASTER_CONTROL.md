@@ -46,6 +46,21 @@ VISUAL LEARNING CONTROL:
 Every learner-facing lesson must include a clearly marked “VISUAL LEARNING • INTERNET REQUIRED” section with at least one vetted video link where a suitable resource exists. The written lesson must remain complete and usable offline. Video is supplementary only and must support understanding, recognition or context. Videos must not authorise hazardous practical work, replace supervision, or be treated as evidence of competence, assessment or certification. Prefer South African, relevant, low-data and appropriate-language resources where practical. Video links must be checked for relevance and availability during build and testing.
   
 
+## VISUAL LEARNING LIBRARY — IMPLEMENTED CONTROL
+
+The cross-trade Mzansi Artisan Core visual-learning standard is mandatory for this trade build.
+
+Core control source: `mzansi-artisan-core/core/VISUAL_LEARNING_REFERENCE_STANDARD.md`
+
+Trade library: `BOILERMAKER_VISUAL_LEARNING_LIBRARY.md`
+
+The Boilermaker visual library contains the controlled inventory for all 74 current KM learner-facing lessons. External visual links are supplementary and internet-only; they are never cached as lesson dependencies. A lesson is not visually complete until its library row is either ACTIVE with a vetted resource or explicitly marked NO SUITABLE VETTED RESOURCE with a checked date. Hazardous-topic resources are restricted to theory, recognition, safety awareness, drawings, inspection, quality and process overview; operational tutorials are excluded.
+
+Build sequence:
+
+CURRICULUM CONTENT → OFFLINE LESSON → KNOWLEDGE CHECK → SAFETY BOUNDARY → VISUAL LEARNING REFERENCE → OFFLINE VERIFICATION → FREEZE
+
+
 ---
 
 # 2. FROZEN PRODUCT POSITION
