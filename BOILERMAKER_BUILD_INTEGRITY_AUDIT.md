@@ -39,9 +39,18 @@ Verified against the current official CHIETA curriculum summary:
 
 Official-document anomalies are not silently corrected in source provenance. They remain audit notes where detailed sections conflict with summary tables or contain copied cross-trade wording.
 
+## VISUAL LEARNING VETTING PROGRESS — 2026-09-21
+
+- ACTIVE vetted supplementary resources: 25
+- NO SUITABLE VETTED RESOURCE (safety-controlled): 31
+- VETTING REQUIRED: 18
+- Total controlled KM lesson rows: 74
+
+High-risk lessons are intentionally allowed to close with NO SUITABLE VETTED RESOURCE where an external visual could drift into operational or safety-critical instruction. The complete offline lesson remains the controlling learning resource.
+
 ## REMAINING PRE-FREEZE GATES
 
-1. Complete visual-resource vetting for all 74 KM inventory rows: each must become ACTIVE or NO SUITABLE VETTED RESOURCE with a checked date.
+1. Complete the remaining 18 visual-resource vetting rows; 25 are ACTIVE and 31 are safety-controlled as NO SUITABLE VETTED RESOURCE.
 2. Check learner-facing source/provenance wording across all KM/PM/WM pages.
 3. Verify any specific standards references against the Standard Register before publication.
 4. Run full mobile online/offline acceptance test on the deployed PWA.
