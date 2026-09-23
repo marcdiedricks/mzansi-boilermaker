@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mzansi-boilermaker-v0.3c-acceptance';
+const CACHE_NAME = 'mzansi-boilermaker-v0.3c-iconfix';
 
 const APP_SHELL = [
   './',
@@ -205,7 +205,9 @@ const APP_SHELL = [
   './readiness-ui.js',
   './safety-rules.json',
   './manifest.webmanifest',
-  './assets/icon.svg'
+  './assets/icon.svg',
+  './assets/icon-192.png',
+  './assets/icon-512.png'
 ];
 
 self.addEventListener('install', event => {
