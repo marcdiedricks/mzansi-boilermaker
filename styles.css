@@ -187,3 +187,31 @@ a.primary-btn { width: auto; }
   .qualification-switch { grid-template-columns:repeat(3,minmax(0,1fr)); }
   .compact-action-grid,.compact-secondary-tools { grid-template-columns:1fr 1fr; }
 }
+
+/* Compact workspace overflow hardening */
+.app-header > div { min-width:0; }
+.app-header h1,
+.app-header .eyebrow,
+.compact-hero h2,
+.workspace-intro,
+.km-name,
+.km-meta,
+.menu-title,
+.menu-copy,
+.local-data-note,
+.home-safety-note { overflow-wrap:anywhere; word-break:normal; }
+.workspace-nav,
+.qualification-switch,
+.compact-action-grid,
+.compact-secondary-tools,
+.km-box-grid { min-width:0; }
+.workspace-btn,
+.qualification-switch a,
+.compact-action-grid > *,
+.compact-secondary-tools > *,
+.km-box { max-width:100%; min-width:0; }
+@media (max-width:340px) {
+  .app-header { align-items:flex-start; flex-wrap:wrap; }
+  .status-pill { margin-left:0; }
+  .workspace-nav { grid-template-columns:1fr; }
+}
