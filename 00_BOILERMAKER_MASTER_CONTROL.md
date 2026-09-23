@@ -1282,5 +1282,15 @@ Pre-deploy structural verification:
 - long module list removed from Home: PASS;
 - no Netlify deployment performed.
 
+Static/mobile verification — PASS:
+- all local href/src targets referenced by the revised landing shell resolve to repository files;
+- all data-open view targets resolve;
+- KM / PM / WM anchor targets resolve;
+- no duplicate learner navigation was retained on Home;
+- narrow-screen overflow hardening added, including 340px fallback;
+- existing engine scripts remain unchanged and linked;
+- service-worker cache advanced to `mzansi-boilermaker-v0.3d-compact1` for the milestone release;
+- no Netlify deployment performed during this gate.
+
 Next gate:
-Static/build verification and mobile overflow review. Deploy only after that gate passes and the change is treated as a genuine milestone.
+Create controlled pull request, review changed-file scope, then merge/deploy once as a genuine compact-workspace milestone.
