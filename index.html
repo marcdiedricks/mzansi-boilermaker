@@ -13,71 +13,144 @@
 <body>
 <header class="app-header"><div><p class="eyebrow">MZANSI BOILERMAKER</p><h1>Artisan Learning Companion</h1></div><span id="networkStatus" class="status-pill">Checking…</span></header>
 <main class="app-main">
-<section id="homeView" class="view active" aria-labelledby="homeTitle">
-<div class="hero-card"><p class="eyebrow">LEARNER HOME</p><h2 id="homeTitle">Learn one module at a time.</h2><p>Use the Knowledge, Practical Skills and Work Experience sections below. Core learning stays usable offline.</p></div>
-<section class="panel"><h2>Learner profile</h2><label for="learnerName">Your name</label><input id="learnerName" type="text" autocomplete="name" placeholder="Enter learner name"><button id="saveLearnerBtn" class="primary-btn" type="button">Save learner</button><p id="learnerSaved" class="helper" aria-live="polite"></p></section>
 
-<section aria-labelledby="knowledgeModulesTitle">
+<section id="homeView" class="view active" aria-labelledby="homeTitle">
+  <div class="compact-home">
+    <div class="compact-hero">
+      <p class="eyebrow">MZANSI BOILERMAKER</p>
+      <h2 id="homeTitle">Artisan Learning Companion</h2>
+      <p class="compact-qualification">SAQA 123381 · NQF 4 · 540 credits</p>
+      <p class="compact-motto">LEARN. PRACTISE. PREPARE.</p>
+    </div>
+
+    <nav class="workspace-nav" aria-label="Student workspace">
+      <button class="workspace-btn active" data-open="homeView" type="button"><strong>HOME</strong><span>Start here</span></button>
+      <button class="workspace-btn" data-open="learnView" type="button"><strong>LEARN</strong><span>KM · PM · WM</span></button>
+      <button class="workspace-btn" data-open="askView" type="button"><strong>ASK</strong><span>Guided help</span></button>
+      <button class="workspace-btn" data-open="toolsView" type="button"><strong>TOOLS</strong><span>Learner utilities</span></button>
+      <button class="workspace-btn" data-open="referenceView" type="button"><strong>REFERENCE</strong><span>Safety · visuals</span></button>
+      <button class="workspace-btn" data-open="checkView" type="button"><strong>CHECK</strong><span>Progress · readiness</span></button>
+    </nav>
+
+    <div class="home-safety-note"><strong>Safety:</strong> practical and workplace activities remain supervised. This PWA supports learning and preparation; it does not authorise hazardous work or certify competence.</div>
+  </div>
+</section>
+
+<section id="learnView" class="view" aria-labelledby="learnTitle">
+  <button class="back-btn" data-open="homeView" type="button">← Home</button>
+  <p class="eyebrow">LEARN</p>
+  <h2 id="learnTitle">Qualification learning structure</h2>
+  <p class="workspace-intro">Official structure preserved: Knowledge Modules (162 credits), Practical Skill Modules (183 credits) and Work Experience Modules (195 credits).</p>
+  <div class="qualification-switch" aria-label="Qualification sections">
+    <a href="#knowledgeModulesTitle">KM · Knowledge</a>
+    <a href="#practicalModulesTitle">PM · Practical Skills</a>
+    <a href="#workExperienceModulesTitle">WM · Work Experience</a>
+  </div>
+  <section aria-labelledby="knowledgeModulesTitle">
 <p class="eyebrow">MY KNOWLEDGE MODULES</p>
 <h2 id="knowledgeModulesTitle">Choose a module</h2>
 <div class="km-box-grid">
-<a class="km-box km01-card" href="./km01.html"><span class="km-code">KM-01</span><span class="km-name">Introduction to the Boilermaker Trade</span><span class="km-meta">4 curriculum-aligned lessons available</span></a>
-<a class="km-box km02-card" href="./km02.html"><span class="km-code">KM-02</span><span class="km-name">Environmental Protection, Health and Safety</span><span class="km-meta">2 curriculum-aligned lessons available</span></a>
-<a class="km-box km03-card" href="./km03.html"><span class="km-code">KM-03</span><span class="km-name">Tools, Equipment, Machines and Materials</span><span class="km-meta">4 curriculum-aligned lessons available</span></a>
-<a class="km-box km04a-card" href="./km04.html"><span class="km-code">KM-04</span><span class="km-name">Fabrication and Pipework</span><span class="km-meta">9 curriculum-aligned knowledge lessons available</span></a>
-<a class="km-box" href="./km05.html"><span class="km-code">KM-05</span><span class="km-name">Assembling and Joining</span><span class="km-meta">5 curriculum-aligned knowledge lessons available</span></a>
-<a class="km-box" href="./km06.html"><span class="km-code">KM-06</span><span class="km-name">Cutting and Welding</span><span class="km-meta">10 curriculum-aligned theory lessons available</span></a>
-<a class="km-box" href="./km07.html"><span class="km-code">KM-07</span><span class="km-name">Boilermaker's Drawings</span><span class="km-meta">9 curriculum-aligned drawing lessons available</span></a>
-<a class="km-box" href="./km08.html"><span class="km-code">KM-08</span><span class="km-name">Environmental Awareness and Ethics</span><span class="km-meta">3 curriculum-aligned knowledge lessons available</span></a>
-<a class="km-box" href="./km09.html"><span class="km-code">KM-09</span><span class="km-name">Emotional Intelligence and Active Learning</span><span class="km-meta">3 curriculum-aligned knowledge lessons available</span></a>
-<a class="km-box" href="./km10.html"><span class="km-code">KM-10</span><span class="km-name">Basics of Computers and Computing Systems</span><span class="km-meta">5 curriculum-aligned knowledge lessons available</span></a>
-<a class="km-box" href="./km11.html"><span class="km-code">KM-11</span><span class="km-name">Workplace Fundamentals and Workplace Safety</span><span class="km-meta">5 curriculum-aligned knowledge lessons available</span></a>
-<a class="km-box" href="./km12.html"><span class="km-code">KM-12</span><span class="km-name">Workplace Relationships and Performance</span><span class="km-meta">5 curriculum-aligned knowledge lessons available</span></a>
-<a class="km-box" href="./km13.html"><span class="km-code">KM-13</span><span class="km-name">Decision Making</span><span class="km-meta">4 curriculum-aligned knowledge lessons available</span></a>
-<a class="km-box" href="./km14.html"><span class="km-code">KM-14</span><span class="km-name">Basic Slinging, Lifting and Load Securing</span><span class="km-meta">6 curriculum-aligned theory lessons available</span></a>
+<a class="km-box km01-card" href="./km01.html"><span class="km-code">KM-01</span><span class="km-name">Introduction to the Boilermaker Trade</span><span class="km-meta">651302-000-01-KM-01 • 9 credits • 4 curriculum-aligned lessons available</span></a>
+<a class="km-box km02-card" href="./km02.html"><span class="km-code">KM-02</span><span class="km-name">Environmental Protection, Health and Safety</span><span class="km-meta">651302-000-01-KM-02 • 6 credits • 2 curriculum-aligned lessons available</span></a>
+<a class="km-box km03-card" href="./km03.html"><span class="km-code">KM-03</span><span class="km-name">Tools, Equipment, Machines and Materials</span><span class="km-meta">651302-000-01-KM-03 • 10 credits • 4 curriculum-aligned lessons available</span></a>
+<a class="km-box km04a-card" href="./km04.html"><span class="km-code">KM-04</span><span class="km-name">Fabrication and Pipework</span><span class="km-meta">651302-000-01-KM-04 • 28 credits • 9 curriculum-aligned knowledge lessons available</span></a>
+<a class="km-box" href="./km05.html"><span class="km-code">KM-05</span><span class="km-name">Assembling and Joining</span><span class="km-meta">651302-000-01-KM-05 • 28 credits • 5 curriculum-aligned knowledge lessons available</span></a>
+<a class="km-box" href="./km06.html"><span class="km-code">KM-06</span><span class="km-name">Cutting and Welding</span><span class="km-meta">651302-000-01-KM-06 • 28 credits • 10 curriculum-aligned theory lessons available</span></a>
+<a class="km-box" href="./km07.html"><span class="km-code">KM-07</span><span class="km-name">Boilermaker's Drawings</span><span class="km-meta">651302-001-00-KM-07 • 12 credits • 9 curriculum-aligned drawing lessons available</span></a>
+<a class="km-box" href="./km08.html"><span class="km-code">KM-08</span><span class="km-name">Environmental Awareness and Ethics</span><span class="km-meta">651302-000-01-KM-08 • 2 credits • 3 curriculum-aligned knowledge lessons available</span></a>
+<a class="km-box" href="./km09.html"><span class="km-code">KM-09</span><span class="km-name">Emotional Intelligence and Active Learning</span><span class="km-meta">651302-000-01-KM-09 • 3 credits • 3 curriculum-aligned knowledge lessons available</span></a>
+<a class="km-box" href="./km10.html"><span class="km-code">KM-10</span><span class="km-name">Basics of Computers and Computing Systems</span><span class="km-meta">651302-000-01-KM-10 • 3 credits • 5 curriculum-aligned knowledge lessons available</span></a>
+<a class="km-box" href="./km11.html"><span class="km-code">KM-11</span><span class="km-name">Workplace Fundamentals and Workplace Safety</span><span class="km-meta">651302-000-01-KM-11 • 6 credits • 5 curriculum-aligned knowledge lessons available</span></a>
+<a class="km-box" href="./km12.html"><span class="km-code">KM-12</span><span class="km-name">Workplace Relationships and Performance</span><span class="km-meta">653201-000-01-KM-12 • 6 credits • 5 curriculum-aligned knowledge lessons available</span></a>
+<a class="km-box" href="./km13.html"><span class="km-code">KM-13</span><span class="km-name">Decision Making</span><span class="km-meta">653202-000-01-KM-13 • 6 credits • 4 curriculum-aligned knowledge lessons available</span></a>
+<a class="km-box" href="./km14.html"><span class="km-code">KM-14</span><span class="km-name">Basic Slinging, Lifting and Load Securing</span><span class="km-meta">651302-001-00-KM-14 • 15 credits • 6 curriculum-aligned theory lessons available</span></a>
 </div>
 </section>
 
-<section aria-labelledby="practicalModulesTitle">
+
+  <section aria-labelledby="practicalModulesTitle">
 <p class="eyebrow">MY PRACTICAL SKILL MODULES</p>
 <h2 id="practicalModulesTitle">Preparation and evidence support</h2>
 <div class="safety-note"><strong>Human-supervised practical learning.</strong> These modules prepare understanding, classroom practice and evidence. They do not certify competence or authorise hazardous practical work.</div>
 <div class="km-box-grid">
-<a class="km-box" href="./pm01.html"><span class="km-code">PM-01</span><span class="km-name">Visualise Structures and Components and Develop Templates</span><span class="km-meta">5 curriculum-aligned preparation activities available</span></a>
-<a class="km-box" href="./pm02.html"><span class="km-code">PM-02</span><span class="km-name">Maintain and Use Tools, Equipment and Machinery</span><span class="km-meta">8 curriculum-aligned preparation activities available</span></a>
-<a class="km-box" href="./pm03.html"><span class="km-code">PM-03</span><span class="km-name">Cut and Weld Components</span><span class="km-meta">14 curriculum-aligned preparation activities available</span></a>
-<a class="km-box" href="./pm04.html"><span class="km-code">PM-04</span><span class="km-name">Manipulate and Fabricate Profiles and Metal Sections</span><span class="km-meta">5 curriculum-aligned preparation activities available</span></a>
-<a class="km-box" href="./pm05.html"><span class="km-code">PM-05</span><span class="km-name">Erect, Assemble and Repair Metal Structures</span><span class="km-meta">11 curriculum-aligned preparation activities available</span></a>
-<a class="km-box" href="./pm06.html"><span class="km-code">PM-06</span><span class="km-name">Work Safely and Respond to Emergencies</span><span class="km-meta">2 curriculum-aligned awareness activities available</span></a>
-<a class="km-box" href="./pm07.html"><span class="km-code">PM-07</span><span class="km-name">Apply Safety Standards and Housekeeping Practices</span><span class="km-meta">3 curriculum-aligned safety support activities available</span></a>
-<a class="km-box" href="./pm08.html"><span class="km-code">PM-08</span><span class="km-name">Liaise and Communicate with Others</span><span class="km-meta">2 curriculum-aligned communication activities available</span></a>
-<a class="km-box" href="./pm09.html"><span class="km-code">PM-09</span><span class="km-name">Sling, Lift and Secure Loads for Transportation</span><span class="km-meta">7 curriculum-aligned preparation activities available</span></a>
+<a class="km-box" href="./pm01.html"><span class="km-code">PM-01</span><span class="km-name">Visualise Structures and Components and Develop Templates</span><span class="km-meta">651302-000-01-PM-01 • 32 credits • 5 curriculum-aligned preparation activities available</span></a>
+<a class="km-box" href="./pm02.html"><span class="km-code">PM-02</span><span class="km-name">Maintain and Use Tools, Equipment and Machinery</span><span class="km-meta">651302-000-01-PM-02 • 20 credits • 8 curriculum-aligned preparation activities available</span></a>
+<a class="km-box" href="./pm03.html"><span class="km-code">PM-03</span><span class="km-name">Cut and Weld Components</span><span class="km-meta">651302-000-01-PM-03 • 32 credits • 14 curriculum-aligned preparation activities available</span></a>
+<a class="km-box" href="./pm04.html"><span class="km-code">PM-04</span><span class="km-name">Manipulate and Fabricate Profiles and Metal Sections</span><span class="km-meta">651302-000-01-PM-04 • 44 credits • 5 curriculum-aligned preparation activities available</span></a>
+<a class="km-box" href="./pm05.html"><span class="km-code">PM-05</span><span class="km-name">Erect, Assemble and Repair Metal Structures</span><span class="km-meta">651302-000-01-PM-05 • 32 credits • 11 curriculum-aligned preparation activities available</span></a>
+<a class="km-box" href="./pm06.html"><span class="km-code">PM-06</span><span class="km-name">Work Safely and Respond to Emergencies</span><span class="km-meta">651302-000-01-PM-06 • 4 credits • 2 curriculum-aligned awareness activities available</span></a>
+<a class="km-box" href="./pm07.html"><span class="km-code">PM-07</span><span class="km-name">Apply Safety Standards and Housekeeping Practices</span><span class="km-meta">651302-000-01-PM-07 • 4 credits • 3 curriculum-aligned safety support activities available</span></a>
+<a class="km-box" href="./pm08.html"><span class="km-code">PM-08</span><span class="km-name">Liaise and Communicate with Others</span><span class="km-meta">651302-000-01-PM-08 • 2 credits • 2 curriculum-aligned communication activities available</span></a>
+<a class="km-box" href="./pm09.html"><span class="km-code">PM-09</span><span class="km-name">Sling, Lift and Secure Loads for Transportation</span><span class="km-meta">651302-000-01-PM-09 • 13 credits • 7 curriculum-aligned preparation activities available</span></a>
 </div>
 </section>
 
-<section aria-labelledby="workExperienceModulesTitle">
+
+  <section aria-labelledby="workExperienceModulesTitle">
 <p class="eyebrow">MY WORK EXPERIENCE MODULES</p>
 <h2 id="workExperienceModulesTitle">Evidence and supervised-experience support</h2>
 <div class="safety-note"><strong>Workplace experience remains human-supervised.</strong> These modules help organise evidence and connect real or approved simulated experience to the curriculum. They do not create workplace experience, certify competence or replace human sign-off.</div>
 <div class="km-box-grid">
-<a class="km-box" href="./wm01.html"><span class="km-code">WM-01</span><span class="km-name">Pattern and Template Development Processes</span><span class="km-meta">5 workplace-evidence competencies available</span></a>
-<a class="km-box" href="./wm02.html"><span class="km-code">WM-02</span><span class="km-name">Tools, Equipment and Machinery Maintenance and Operation Processes</span><span class="km-meta">4 workplace-evidence competencies available</span></a>
-<a class="km-box" href="./wm03.html"><span class="km-code">WM-03</span><span class="km-name">Workshop or On-Site Cutting and Welding Processes</span><span class="km-meta">3 workplace-evidence competencies available</span></a>
-<a class="km-box" href="./wm04.html"><span class="km-code">WM-04</span><span class="km-name">Fabrication, Assembling and Repairing of Metal Components and Structures</span><span class="km-meta">4 workplace-evidence competencies available</span></a>
-<a class="km-box" href="./wm05.html"><span class="km-code">WM-05</span><span class="km-name">Assembling and Erecting Processes for Structures and Components</span><span class="km-meta">9 workplace-evidence competencies available</span></a>
+<a class="km-box" href="./wm01.html"><span class="km-code">WM-01</span><span class="km-name">Pattern and Template Development Processes</span><span class="km-meta">651302-000-01-WM-01 • 35 credits • 5 workplace-evidence competencies available</span></a>
+<a class="km-box" href="./wm02.html"><span class="km-code">WM-02</span><span class="km-name">Tools, Equipment and Machinery Maintenance and Operation Processes</span><span class="km-meta">651302-000-01-WM-02 • 30 credits • 4 workplace-evidence competencies available</span></a>
+<a class="km-box" href="./wm03.html"><span class="km-code">WM-03</span><span class="km-name">Workshop or On-Site Cutting and Welding Processes</span><span class="km-meta">651302-000-01-WM-03 • 45 credits • 3 workplace-evidence competencies available</span></a>
+<a class="km-box" href="./wm04.html"><span class="km-code">WM-04</span><span class="km-name">Fabrication, Assembling and Repairing of Metal Components and Structures</span><span class="km-meta">651302-000-01-WM-04 • 45 credits • 4 workplace-evidence competencies available</span></a>
+<a class="km-box" href="./wm05.html"><span class="km-code">WM-05</span><span class="km-name">Assembling and Erecting Processes for Structures and Components</span><span class="km-meta">651302-000-01-WM-05 • 40 credits • 9 workplace-evidence competencies available</span></a>
 </div>
 </section>
 
-<section class="learner-tools" aria-labelledby="learnerToolsTitle">
-<p class="eyebrow">LEARNER TOOLS</p><h2 id="learnerToolsTitle">Useful tools</h2>
-<div class="tool-grid">
-<button class="menu-card safety-card" data-open="safetyRouterView" type="button"><span class="menu-title">Practise Safely</span><span class="menu-copy">Check the safety gate before practical work</span></button>
-<button class="menu-card evidence-card" data-open="evidenceView" type="button"><span class="menu-title">My Evidence</span><span class="menu-copy">Prepare evidence for human review</span></button>
-<a class="menu-card" href="./visual-learning.html"><span class="menu-title">Visual Learning</span><span class="menu-copy">Optional vetted online visuals for selected lessons</span></a>
-<a class="menu-card" href="./acceptance-test.html"><span class="menu-title">PWA Check</span><span class="menu-copy">Run the pre-freeze device and offline health check</span></a>
-</div>
+
 </section>
-<button id="safetyBtn" class="safety-btn" type="button">Safety</button>
+
+<section id="askView" class="view" aria-labelledby="askTitle">
+  <button class="back-btn" data-open="homeView" type="button">← Home</button>
+  <p class="eyebrow">ASK</p>
+  <h2 id="askTitle">Guided learner help</h2>
+  <p class="workspace-intro">No new tutor engine has been added. This area routes you to the existing local support already built into the Boilermaker companion.</p>
+  <div class="compact-action-grid">
+    <button class="menu-card safety-card" data-open="safetyRouterView" type="button"><span class="menu-title">Practise Safely</span><span class="menu-copy">Check the existing local safety gate before practical work.</span></button>
+    <button class="menu-card evidence-card" data-open="evidenceView" type="button"><span class="menu-title">Evidence Help</span><span class="menu-copy">Open the existing evidence capture and human-review workflow.</span></button>
+    <button class="menu-card" data-open="learnView" type="button"><span class="menu-title">Find a Module</span><span class="menu-copy">Open the official KM, PM and WM structure.</span></button>
+    <a class="menu-card" href="./visual-learning.html"><span class="menu-title">Visual Learning</span><span class="menu-copy">Open the existing vetted online visual library.</span></a>
+  </div>
+</section>
+
+<section id="toolsView" class="view" aria-labelledby="toolsTitle">
+  <button class="back-btn" data-open="homeView" type="button">← Home</button>
+  <p class="eyebrow">TOOLS</p>
+  <h2 id="toolsTitle">Learner tools</h2>
+  <div class="compact-action-grid">
+    <button class="menu-card evidence-card" data-open="evidenceView" type="button"><span class="menu-title">My Evidence</span><span class="menu-copy">Capture evidence locally and prepare it for human review.</span></button>
+    <button class="menu-card safety-card" data-open="safetyRouterView" type="button"><span class="menu-title">Safety Gate</span><span class="menu-copy">Use the existing local practical-safety decision gate.</span></button>
+    <a class="menu-card" href="./acceptance-test.html"><span class="menu-title">PWA Check</span><span class="menu-copy">Run the existing device and offline health check.</span></a>
+  </div>
+</section>
+
+<section id="referenceView" class="view" aria-labelledby="referenceTitle">
+  <button class="back-btn" data-open="homeView" type="button">← Home</button>
+  <p class="eyebrow">REFERENCE</p>
+  <h2 id="referenceTitle">Trade reference</h2>
+  <div class="compact-action-grid">
+    <a class="menu-card" href="./visual-learning.html"><span class="menu-title">Visual Learning Library</span><span class="menu-copy">Vetted supplementary learning links. Internet required for external resources.</span></a>
+    <button class="menu-card safety-card" data-open="safetyView" type="button"><span class="menu-title">Safety Reference</span><span class="menu-copy">Review the boundary between learning support and supervised practical work.</span></button>
+    <button class="menu-card" data-open="learnView" type="button"><span class="menu-title">Qualification Map</span><span class="menu-copy">SAQA 123381 · KM / PM / WM structure with official codes and credits.</span></button>
+  </div>
+</section>
+
+<section id="checkView" class="view" aria-labelledby="checkTitle">
+  <button class="back-btn" data-open="homeView" type="button">← Home</button>
+  <p class="eyebrow">CHECK</p>
+  <h2 id="checkTitle">Progress, checks and local data</h2>
+  <p class="workspace-intro">Knowledge checks remain inside the existing lessons. Progress and evidence stay local on this device unless you deliberately export or share them.</p>
+  <section class="panel"><h2>Learner profile</h2><label for="learnerName">Your name</label><input id="learnerName" type="text" autocomplete="name" placeholder="Enter learner name"><button id="saveLearnerBtn" class="primary-btn" type="button">Save learner</button><p id="learnerSaved" class="helper" aria-live="polite"></p></section>
+
+
+  <div class="menu-grid compact-secondary-tools"></div>
+  <div class="compact-action-grid">
+    <a class="menu-card" href="./acceptance-test.html"><span class="menu-title">PWA Health Check</span><span class="menu-copy">Run the existing pre-freeze online/offline acceptance check.</span></a>
+    <button class="menu-card" data-open="evidenceView" type="button"><span class="menu-title">Evidence Review Status</span><span class="menu-copy">Open locally stored evidence, review readiness and audit history.</span></button>
+  </div>
+  <div class="local-data-note"><strong>Local-first privacy:</strong> learner progress, evidence and audit records are stored on this device by the existing local-state engine. Formal competence decisions remain human/institutional.</div>
 </section>
 
 <section id="safetyRouterView" class="view"><button class="back-btn" data-open="homeView" type="button">← Home</button><p class="eyebrow">PRACTISE SAFELY • LOCAL POLICY GATE</p><h2>What are you planning to do?</h2><div class="panel"><label for="safetyScenario">Activity type</label><select id="safetyScenario"><option value="">Choose an activity</option></select><button id="checkSafetyBtn" class="primary-btn" type="button">Check safety gate</button></div><div id="safetyDecision" class="safety-decision"></div><p id="policyVersion" class="policy-version"></p></section>
