@@ -1234,3 +1234,53 @@ Scope frozen:
 - standards/source/provenance controls
 
 This freeze does not claim accreditation, assessor authority, workplace competence, trade-test equivalence or practical authorisation.
+
+
+---
+
+# COMPACT STUDENT WORKSPACE REVISION — IN TEST
+
+Pattern:
+MZANSI ARTISAN COMPACT STUDENT WORKSPACE PATTERN — v1
+
+Foundry source:
+`patterns/mzansi-artisan-compact-student-workspace-v1.md`
+
+Status:
+STRUCTURAL REORGANISATION COMPLETE ON CONTROLLED BRANCH — NOT YET DEPLOYED
+
+Preserved:
+- current repository and qualification baseline;
+- KM-01 to KM-14;
+- PM-01 to PM-09;
+- WM-01 to WM-05;
+- existing lesson and assessment pages;
+- IndexedDB/local learner state;
+- progress records;
+- evidence capture/review/handoff/audit engines;
+- backup/restore;
+- pilot dashboard/readiness check;
+- safety gate;
+- visual-learning library;
+- service-worker/offline architecture;
+- current safety and assessment boundaries.
+
+Presentation change only:
+- Home shortened;
+- single six-area workspace added: HOME / LEARN / ASK / TOOLS / REFERENCE / CHECK;
+- KM/PM/WM content moved behind LEARN without changing module files;
+- official module identifiers and credits surfaced in LEARN metadata;
+- ASK routes to existing help capability only; no new tutor engine created;
+- existing tools/reference/check capability regrouped without duplication;
+- phone-first wrap/stack rules added.
+
+Pre-deploy structural verification:
+- all existing learner-facing href targets retained: PASS;
+- all existing script engines retained: PASS;
+- duplicate HTML IDs: NONE;
+- six workspace destinations present: PASS;
+- long module list removed from Home: PASS;
+- no Netlify deployment performed.
+
+Next gate:
+Static/build verification and mobile overflow review. Deploy only after that gate passes and the change is treated as a genuine milestone.
