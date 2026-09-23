@@ -1,1 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="92" fill="#063b2b"/><rect x="14" y="14" width="484" height="484" rx="80" fill="none" stroke="#d7a72e" stroke-width="20"/><path d="M319 189c0-64-44-112-104-112-55 0-99 38-106 93l61 38 149-19z" fill="#171b1c" stroke="#d7a72e" stroke-width="14"/><path d="M151 161l146 18-27 102-139-32z" fill="#242a2b" stroke="#d7a72e" stroke-width="12"/><path d="M183 185l82 10-13 48-82-18z" fill="#07110f" stroke="#d7a72e" stroke-width="8"/><path d="M278 291c-42 4-72 25-91 64l-74-29c28-61 77-96 144-103z" fill="#171b1c" stroke="#d7a72e" stroke-width="12"/><path d="M287 300l54 39" stroke="#d7a72e" stroke-width="18"/><path d="M337 340l49 35" stroke="#e5e7eb" stroke-width="16"/><g stroke="#f7c948" stroke-width="8"><path d="M391 374l38-24"/><path d="M393 377l45 3"/><path d="M390 381l31 31"/><path d="M385 373l8-43"/></g><path d="M315 348h122c25 0 45 20 45 45v25H304v-59c0-6 5-11 11-11z" fill="#b9c0c2" stroke="#1b2425" stroke-width="10"/><text x="256" y="465" text-anchor="middle" font-family="Arial,sans-serif" font-size="42" font-weight="900" fill="#f3c34d">BOILERMAKER</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+<title id="title">Mzansi Boilermaker</title><desc id="desc">South African boilermaker helmet, steel plate and welding spark emblem.</desc>
+<rect width="512" height="512" rx="108" fill="#063b2a"/>
+<rect x="18" y="18" width="476" height="476" rx="94" fill="none" stroke="#d6a62b" stroke-width="18"/>
+<path d="M74 102h364" stroke="#111827" stroke-width="34" stroke-linecap="round"/>
+<path d="M92 102h110l38 27h180" stroke="#ffb81c" stroke-width="12" fill="none"/>
+<path d="M92 118h106l42 30h180" stroke="#007749" stroke-width="12" fill="none"/>
+<path d="M92 134h102l46 33h180" stroke="#de3831" stroke-width="12" fill="none"/>
+<path d="M194 176c19-39 105-47 132 0l25 92-45 51H206l-45-51z" fill="#151b22" stroke="#d6a62b" stroke-width="14"/>
+<path d="M204 205h104l18 54-34 38h-72l-34-38z" fill="#091116" stroke="#e7c65a" stroke-width="10"/>
+<rect x="218" y="226" width="76" height="42" rx="8" fill="#78a7b8"/>
+<path d="M111 362h290" stroke="#b8c1c7" stroke-width="58" stroke-linecap="round"/>
+<circle cx="151" cy="362" r="12" fill="#26313a"/><circle cx="361" cy="362" r="12" fill="#26313a"/>
+<path d="M256 310v72M219 322l-31 52M293 322l31 52M207 300l-49 18M305 300l49 18" stroke="#ffbf32" stroke-width="10" stroke-linecap="round"/>
+<path d="M155 421h202" stroke="#d6a62b" stroke-width="10" stroke-linecap="round"/>
+<text x="256" y="462" text-anchor="middle" font-family="Arial,sans-serif" font-size="42" font-weight="800" fill="#fff">BOILERMAKER</text>
+</svg>
