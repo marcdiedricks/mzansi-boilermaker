@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mzansi-boilermaker-v0.3c-iconfix2';
+const CACHE_NAME = 'mzansi-boilermaker-v0.3d-compact1';
 
 const APP_SHELL = [
   './',
