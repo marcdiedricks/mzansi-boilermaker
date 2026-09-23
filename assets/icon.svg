@@ -1,12 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-  <title id="title">Mzansi Boilermaker</title>
-  <desc id="desc">A simple steel plate and hammer symbol.</desc>
-  <rect width="512" height="512" rx="96" fill="#1f2937"/>
-  <rect x="104" y="164" width="304" height="184" rx="22" fill="#e5e7eb"/>
-  <circle cx="152" cy="210" r="18" fill="#1f2937"/>
-  <circle cx="360" cy="210" r="18" fill="#1f2937"/>
-  <circle cx="152" cy="302" r="18" fill="#1f2937"/>
-  <circle cx="360" cy="302" r="18" fill="#1f2937"/>
-  <path d="M215 122h82v44h-82z" fill="#16a34a"/>
-  <path d="M244 86h24v142h-24z" fill="#16a34a"/>
+<title id="title">Mzansi Boilermaker</title>
+<desc id="desc">Boilermaker welding a steel pipe, South African green and gold identity.</desc>
+<rect width="512" height="512" rx="92" fill="#063b2b"/>
+<rect x="14" y="14" width="484" height="484" rx="80" fill="none" stroke="#d7a72e" stroke-width="20"/>
+<path d="M78 364h356v72H78z" rx="20" fill="#0b211c"/>
+<path d="M319 189c0-64-44-112-104-112-55 0-99 38-106 93l61 38 149-19z" fill="#171b1c" stroke="#d7a72e" stroke-width="14"/>
+<path d="M151 161l146 18-27 102-139-32z" fill="#242a2b" stroke="#d7a72e" stroke-width="12"/>
+<path d="M183 185l82 10-13 48-82-18z" fill="#07110f" stroke="#d7a72e" stroke-width="8"/>
+<path d="M278 291c-42 4-72 25-91 64l-74-29c28-61 77-96 144-103z" fill="#171b1c" stroke="#d7a72e" stroke-width="12"/>
+<path d="M287 300l54 39" stroke="#d7a72e" stroke-width="18" stroke-linecap="round"/>
+<path d="M337 340l49 35" stroke="#e5e7eb" stroke-width="16" stroke-linecap="round"/>
+<path d="M389 376l-13 10" stroke="#f7c948" stroke-width="12" stroke-linecap="round"/>
+<g stroke="#f7c948" stroke-width="8" stroke-linecap="round">
+<path d="M391 374l38-24"/><path d="M393 377l45 3"/><path d="M390 381l31 31"/><path d="M385 373l8-43"/><path d="M382 382l-9 40"/>
+</g>
+<path d="M315 348h122c25 0 45 20 45 45v25H304v-59c0-6 5-11 11-11z" fill="#b9c0c2" stroke="#1b2425" stroke-width="10"/>
+<circle cx="354" cy="376" r="10" fill="#263132"/><circle cx="403" cy="376" r="10" fill="#263132"/>
+<text x="256" y="465" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="42" font-weight="900" fill="#f3c34d" letter-spacing="3">BOILERMAKER</text>
 </svg>
