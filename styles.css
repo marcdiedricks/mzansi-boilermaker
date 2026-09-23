@@ -146,3 +146,72 @@ a.primary-btn { width: auto; }
   .menu-grid, .tool-grid, .km-box-grid { grid-template-columns: 1fr 1fr; }
   .diagram-grid { grid-template-columns: repeat(3, 1fr); }
 }
+
+
+/* MZANSI ARTISAN COMPACT STUDENT WORKSPACE PATTERN — v1 */
+.compact-home { display:grid; gap:14px; }
+.compact-hero { background:var(--surface); border:1px solid var(--border); border-radius:16px; padding:16px; }
+.compact-hero h2 { margin:4px 0 6px; font-size:1.2rem; line-height:1.2; }
+.compact-qualification { margin:0; color:var(--muted); font-size:.86rem; }
+.compact-motto { margin:12px 0 0; font-weight:900; letter-spacing:.08em; color:var(--accent-dark); font-size:.82rem; }
+.workspace-nav { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.workspace-btn { min-width:0; min-height:66px; border:1px solid var(--border); border-radius:14px; background:#fff; color:var(--text); padding:11px 12px; text-align:left; cursor:pointer; }
+.workspace-btn strong { display:block; font-size:.84rem; letter-spacing:.04em; overflow-wrap:anywhere; }
+.workspace-btn span { display:block; margin-top:4px; color:var(--muted); font-size:.76rem; line-height:1.25; overflow-wrap:anywhere; }
+.workspace-btn.active { border-color:#8fb9a3; background:#eef7f1; }
+.home-safety-note,.local-data-note { border-radius:12px; padding:12px 14px; line-height:1.4; font-size:.86rem; }
+.home-safety-note { background:var(--warning-bg); border-left:4px solid #a15c00; }
+.local-data-note { margin-top:14px; background:#f2f6f8; border:1px solid var(--border); }
+.workspace-intro { color:var(--muted); line-height:1.5; margin-top:-4px; }
+.qualification-switch { display:grid; grid-template-columns:1fr; gap:8px; margin:14px 0 18px; }
+.qualification-switch a { display:block; text-decoration:none; border:1px solid var(--border); background:#fff; color:var(--text); border-radius:12px; padding:12px 14px; font-weight:800; line-height:1.3; }
+.compact-action-grid,.compact-secondary-tools { display:grid; grid-template-columns:1fr; gap:10px; margin:12px 0; }
+#learnView section { scroll-margin-top:88px; }
+#learnView .km-box { min-height:0; padding:14px; }
+#learnView .km-meta { overflow-wrap:anywhere; }
+#checkView .panel { margin-bottom:12px; }
+#checkView .menu-grid { margin-bottom:14px; }
+@media (max-width:420px) {
+  .app-header { gap:10px; padding:12px 14px; }
+  .app-header h1 { font-size:1rem; line-height:1.15; }
+  .app-header .eyebrow { font-size:.67rem; }
+  .status-pill { padding:6px 8px; font-size:.7rem; }
+  .workspace-nav { grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
+  .workspace-btn { min-height:62px; padding:10px; }
+  .workspace-btn strong { font-size:.78rem; }
+  .workspace-btn span { font-size:.71rem; }
+  .qualification-switch { grid-template-columns:1fr; }
+}
+@media (min-width:620px) {
+  .workspace-nav { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .qualification-switch { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  .compact-action-grid,.compact-secondary-tools { grid-template-columns:1fr 1fr; }
+}
+
+/* Compact workspace overflow hardening */
+.app-header > div { min-width:0; }
+.app-header h1,
+.app-header .eyebrow,
+.compact-hero h2,
+.workspace-intro,
+.km-name,
+.km-meta,
+.menu-title,
+.menu-copy,
+.local-data-note,
+.home-safety-note { overflow-wrap:anywhere; word-break:normal; }
+.workspace-nav,
+.qualification-switch,
+.compact-action-grid,
+.compact-secondary-tools,
+.km-box-grid { min-width:0; }
+.workspace-btn,
+.qualification-switch a,
+.compact-action-grid > *,
+.compact-secondary-tools > *,
+.km-box { max-width:100%; min-width:0; }
+@media (max-width:340px) {
+  .app-header { align-items:flex-start; flex-wrap:wrap; }
+  .status-pill { margin-left:0; }
+  .workspace-nav { grid-template-columns:1fr; }
+}
