@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f2937">
+  <title>KM-04D • Check the Job Before Fabrication</title>
+  <link rel="stylesheet" href="./styles.css?v=0.1b-04d">
+</head>
+<body>
+<header class="app-header"><div><p class="app-kicker">MZANSI BOILERMAKER</p><h1>Artisan Learning Companion</h1></div><span id="networkBadge" class="status-pill">ONLINE</span></header>
+<main class="lesson-shell">
+  <section class="hero-card"><p class="eyebrow">BUILD 0.1B-04D • KM-04 • TIER 1 LEARNING</p><h2>Check the Job Before Fabrication</h2><p>A short quality-awareness and stop-and-check lesson within KM-04 Fabrication and Pipework.</p></section>
+  <a class="back-btn" href="./index.html">← Main app</a>
+  <div class="safety-note"><strong>Learning only.</strong> This lesson explains quality checks, recognition and decision-making before practical fabrication. It does not teach cutting, welding, heating, bending, lifting, machine setup or machine operation. Practical work requires approved training, workplace controls and competent human supervision.</div>
+
+  <section class="content-card"><h3>1. Check before work starts</h3><p>Quality begins before fabrication. Confirm that the controlled drawing, dimensions, material requirements, specifications and workplace instructions agree with the job you are preparing to do.</p><div class="key-idea"><strong>Key idea:</strong> Finding a mismatch before practical work starts can prevent waste, rework and unsafe decisions.</div></section>
+
+  <section class="content-card"><h3>2. Confirm the important details</h3><p>Check that the required component, material, size, thickness, grade and identification match the controlled job information. Do not rely on memory or appearance alone.</p></section>
+
+  <section class="content-card"><h3>3. Notice mismatches and uncertainty</h3><p>A missing dimension, unclear note, damaged identification mark or difference between the material and the job information is a reason to stop and clarify. Do not quietly substitute, guess or continue.</p></section>
+
+  <section class="content-card"><h3>4. Quality is not only the final inspection</h3><p>Quality awareness is part of planning. Checking information and material before practical work helps reduce avoidable mistakes and supports traceability.</p></section>
+
+  <section class="content-card"><h3>5. Know when to stop and ask</h3><p>If controlled information is incomplete, contradictory or unclear, stop and ask the responsible supervisor or training professional. A learner should not resolve an important uncertainty by guessing.</p></section>
+
+  <section class="content-card"><p class="eyebrow">VISUAL LEARNING • INTERNET REQUIRED</p><h3>See quality control in manufacturing</h3><p>Use an approved trainer-selected visual resource to reinforce inspection, checking and quality awareness. The written lesson remains complete and usable offline.</p><div class="safety-note"><strong>Watch for understanding and context only.</strong> A video does not replace workplace procedures, approved training, supervision or practical authorisation.</div></section>
+
+  <section class="content-card"><h3>KM-04D learning check</h3><form id="quizForm">
+    <fieldset><legend>1. When should quality checking begin?</legend><label><input type="radio" name="q1" value="before"> Before practical fabrication starts</label><label><input type="radio" name="q1" value="after"> Only after the job is finished</label></fieldset>
+    <fieldset><legend>2. What should you do when job information and material identification do not agree?</legend><label><input type="radio" name="q2" value="clarify"> Stop and clarify with a responsible supervisor or training professional</label><label><input type="radio" name="q2" value="guess"> Choose the closest-looking material</label><label><input type="radio" name="q2" value="memory"> Continue from memory</label></fieldset>
+    <fieldset><legend>3. Is appearance alone enough to confirm the correct material?</legend><label><input type="radio" name="q3" value="yes"> Yes</label><label><input type="radio" name="q3" value="no"> No</label></fieldset>
+    <fieldset><legend>4. Does completing KM-04D authorise practical fabrication work?</legend><label><input type="radio" name="q4" value="yes"> Yes</label><label><input type="radio" name="q4" value="no"> No</label></fieldset>
+    <button class="primary-btn" type="submit">Check my answers</button>
+  </form><div id="quizResult" class="result-card" aria-live="polite"></div></section>
+</main>
+<script src="./storage.js"></script>
+<script>
+const badge=document.getElementById('networkBadge');function network(){const on=navigator.onLine;badge.textContent=on?'ONLINE':'OFFLINE';badge.classList.toggle('offline',!on);}addEventListener('online',network);addEventListener('offline',network);network();
+document.getElementById('quizForm').addEventListener('submit',async e=>{e.preventDefault();const data=new FormData(e.target);const correct={q1:'before',q2:'clarify',q3:'no',q4:'no'};let score=0;Object.entries(correct).forEach(([q,a])=>{if(data.get(q)===a)score++;});const result=document.getElementById('quizResult');result.innerHTML=`<strong>${score}/4.</strong> ${score===4?'KM-04D learning slice completed.':'Review the lesson and try again.'} This records learning progress only, not competence or practical authorisation.`;if(score===4&&globalThis.MzansiStore){await MzansiStore.set('km04d-progress',{completed:true,score,completedAt:new Date().toISOString(),build:'0.1B-04D'});}});
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.error);
+</script>
+</body>
+</html>

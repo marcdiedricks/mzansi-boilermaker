@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f2937">
+  <title>KM-04E • Check Dimensions and Measurement Information</title>
+  <link rel="stylesheet" href="./styles.css?v=0.1b-04e2">
+</head>
+<body>
+<header class="app-header"><div><p class="app-kicker">MZANSI BOILERMAKER</p><h1>Artisan Learning Companion</h1></div><span id="networkBadge" class="status-pill">ONLINE</span></header>
+<main class="lesson-shell">
+  <section class="hero-card"><p class="eyebrow">BUILD 0.1B-04E • KM-04 • TIER 1 LEARNING</p><h2>Check Dimensions and Measurement Information</h2><p>A short measurement-awareness lesson within KM-04 Fabrication and Pipework.</p></section>
+  <a class="back-btn" href="./index.html">← Main app</a>
+  <div class="safety-note"><strong>Learning only.</strong> This lesson explains how dimensions and measurement information guide planning and checking. It does not teach cutting, welding, heating, bending, lifting, machine setup or machine operation. Practical work requires approved training, workplace controls and competent human supervision.</div>
+
+  <section class="content-card"><h3>1. Read the stated dimension</h3><p>A drawing or specification can state dimensions for length, width, height, diameter, radius, thickness or position. Use the controlled information for the job rather than judging size from the picture.</p><div class="key-idea"><strong>Key idea:</strong> A drawing displayed on a phone may be enlarged or reduced. The stated dimension remains the controlling information.</div></section>
+
+  <section class="content-card"><h3>2. Confirm the unit</h3><p>A number without its correct unit can be misunderstood. Check the drawing, specification and workplace convention so you know which unit applies. Do not assume a unit when the controlled information is unclear.</p></section>
+
+  <section class="content-card"><h3>3. Keep measurement information traceable</h3><p>Dimensions should be linked to the current approved drawing or specification. If documents disagree, have missing information or appear to be different revisions, stop and clarify before practical work.</p></section>
+
+  <section class="content-card"><h3>4. Do not estimate from appearance</h3><p>Two components can look similar on a screen or from a distance while having different dimensions or thicknesses. Visual appearance alone does not confirm that a component matches the job information.</p></section>
+
+  <section class="content-card"><h3>5. Know when to stop and ask</h3><p>If a dimension is missing, unreadable, contradictory or uncertain, do not invent a value. Stop and ask the responsible supervisor or training professional to clarify the controlled information.</p></section>
+
+  <section class="content-card"><p class="eyebrow">VISUAL LEARNING • INTERNET REQUIRED</p><h3>See how dimensions communicate size</h3><p>This supplementary English visual lesson explains dimensioning basics in engineering drawings and reinforces how stated measurements communicate the intended size of an object.</p><p><a class="primary-btn" href="https://www.youtube.com/watch?v=oDyEu7hkluw" target="_blank" rel="noopener noreferrer">▶ Watch: Dimensioning Basics (English)</a></p><p class="helper">Internet/data required. The written KM-04E lesson remains complete and usable offline.</p><div class="safety-note"><strong>Watch for recognition and context only.</strong> Focus on understanding how dimensions are represented on engineering drawings. The video is supplementary and does not replace approved workplace procedures, practical training, supervision or authorisation, and it is not evidence of competence or certification.</div></section>
+
+  <section class="content-card"><h3>KM-04E learning check</h3><form id="quizForm">
+    <fieldset><legend>1. Should you judge a real component's size from how large the drawing looks on your phone?</legend><label><input type="radio" name="q1" value="yes"> Yes</label><label><input type="radio" name="q1" value="no"> No</label></fieldset>
+    <fieldset><legend>2. What should guide your understanding of the required size?</legend><label><input type="radio" name="q2" value="controlled"> Controlled dimensions and job information</label><label><input type="radio" name="q2" value="appearance"> Appearance alone</label><label><input type="radio" name="q2" value="memory"> Memory alone</label></fieldset>
+    <fieldset><legend>3. What should you do if a required dimension or unit is unclear?</legend><label><input type="radio" name="q3" value="guess"> Guess the most likely value</label><label><input type="radio" name="q3" value="clarify"> Stop and clarify with a responsible supervisor or training professional</label></fieldset>
+    <fieldset><legend>4. Does completing KM-04E authorise practical fabrication work?</legend><label><input type="radio" name="q4" value="yes"> Yes</label><label><input type="radio" name="q4" value="no"> No</label></fieldset>
+    <button class="primary-btn" type="submit">Check my answers</button>
+  </form><div id="quizResult" class="result-card" aria-live="polite"></div></section>
+</main>
+<script src="./storage.js"></script>
+<script>
+const badge=document.getElementById('networkBadge');function network(){const on=navigator.onLine;badge.textContent=on?'ONLINE':'OFFLINE';badge.classList.toggle('offline',!on);}addEventListener('online',network);addEventListener('offline',network);network();
+document.getElementById('quizForm').addEventListener('submit',async e=>{e.preventDefault();const data=new FormData(e.target);const correct={q1:'no',q2:'controlled',q3:'clarify',q4:'no'};let score=0;Object.entries(correct).forEach(([q,a])=>{if(data.get(q)===a)score++;});const result=document.getElementById('quizResult');result.innerHTML=`<strong>${score}/4.</strong> ${score===4?'KM-04E learning slice completed.':'Review the lesson and try again.'} This records learning progress only, not competence or practical authorisation.`;if(score===4&&globalThis.MzansiStore){await MzansiStore.set('km04e-progress',{completed:true,score,completedAt:new Date().toISOString(),build:'0.1B-04E'});}});
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./service-worker.js').catch(console.error);
+</script>
+</body>
+</html>
