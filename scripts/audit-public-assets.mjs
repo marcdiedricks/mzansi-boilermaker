@@ -14,6 +14,7 @@ const exists=new Set(files);
 function verify(from,url,kind){
  if(/^(?:https?:|data:|mailto:|tel:|javascript:|#|\/\/)/i.test(url))return;
  const clean=url.split(/[?#]/)[0];if(!clean)return;
+ if(clean==='.'||clean==='./'||clean==='/'){if(!exists.has('index.html'))failures.push(from+': homepage index.html missing');return;}
  const target=clean.startsWith('/')?clean.slice(1):path.posix.normalize(path.posix.join(path.posix.dirname(from),clean));
  if(target.startsWith('../')){failures.push(from+': path escapes public/: '+url);return;}
  if(!exists.has(target)&&!exists.has(target+'/index.html'))failures.push(from+': missing '+kind+' '+url+' (resolved '+target+')');
