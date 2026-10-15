@@ -1,0 +1,47 @@
+{
+  "policyVersion": "0.1A-02",
+  "trade": "Boilermaker",
+  "qualificationId": "123381",
+  "rules": [
+    {
+      "id": "study-theory",
+      "label": "Study or revise theory",
+      "tier": 1,
+      "decision": "ALLOW",
+      "heading": "Learning mode",
+      "message": "You can continue with approved theory, drawings, glossary work and revision." 
+    },
+    {
+      "id": "controlled-practice",
+      "label": "Low-risk practice in an approved training area",
+      "tier": 2,
+      "decision": "ALLOW_WITH_CONTROLS",
+      "heading": "Practise safely",
+      "message": "Use the approved training task, required controls and local supervision rules. The app does not authorise workplace activity." 
+    },
+    {
+      "id": "hot-work",
+      "label": "Hot work, cutting or grinding",
+      "tier": 3,
+      "decision": "HUMAN_REQUIRED",
+      "heading": "Supervision required",
+      "message": "This is a higher-risk practical activity. Continue only through an approved workplace or training process with the required competent human supervision." 
+    },
+    {
+      "id": "lifting-height-machinery",
+      "label": "Lifting, work at height or powered machinery",
+      "tier": 3,
+      "decision": "HUMAN_REQUIRED",
+      "heading": "Supervision required",
+      "message": "This activity needs a new safety check and competent human supervision. The app can support theory and preparation only." 
+    },
+    {
+      "id": "critical-hazard",
+      "label": "Pressure, confined space, electrical exposure or other critical hazard",
+      "tier": 4,
+      "decision": "DENY",
+      "heading": "Restricted activity",
+      "message": "The learning companion will not authorise or guide this activity. Use the applicable authorised workplace process and competent human control." 
+    }
+  ]
+}

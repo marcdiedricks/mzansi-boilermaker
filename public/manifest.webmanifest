@@ -1,0 +1,13 @@
+{
+  "name": "Mzansi Boilermaker Artisan Learning Companion",
+  "short_name": "Mzansi Boilermaker",
+  "description": "Offline-first South African Boilermaker learning companion.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#063b2a",
+  "theme_color": "#063b2a",
+  "icons": [
+    {"src":"./assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
