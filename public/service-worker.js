@@ -187,7 +187,6 @@ const APP_SHELL = [
   './wm05we07.html',
   './wm05we08.html',
   './wm05we09.html',
-  './BOILERMAKER_VISUAL_LEARNING_LIBRARY.md',
   './visual-learning.html',
   './acceptance-test.html',
   './lms-record-test.html',
