@@ -1,0 +1,19 @@
+name: Candidate public asset audit
+on:
+  pull_request:
+    paths:
+      - 'public/**'
+      - 'scripts/audit-public-assets.mjs'
+      - '.github/workflows/public-assets-audit.yml'
+  workflow_dispatch:
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node scripts/audit-public-assets.mjs
